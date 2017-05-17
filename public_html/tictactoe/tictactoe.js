@@ -82,7 +82,7 @@ E.board10_1 = {
         [0,0,0,0,0,0,1,0,0,0]
     ],
     nextPlayer: 2,
-    streak:5,
+    streak:4,
     turns: 4
 }
 
@@ -104,7 +104,7 @@ E.board10_2 = {
         [0,0,0,0,0,0,0,0,0,0]
     ],
     nextPlayer: 2,
-    streak:5,
+    streak:4,
     turns: 4
 }
 
