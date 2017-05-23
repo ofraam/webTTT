@@ -427,6 +427,8 @@ function onContinue() {
 			E.startTime=msTime();
 
 			$("#quiz.page").show()
+
+            $(window).scrollTop(0,0);
 			
 			
 			//$("#btnContinue").hide()
@@ -451,7 +453,9 @@ function onContinue() {
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
-			}
+                $(window).scrollTop(0,0);
+
+            }
 
 			break;
 

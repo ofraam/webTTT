@@ -21,8 +21,8 @@
       <file leaf-file-name="tictactoe.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="94" column="30" lean-forward="true" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
+            <state relative-caret-position="204">
+              <caret line="456" column="0" lean-forward="true" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -41,8 +41,8 @@
       <file leaf-file-name="tictactoe.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3451">
-              <caret line="245" column="88" lean-forward="true" selection-start-line="245" selection-start-column="88" selection-end-line="245" selection-end-column="88" />
+            <state relative-caret-position="165">
+              <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
               </folding>
@@ -113,9 +113,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="83" />
+    <option name="x" value="5" />
     <option name="y" value="23" />
-    <option name="width" value="1260" />
+    <option name="width" value="1515" />
     <option name="height" value="793" />
   </component>
   <component name="ProjectView">
@@ -299,6 +299,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9f00f0f8-4d15-4cc1-8804-38123a08fd01" name="Default" comment="" />
@@ -307,18 +310,18 @@
       <option name="presentableId" value="Default" />
       <updated>1490028702611</updated>
       <workItem from="1490028704002" duration="342000" />
-      <workItem from="1494887531916" duration="9880000" />
+      <workItem from="1494887531916" duration="10773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10222000" />
+    <option name="totallyTimeSpent" value="11115000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="83" y="23" width="1260" height="793" extended-state="0" />
+    <frame x="5" y="23" width="1515" height="793" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24761905" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20594059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -477,8 +480,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
-          <caret line="245" column="88" lean-forward="true" selection-start-line="245" selection-start-column="88" selection-end-line="245" selection-end-column="88" />
+        <state relative-caret-position="165">
+          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
           </folding>
@@ -487,8 +490,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="94" column="30" lean-forward="true" selection-start-line="94" selection-start-column="30" selection-end-line="94" selection-end-column="30" />
+        <state relative-caret-position="204">
+          <caret line="456" column="0" lean-forward="true" selection-start-line="456" selection-start-column="0" selection-end-line="456" selection-end-column="0" />
           <folding />
         </state>
       </provider>
