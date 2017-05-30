@@ -45,7 +45,8 @@ def reply(status, data='nodata'):
 
 def main():
 
-    dbname = getQueryArgument('experiment')
+    # dbname = getQueryArgument('experiment')
+    dbname = 'tictactoe'
     dbSession = elixirConnect(credentials, dbname)
 
     try:
