@@ -71,13 +71,13 @@ function servlog(key, value){
 	var jsonValue = JSON.stringify(value);
 	conlog(key +":" +jsonValue)
 	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, userid: E.userid };
-	//conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
+	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
 
 	function onSuccess(data){
 
 		
 	}
-	// $.post( logger_url, messageObject,onSuccess);
+	$.post( logger_url, messageObject,onSuccess);
 }
 
  
