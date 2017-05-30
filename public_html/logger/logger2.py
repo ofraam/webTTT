@@ -24,10 +24,10 @@ def getQueryArgument(argName, query=cgi.FieldStorage()):
 
 
 def logEvent():
-    userid = getQueryArgument("test")
-    key = getQueryArgument("testKey")
-    value = getQueryArgument("testValue")
-    clientTime = getQueryArgument("1354565356440")
+    userid = "test"
+    key = "testKey"
+    value = "testValue"
+    clientTime = "1354565356440"
 
     xkv = XKeyValue(userid=userid, key=key, value=value, clientTime=clientTime)
     reply("Event logged: " + key)

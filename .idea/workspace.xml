@@ -81,8 +81,8 @@
       <file leaf-file-name="logger2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/logger/logger2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+            <state relative-caret-position="-9">
+              <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -322,12 +322,12 @@
       <option name="presentableId" value="Default" />
       <updated>1490028702611</updated>
       <workItem from="1490028704002" duration="342000" />
-      <workItem from="1494887531916" duration="16002000" />
+      <workItem from="1494887531916" duration="16106000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16344000" />
+    <option name="totallyTimeSpent" value="16448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-59" width="1920" height="1037" extended-state="0" />
@@ -510,8 +510,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/logger/logger2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="52" column="32" lean-forward="false" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        <state relative-caret-position="-9">
+          <caret line="29" column="17" lean-forward="false" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
           <folding />
         </state>
       </provider>
