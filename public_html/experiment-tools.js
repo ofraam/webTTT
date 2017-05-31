@@ -65,7 +65,7 @@ function get_timestr(){
 function servlog(key, value){
 	//global experiment
 	//global logger_url
-
+	alert('servlog')
 	var timestr = get_timestr();
 	var time = msTime();
 	var jsonValue = JSON.stringify(value);
@@ -77,7 +77,9 @@ function servlog(key, value){
 		alert("posted")
 		
 	}
+	alert('before post')
 	$.post( logger_url, messageObject,onSuccess);
+	alert('after post')
 }
 
  
