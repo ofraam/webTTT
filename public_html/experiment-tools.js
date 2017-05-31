@@ -74,7 +74,7 @@ function servlog(key, value){
 	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
 
 	function onSuccess(data){
-
+		alert("posted")
 		
 	}
 	$.post( logger_url, messageObject,onSuccess);
