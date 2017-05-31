@@ -421,7 +421,7 @@ function onContinue() {
 		case 4:
 			E.endTime=msTime()
 			var timeInstructions = E.endTime-E.startTime
-			alert('should call servlog')
+			// alert('should call servlog')
 			servlog("timeInstructions", timeInstructions);
 			
 			$("#btnContinue").html('Continue')
