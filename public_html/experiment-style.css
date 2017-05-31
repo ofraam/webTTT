@@ -22,6 +22,11 @@ body {
 	width: 100px; 
 }
 
+.likert li {
+	float: left;
+	list-style-type: none;
+}
+
 
 .requester{
 	background-color: #FFF;

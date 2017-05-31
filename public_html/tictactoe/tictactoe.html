@@ -212,7 +212,9 @@
 		</div>
 		
 		<div id="experiment" class="page">
+
 			<div class="intro">
+				<p id = "timer"></p>
 				<h2>Find the best next move for <span class="player">O</span>.
 					<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
 					(row, column or diagonal).  </h2><br>
@@ -232,18 +234,33 @@
 					This means that <span class="player">O</span> can win the game by placing <span class="turns">4</span> marks, even when X responds optimally at each turn.
 					<br><br>
 					Find <span class="player">O</span>'s winning strategy. Feel free to use the board to try out with different possibilities.  Note that the board is for convenience -- you are not playing against an opponent, so you have to play the moves of both X and O yourself.
-			        <p>If your solution is correct you will get a bonus of 15 cents. After submitting your solution (by clicking the continue button), you will be shown solutions proposed by other people and will decide which solution to vote for. </p>
-					
+			        <p>If your solution is correct you will get a bonus of 15 cents. </p>
+
+
 					<br><br>
-							Best move for <span class="player">O</span>:
+							<b>Best move for <span class="player">O</span></b>:
 							<input type="text" id="bestmove" maxlength="2" size="2" />
 
-								<br />
-								<br />
-								Explain your winning strategy. Be as detailed as possible, so that if someone else reads your solution they will be convinced:
-								<br />
+								<!--<br />-->
+								<!--<br />-->
+								<!--<b>Explain your winning strategy.</b> Be as detailed as possible, so that if someone else reads your solution they will be convinced:-->
+								<!--<br />-->
 
-								<textarea id="solution" rows="16" cols="40"> </textarea>
+								<!--<textarea id="solution" rows="16" cols="40"> </textarea>-->
+
+					<br><br>
+					<b>How confident are you in your solution?</b>
+					<div>
+						<ul class="likert">
+							<li> Not at all confident </li>
+							<li><input type="radio" name="confidence" value="1" /></li>
+							<li><input type="radio" name="confidence" value="2" /></li>
+							<li><input type="radio" name="confidence" value="3" /></li>
+							<li><input type="radio" name="confidence" value="4" /></li>
+							<li><input type="radio" name="confidence" value="5" /></li>
+							<li> Very confident </li>
+						</ul>
+					</div>
 
 
 				</div>

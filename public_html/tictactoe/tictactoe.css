@@ -54,6 +54,11 @@
 
 }
 
+.likert li {
+	float: left;
+	list-style-type: none;
+}
+
 .overlay {
 	z-index: 100; 
 	position: absolute; 
