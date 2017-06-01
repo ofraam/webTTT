@@ -555,7 +555,7 @@ function onContinue() {
                     // Display the result in the element with id="demo"
                     document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
-                    if (totalSeconds <= 60 & totalSeconds>59) {
+                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false) {
                         $("#timer").addClass("timeUp")
                         alert('You have one minute left. Make sure to submit your solution in the next minute.')
                     }
