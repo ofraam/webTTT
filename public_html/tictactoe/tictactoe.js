@@ -96,7 +96,7 @@ E.board6_2_d = {
         [0,1,0,0,0,0],
         [0,2,0,0,2,0]
     ],
-    nextPlayer: 1,
+    nextPlayer: 2,
     streak:4,
     turns: 4,
     firstMovrRow: '0',
