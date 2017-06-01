@@ -246,6 +246,8 @@ function run_block() {
     if (cond=='v') {
         E.condition='verify'
     }
+    servlog('condition',E.condition)
+    servlog('board', tposition)
 
 
 
