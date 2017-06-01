@@ -9,7 +9,7 @@ E.startTime = 0
 E.endTime = 0
 E.debugMode = true
 E.condition = 'solve'
-
+E.timerDone = false
 
 E.board6_1 = {
     canvasContainerDiv : "#canvas-container",
@@ -538,7 +538,6 @@ function onContinue() {
                 var timerStart = new Date().getTime();
                 var diff = 2
                 var countDownDate =  new Date(timerStart + diff*60000);
-                var done = false
                 var x = setInterval(function() {
 
                     // Get todays date and time
@@ -564,7 +563,7 @@ function onContinue() {
                     if (distance < 0 & done == false) {
                         clearInterval(x);
                         alert('Time is up! You will be advanced to the end of the experiment')
-                        done = true
+                        E.timerDone = true
                         onContinue()
                     }
                 }, 1000);
@@ -589,7 +588,7 @@ function onContinue() {
 			
 		case 6:
 			// log_vote();
-
+            E.timerDone = true
 			E.endTime = msTime()
             var timeSolution = E.endTime-E.startTime
             submit_solution();
