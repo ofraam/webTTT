@@ -571,7 +571,7 @@ function onContinue() {
                         alert('You have one minute left. Make sure to submit your solution in the next minute.')
                     }
                     // If the count down is finished, write some text
-                    if (distance < 0 & done == false) {
+                    if (distance < 0 & E.timerDone == false) {
                         clearInterval(x);
                         alert('Time is up! You will be advanced to the end of the experiment')
                         E.timerDone = true
