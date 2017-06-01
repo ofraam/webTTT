@@ -7,7 +7,7 @@ experiment = "tictactoe"
 E = {}
 E.startTime = 0
 E.endTime = 0
-E.debugMode = true
+E.debugMode = false
 E.condition = 'solve'
 E.timerDone = false
 
@@ -190,6 +190,10 @@ function initialize_experiment() {
 	E.userid = initialize_userid();
 	servlog("new_user", E.userid)
   	E.position = getPosition();
+    var debug = getUrlVars()['debug']
+    if (debug == '1') {
+        E.debugMode = true
+    }
 	// alert(E.position)
   	//servlog("start_position",E.position)
 }
@@ -242,6 +246,8 @@ function run_block() {
     if (cond=='v') {
         E.condition='verify'
     }
+
+
 
 
 	 // var init = {
@@ -536,7 +542,10 @@ function onContinue() {
                 $(window).scrollTop(0,0);
                 // Update the count down every 1 second
                 var timerStart = new Date().getTime();
-                var diff = 2
+                var diff = 10
+                if (E.debugMode) {
+                    diff = 2
+                }
                 var countDownDate =  new Date(timerStart + diff*60000);
                 var x = setInterval(function() {
 
