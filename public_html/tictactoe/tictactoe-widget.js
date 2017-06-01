@@ -12,15 +12,22 @@ function TictactoeWidget(init){
 	var startPosition = init.position;
 	var position = startPosition.dcopy();
 	var nextPlayer = init.nextPlayer
-	
+
+	if (typeof(init.firstMovrRow)!=undefined) {
+		var firstMoveRow = 	init.firstMovrRow;
+        var firstMoveCol = 	init.firstMovrCol;
+	}
+
 	var undoList = []
 	
 	
 	var canvasHeight = (nrows+2)*cellSize;
 	var canvasWidth = (ncols+2)*cellSize;
 
-	var gridStyle = "#666"
-	var gridWidth = 1
+	var gridStyleReg = "#666"
+    var gridStyleSpecial = "#000"
+	var gridWidthReg = 1
+	var specialCellGridWitdh = 5
 	var cellFillStyleMutable = "#ffe"
 	var cellFillStyleImmutable ="#ffc"
 	var xStrokeStyle = "#911"
@@ -84,7 +91,15 @@ function TictactoeWidget(init){
 				else{
 					cellFillStyle = cellFillStyleMutable
 				}
-				
+
+				var gridWidth = gridWidthReg
+				var gridStyle = gridStyleReg
+				if (r == firstMoveRow & c == firstMoveCol)
+				{
+					gridWidth = specialCellGridWitdh
+					gridStyle = gridStyleSpecial
+				}
+
 				$('canvas').drawRect({
 					layer: true, 
 					name: "" + r + c,
@@ -104,6 +119,8 @@ function TictactoeWidget(init){
 					
 					 
 				})
+
+
 				
 			}
 		}

@@ -27,6 +27,9 @@ body {
 	list-style-type: none;
 }
 
+.timeUp { color: red; }
+
+
 
 .requester{
 	background-color: #FFF;

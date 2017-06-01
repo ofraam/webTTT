@@ -64,6 +64,44 @@ E.board6_2_b = {
     turns: 5
 }
 
+E.board6_2_c = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,2,0,1,1,0],
+        [0,2,1,2,0,0],
+        [0,1,0,0,0,0],
+        [2,1,0,2,0,0],
+        [0,1,0,0,0,0],
+        [0,2,0,0,2,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4
+}
+
+E.board6_2_d = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,2,0,1,1,0],
+        [0,2,1,2,0,0],
+        [0,1,0,0,0,0],
+        [2,1,0,2,0,0],
+        [0,1,0,0,0,0],
+        [0,2,0,0,2,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4,
+    firstMovrRow: '0',
+    firstMovrCol: '3'
+}
+
 E.board10_1 = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
@@ -183,6 +221,13 @@ function run_block() {
             case '3':
                 E.configuration = E.board6_2_b;
                 break;
+            case '3p':
+                E.configuration = E.board6_2_c;
+                break;
+            case '3s':
+                E.configuration = E.board6_2_d;
+                break;
+
             case '4':
                 E.configuration = E.board10_1;
                 break;
@@ -468,7 +513,11 @@ function onContinue() {
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
+                $(window).scrollTop(0,0);
                 // Update the count down every 1 second
+                var timerStart = new Date().getTime();
+                var diff = 2
+                var countDownDate =  new Date(timerStart + diff*60000);
                 var x = setInterval(function() {
 
                     // Get todays date and time
@@ -482,17 +531,22 @@ function onContinue() {
                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+                    var totalSeconds = minutes*60+seconds
                     // Display the result in the element with id="demo"
-                    document.getElementById("timer").innerHTML =  minutes + "m " + seconds + "s ";
-
+                    document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                    // If the count down is finished, write some text
+                    if (totalSeconds <= 60 & totalSeconds>59) {
+                        $("#timer").addClass("timeUp")
+                        alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                    }
                     // If the count down is finished, write some text
                     if (distance < 0) {
                         clearInterval(x);
-                        document.getElementById("timer").innerHTML = "EXPIRED";
+                        alert('Time is up! You will be advanced to the end of the experiment')
+                        onContinue()
                     }
                 }, 1000);
-                $(window).scrollTop(0,0);
+
 
             }
 
