@@ -8,6 +8,7 @@ E = {}
 E.startTime = 0
 E.endTime = 0
 E.debugMode = true
+E.condition = 'solve'
 
 
 E.board6_1 = {
@@ -99,7 +100,8 @@ E.board6_2_d = {
     streak:4,
     turns: 4,
     firstMovrRow: '0',
-    firstMovrCol: '3'
+    firstMovrCol: '3',
+    firstMove: 'd6'
 }
 
 E.board10_1 = {
@@ -235,9 +237,12 @@ function run_block() {
                 E.configuration = E.board10_2;
                 break;
         }
-
-
     }
+    var cond = getUrlVars()['cond']
+    if (cond=='v') {
+        E.condition='verify'
+    }
+
 
 	 // var init = {
 	 // 	canvasContainerDiv : "#canvas-container",
@@ -399,11 +404,13 @@ function submit_solution() {
 	var move = $("#bestmove").val();
 	E.move = move;
     var conf = $('input[name=confidence]:checked', '#experiment').val()
+    var ver = $("#verification").val()
     // if(typeof conf != 'undefined')
 	// {
         // var solution = $("#solution").val();
         servlog("best_move", move);
         servlog("confidence", conf);
+        servlog("verification_answer", ver);
 	// }
 	// else {
      //    alert("Please answer what your level of confidence in the solution is")
@@ -513,11 +520,25 @@ function onContinue() {
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
+                if (E.condition=='solve') {
+				    $("#verify").hide()
+                    $("#generalInstructionsVerify").hide()
+                    $("#answerVerification").hide()
+
+                }
+                else {
+                    $("#generalInstructions").hide()
+                    $("#solve").hide()
+                    $("#answerSolution").hide()
+                }
+
+
                 $(window).scrollTop(0,0);
                 // Update the count down every 1 second
                 var timerStart = new Date().getTime();
                 var diff = 2
                 var countDownDate =  new Date(timerStart + diff*60000);
+                var done = false
                 var x = setInterval(function() {
 
                     // Get todays date and time
@@ -540,9 +561,10 @@ function onContinue() {
                         alert('You have one minute left. Make sure to submit your solution in the next minute.')
                     }
                     // If the count down is finished, write some text
-                    if (distance < 0) {
+                    if (distance < 0 & done == false) {
                         clearInterval(x);
                         alert('Time is up! You will be advanced to the end of the experiment')
+                        done = true
                         onContinue()
                     }
                 }, 1000);
@@ -567,7 +589,7 @@ function onContinue() {
 			
 		case 6:
 			// log_vote();
-			
+
 			E.endTime = msTime()
             var timeSolution = E.endTime-E.startTime
             submit_solution();
