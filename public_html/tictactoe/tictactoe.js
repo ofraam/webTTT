@@ -11,6 +11,26 @@ E.debugMode = false
 E.condition = 'solve'
 E.timerDone = false
 
+
+E.board6_practice = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [2,0,0,0,0,1],
+        [0,0,0,0,0,0],
+        [0,0,0,2,0,0],
+        [0,0,1,1,0,2],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
+
 E.board6_1 = {
     canvasContainerDiv : "#canvas-container",
     nrows : 6,
@@ -260,11 +280,18 @@ function run_block() {
 	 // 	position: E.position,
 	 // 	nextPlayer: 2
 	 // }
+
+    E.widget.reset();
 	 
 	 E.widget = new TictactoeWidget(E.configuration)
 	 E.widget.run()
 
 
+}
+
+function init_practice() {
+    E.widget = new TictactoeWidget(E.board6_practice)
+    E.widget.run()
 }
 
 
@@ -383,6 +410,7 @@ function submit_quiz() {
 	var q3 = $("#q3").val()
 	var q4 = $("#q4").val()	
 	var q5 = $("#q5").val()
+    var q6 = $("#q6").val()
 
 	
 	servlog("quiz1", q1);
@@ -390,9 +418,10 @@ function submit_quiz() {
 	servlog("quiz3", q3);
 	servlog("quiz4", q4);
 	servlog("quiz5", q5);
+    servlog("quiz6", q6);
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
+	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4' && q6=='b3'){
 		var passed = true;
 	}
 	
@@ -500,7 +529,7 @@ function onContinue() {
 			
 			$("#btnContinue").html('Continue')
 			E.startTime=msTime();
-
+            init_practice();
 			$("#quiz.page").show()
 
             $(window).scrollTop(0,0);
