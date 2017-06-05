@@ -92,7 +92,7 @@ E.board6_2_d = {
         [0,2,0,1,1,0],
         [0,2,1,2,0,0],
         [0,1,0,0,0,0],
-        [2,1,0,2,0,0],
+        [0,1,0,2,0,0],
         [0,1,0,0,0,0],
         [0,2,0,0,2,0]
     ],
@@ -566,12 +566,12 @@ function onContinue() {
                     // Display the result in the element with id="demo"
                     document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
-                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false) {
+                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
                         $("#timer").addClass("timeUp")
                         alert('You have one minute left. Make sure to submit your solution in the next minute.')
                     }
                     // If the count down is finished, write some text
-                    if (distance < 0 & E.timerDone == false) {
+                    if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
                         clearInterval(x);
                         alert('Time is up! You will be advanced to the end of the experiment')
                         E.timerDone = true

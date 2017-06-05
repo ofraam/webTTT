@@ -13,6 +13,10 @@ function TictactoeWidget(init){
 	var position = startPosition.dcopy();
 	var nextPlayer = init.nextPlayer
 
+	var moveCounter = 0
+	var lastMoveRow = -1
+	var lastMoveCol = -1
+
 	if (typeof(init.firstMovrRow)!=undefined) {
 		var firstMoveRow = 	init.firstMovrRow;
         var firstMoveCol = 	init.firstMovrCol;
@@ -67,12 +71,17 @@ function TictactoeWidget(init){
         servlog('clickPos', positionPlayer)
 
         flipNextPlayer()
-		
+
+        moveCounter = moveCounter + 1
+		lastMoveCol = cell.col
+		lastMoveRow = cell.row
+        undoList.push([cell.row, cell.col])
+
 		drawSymbols();
+        drawMoves();
 
 		//$('canvas').drawLayers()	
-		
-		undoList.push([cell.row, cell.col])
+
 
 
 		
@@ -137,6 +146,18 @@ function TictactoeWidget(init){
 		  text: text
 		});		
 	}
+
+    drawMoveLabel = function(text, x, y){
+        $("canvas").drawText({
+            layer: "true",
+            group: 'moves',
+            fillStyle: "#242",
+
+            x: x, y: y,
+            font: "10pt Verdana, sans-serif",
+            text: text
+        });
+    }
 	
 	drawLabels = function(){
 		
@@ -159,8 +180,11 @@ function TictactoeWidget(init){
 								
 	}	
 		
-	drawX = function(row,col){
-	
+	drawX = function(row,col,move){
+
+        // drawMoveLabel(move,(col+1.15)*cellSize,(row+1.15)*cellSize)
+
+
 		$('canvas').drawLine({
 			layer: true,
 			group: 'symbols',
@@ -168,8 +192,8 @@ function TictactoeWidget(init){
 			strokeStyle: xStrokeStyle,
 			strokeWidth: xStrokeWidth,
 			
-			x1: (col + 1.25)*cellSize, y1: (row + 1.25)*cellSize,
-			x2: (col + 1.75)*cellSize, y2: (row + 1.75)*cellSize,
+			x1: (col + 1.35)*cellSize, y1: (row + 1.35)*cellSize,
+			x2: (col + 1.65)*cellSize, y2: (row + 1.65)*cellSize,
 			
 						
 			})	
@@ -182,18 +206,19 @@ function TictactoeWidget(init){
 			strokeStyle: xStrokeStyle,
 			strokeWidth: xStrokeWidth,
 
-			x1: (col + 1.75)*cellSize, y1: (row + 1.25)*cellSize,			
-			x2: (col + 1.25)*cellSize, y2: (row + 1.75)*cellSize				
+			x1: (col + 1.65)*cellSize, y1: (row + 1.35)*cellSize,
+			x2: (col + 1.35)*cellSize, y2: (row + 1.65)*cellSize
 						
-			})	
-									
-			
+			})
+
+
 			
 	}
 	
-	drawO = function(row,col){
-		
-		
+	drawO = function(row,col,move){
+
+        // drawMoveLabel(move,(col+1.15)*cellSize,(row+1.15)*cellSize)
+
 		$('canvas').drawArc({
 			layer: true,
 			group: 'symbols',
@@ -202,7 +227,7 @@ function TictactoeWidget(init){
 			strokeWidth: oStrokeWidth,
 
 			x: (col + 1.5)*cellSize, y: (row + 1.5)*cellSize,	
-			radius: 0.25*cellSize		
+			radius: 0.15*cellSize
 			
 						
 			})			
@@ -215,16 +240,21 @@ function TictactoeWidget(init){
 	drawSymbols = function(){
 		
 		
-		$("#canvas").removeLayerGroup("symbols")		
+		$("#canvas").removeLayerGroup("symbols")
+        $("#canvas").removeLayerGroup("moves")
+
 		for(r=0; r<nrows; r++){
 			for(c=0; c<ncols; c++){
-
+                labelMove = ''
+				// if (c==lastMoveCol & r==lastMoveRow) {
+				// 	labelMove = moveCounter
+				// }
 				if(position[r][c] == 1){
 
-					drawX(r,c)
+					drawX(r,c,labelMove)
 				}
 				else if(position[r][c] == 2){
-					drawO(r,c)
+					drawO(r,c,labelMove)
 				}
 				
 			}
@@ -235,12 +265,29 @@ function TictactoeWidget(init){
 		$("#canvas").drawLayers()	
 		
 	}
+
+	drawMoves = function () {
+		counter = 1;
+		for (i=0;i<undoList.length;i++) {
+			pos = undoList[i];
+			row = pos[0];
+			col = pos[1];
+            drawMoveLabel(counter,(col+1.15)*cellSize,(row+1.15)*cellSize);
+			// drawMoveLabel(counter,row,col);
+			counter++;
+		}
+	}
 	
 	onReset = function(){
 		position = startPosition.dcopy();
 		nextPlayer = init.nextPlayer
-
+		undoList = []
+		moveCounter = 0
+        lastMoveCol = -1
+        lastMoveRow = -1
+        $("#canvas").removeLayerGroup('moves')
 		drawSymbols()
+        drawMoves()
 	
 		servlog('reset', position)
 	}		
@@ -248,6 +295,12 @@ function TictactoeWidget(init){
 	onUndo = function(){
 		
 		last = undoList.pop();
+		if (moveCounter>0) {
+            moveCounter = moveCounter - 1;
+            lastMoveCol = -1
+			lastMoveRow = -1
+		}
+
 		if(last === undefined){
 			return
 		}
@@ -256,6 +309,7 @@ function TictactoeWidget(init){
 		col = last[1]
 		position[row][col] = 0;
 		drawSymbols();
+		drawMoves();
 
         positionPlayer = 'row:' + row +'_' + 'col:' + col + '_' + nextPlayer;
 
@@ -300,6 +354,7 @@ function TictactoeWidget(init){
 		drawGrid()
 		drawLabels()
 		drawSymbols()
+
 		
 		$("#reset").click(onReset)
 		$("#undo").click(onUndo)

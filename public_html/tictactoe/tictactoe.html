@@ -210,13 +210,106 @@
 			
 			</div>
 		</div>
-		
+
+
+		<div id="practice" class="page">
+
+			<div class="intro">
+
+				<div id="practiceInstructions">
+					<h2>Your task will be to find the winning move for <span class="player">O</span>, such that <span class="player">O</span> wins no matter what <span class="otherPlayer">O</span> does.
+						<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
+						(row, column or diagonal).</h2>
+
+				</div>
+
+				<div id="practiceInstructionsVerify">
+					<h2>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span>?.
+						<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
+						(row, column or diagonal).
+						<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
+				</div>
+
+
+				<div id="widget-container-practice" style="float: left">
+					<div id="canvas-container-practice">
+					</div>
+					<div id="buttons-container-practice">
+						<button id="reset-practice">Reset</button>
+						<button id="undo-practice"> Undo</button>
+
+					</div>
+
+				</div>
+
+
+				<div  style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
+					<div id='solve'>
+						In this position <span class="player">O</span>  can force a win in <span class="turns">4</span> turns.
+						This means that <span class="player">O</span> can win the game by placing <span class="turns">4</span> marks,
+						even when <span class="otherPlayer">O</span> plays to win as well.
+						<br><br>
+						Find <span class="player">O</span>'s winning strategy.
+						<br><br>Feel free to use the board to try out different strategies.
+					</div>
+
+					<div id="verify">
+						<span class="player">O</span> can win the game in 5 moves no matter what
+						<span class="otherPlayer">X</span> does. Is the first move to win the game <span class="firstMove">d6</span>
+						(cell shown with thick black border)?
+						Assume that both players try to win the game as fast as they can.
+						<br><br>Feel free to use the board to try out different strategies.
+					</div>
+					<p>If your solution is correct you will get a bonus of 15 cents. </p>
+
+
+					<br><br>
+					<div id="answerSolution">
+						<b>First move to win for <span class="player">O</span></b>:
+						<input type="text" id="bestmove" maxlength="2" size="2" />
+					</div>
+
+					<div id="answerVerification">
+						<b>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span></b>?:
+						<select id="verification">
+							<option value="0"> &nbsp;</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+					<!--<br />-->
+					<!--<br />-->
+					<!--<b>Explain your winning strategy.</b> Be as detailed as possible, so that if someone else reads your solution they will be convinced:-->
+					<!--<br />-->
+
+					<!--<textarea id="solution" rows="16" cols="40"> </textarea>-->
+
+					<br><br>
+					<b>How confident are you in your solution?</b>
+					<div>
+						<ul class="likert">
+							<li> Not at all confident </li>
+							<li><input type="radio" name="confidence" value="1" /></li>
+							<li><input type="radio" name="confidence" value="2" /></li>
+							<li><input type="radio" name="confidence" value="3" /></li>
+							<li><input type="radio" name="confidence" value="4" /></li>
+							<li><input type="radio" name="confidence" value="5" /></li>
+							<li> Very confident </li>
+						</ul>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
 		<div id="experiment" class="page">
 
 			<div class="intro">
 
 				<div id="generalInstructions">
-				<h2>Find the best next move for <span class="player">O</span>.
+				<h2>Find the winning move for <span class="player">O</span>, such that <span class="player">O</span> wins no matter what <span class="otherPlayer">O</span> does.
 					<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
 					(row, column or diagonal).
 					<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
@@ -246,26 +339,26 @@
 				<div  style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
 					<div id='solve'>
 					In this position <span class="player">O</span>  can force a win in <span class="turns">4</span> turns.
-					This means that <span class="player">O</span> can win the game by placing <span class="turns">4</span> marks, even when X responds optimally at each turn.
+					This means that <span class="player">O</span> can win the game by placing <span class="turns">4</span> marks,
+						even when <span class="otherPlayer">O</span> plays to win as well.
 					<br><br>
 					Find <span class="player">O</span>'s winning strategy.
-						<br><br>Feel free to use the board to try out with
-						different possibilities.  Note that the board is for convenience -- you are not playing against an opponent, so you have to play the moves of both X and O yourself.
+						<br><br>Feel free to use the board to try out different strategies.
 					</div>
 
 					<div id="verify">
-						Would placing an <span class="player">O</span> in position <span class="firstMove">d6</span>
-						(cell shown with thick black border below) ensure a win for <span class="player">O</span> in the game
-						assuming that both players make the optimal moves for the remainder of the game?
-						<br><br>Feel free to use the board to try out with different possibilities.  Note that the board is for convenience
-						-- you are not playing against an opponent, so you have to play the moves of both X and O yourself.
+						<span class="player">O</span> can win the game in 5 moves no matter what
+						<span class="otherPlayer">X</span> does. Is the first move to win the game <span class="firstMove">d6</span>
+						(cell shown with thick black border)?
+						Assume that both players try to win the game as fast as they can.
+						<br><br>Feel free to use the board to try out different strategies.
 					</div>
 						<p>If your solution is correct you will get a bonus of 15 cents. </p>
 
 
 					<br><br>
 					<div id="answerSolution">
-							<b>Best move for <span class="player">O</span></b>:
+							<b>First move to win for <span class="player">O</span></b>:
 							<input type="text" id="bestmove" maxlength="2" size="2" />
 					</div>
 
