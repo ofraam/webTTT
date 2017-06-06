@@ -13,13 +13,36 @@ function TictactoeWidget(init){
 	var position = startPosition.dcopy();
 	var nextPlayer = init.nextPlayer
 
+	var moveCounter = 0
+	var lastMoveRow = -1
+	var lastMoveCol = -1
+
+	var practice = false
+
+	var canvas = '#canvas'
+
+
+    if (typeof(init.practice)!=undefined) {
+        practice = init.practice;
+        canvas = '#canvas-practice'
+    }
+
 	if (typeof(init.firstMovrRow)!=undefined) {
 		var firstMoveRow = 	init.firstMovrRow;
         var firstMoveCol = 	init.firstMovrCol;
 	}
 
+	var winPath = init.winPath;
+    var losePath = init.losePath;
+
+    var indexWinPath = -1
+	var turnInWin = 0
+	var turnInLose = 0
+
 	var undoList = []
-	
+
+	var sim = false;
+
 	
 	var canvasHeight = (nrows+2)*cellSize;
 	var canvasWidth = (ncols+2)*cellSize;
@@ -51,6 +74,11 @@ function TictactoeWidget(init){
 	}
 	
 	onCellClick = function(cell){
+
+		if (sim == true) {
+			onCellClickSim(cell);
+			return;
+		}
 		
 		if(position[cell.row][cell.col] != 0){
 			conlog("nope")
@@ -63,20 +91,131 @@ function TictactoeWidget(init){
 		
 		position[cell.row][cell.col] = nextPlayer;
 		positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer
-        servlog('click', position)
-        servlog('clickPos', positionPlayer)
+
+		var clickKey = 'click'
+		var clickPosKey = 'clickPos'
+
+		if (practice == true) {
+            clickKey = clickKey.concat('_practice');
+            clickPosKey = clickPosKey.concat('_practice');
+		}
+
+		servlog(clickKey, position)
+        servlog(clickPosKey, positionPlayer)
 
         flipNextPlayer()
-		
+
+        moveCounter = moveCounter + 1
+		lastMoveCol = cell.col
+		lastMoveRow = cell.row
+        undoList.push([cell.row, cell.col])
+
 		drawSymbols();
+        drawMoves();
 
 		//$('canvas').drawLayers()	
-		
-		undoList.push([cell.row, cell.col])
 
-
-		
 	}
+
+    onCellClickSim = function(cell){
+
+        if(position[cell.row][cell.col] != 0){
+            conlog("nope")
+            errorSound.play();
+
+            return;
+        }
+
+        //moveSound.play();
+
+        position[cell.row][cell.col] = nextPlayer;
+        var positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer
+
+        var clickKey = 'click_sim'
+        var clickPosKey = 'clickPos_sim'
+
+		//check if move is on the one of the winning paths
+		for (pathIndex=0;pathIndex<winPath.length;pathIndex++) {
+			var path = winPath[pathIndex];
+        	var currMoveOnPath = path[turnInWin]
+			if (cell.row == currMoveOnPath[0] && cell.col == currMoveOnPath[1]) { //valid move on winning path
+				indexWinPath = pathIndex
+                servlog('simCorrectMove', indexWinPath+"_"+turnInWin)
+				turnInWin++
+				break;
+			}
+		}
+
+
+        servlog(clickKey, position)
+        servlog(clickPosKey, positionPlayer)
+
+
+        flipNextPlayer()
+
+
+        moveCounter = moveCounter + 1
+        lastMoveCol = cell.col
+        lastMoveRow = cell.row
+        undoList.push([cell.row, cell.col])
+
+        drawSymbols();
+        drawMoves();
+
+		// sleepGame(4000)
+
+        //play other player move
+        var currMoveOnLosingPath = chooseValidMove();
+
+		if (indexWinPath > -1) {
+			var pathLoser = losePath[indexWinPath];
+			var suggestedMove = pathLoser[turnInLose];
+			if (position[suggestedMove[0]][suggestedMove[1]]==0) {
+                currMoveOnLosingPath = pathLoser[turnInLose];
+			}
+            turnInLose++;
+		}
+
+        position[currMoveOnLosingPath[0]][currMoveOnLosingPath[1]] = nextPlayer;
+        positionPlayer = 'row:' + currMoveOnLosingPath[0] +'_' + 'col:' + currMoveOnLosingPath[1] + '_' + nextPlayer;
+
+        servlog(clickKey, position)
+        servlog(clickPosKey, positionPlayer)
+
+        moveCounter = moveCounter + 1
+        lastMoveCol = currMoveOnLosingPath[1]
+        lastMoveRow = currMoveOnLosingPath[0]
+        undoList.push([currMoveOnLosingPath[0], currMoveOnLosingPath[1]])
+
+        flipNextPlayer()
+        drawSymbols();
+        drawMoves();
+
+        //$('canvas').drawLayers()
+
+    }
+
+    playOtherResponse = function () {
+
+    }
+
+    sleepGame = function (miliseconds) {
+        var currentTime = new Date().getTime();
+
+        while (currentTime + miliseconds >= new Date().getTime()) {
+        }
+    }
+
+    chooseValidMove = function () {
+        for(r=0; r<nrows; r++) {
+            for (c = 0; c < ncols; c++) {
+				if (position[r][c]==0) {
+					return [r,c];
+				}
+            }
+        }
+        return undefined;
+    }
 
 	drawGrid = function(){
 		
@@ -137,6 +276,18 @@ function TictactoeWidget(init){
 		  text: text
 		});		
 	}
+
+    drawMoveLabel = function(text, x, y){
+        $("canvas").drawText({
+            layer: "true",
+            group: 'moves',
+            fillStyle: "#242",
+
+            x: x, y: y,
+            font: "10pt Verdana, sans-serif",
+            text: text
+        });
+    }
 	
 	drawLabels = function(){
 		
@@ -159,8 +310,11 @@ function TictactoeWidget(init){
 								
 	}	
 		
-	drawX = function(row,col){
-	
+	drawX = function(row,col,move){
+
+        // drawMoveLabel(move,(col+1.15)*cellSize,(row+1.15)*cellSize)
+
+
 		$('canvas').drawLine({
 			layer: true,
 			group: 'symbols',
@@ -168,8 +322,8 @@ function TictactoeWidget(init){
 			strokeStyle: xStrokeStyle,
 			strokeWidth: xStrokeWidth,
 			
-			x1: (col + 1.25)*cellSize, y1: (row + 1.25)*cellSize,
-			x2: (col + 1.75)*cellSize, y2: (row + 1.75)*cellSize,
+			x1: (col + 1.35)*cellSize, y1: (row + 1.35)*cellSize,
+			x2: (col + 1.65)*cellSize, y2: (row + 1.65)*cellSize,
 			
 						
 			})	
@@ -182,18 +336,19 @@ function TictactoeWidget(init){
 			strokeStyle: xStrokeStyle,
 			strokeWidth: xStrokeWidth,
 
-			x1: (col + 1.75)*cellSize, y1: (row + 1.25)*cellSize,			
-			x2: (col + 1.25)*cellSize, y2: (row + 1.75)*cellSize				
+			x1: (col + 1.65)*cellSize, y1: (row + 1.35)*cellSize,
+			x2: (col + 1.35)*cellSize, y2: (row + 1.65)*cellSize
 						
-			})	
-									
-			
+			})
+
+
 			
 	}
 	
-	drawO = function(row,col){
-		
-		
+	drawO = function(row,col,move){
+
+        // drawMoveLabel(move,(col+1.15)*cellSize,(row+1.15)*cellSize)
+
 		$('canvas').drawArc({
 			layer: true,
 			group: 'symbols',
@@ -202,7 +357,7 @@ function TictactoeWidget(init){
 			strokeWidth: oStrokeWidth,
 
 			x: (col + 1.5)*cellSize, y: (row + 1.5)*cellSize,	
-			radius: 0.25*cellSize		
+			radius: 0.15*cellSize
 			
 						
 			})			
@@ -215,39 +370,84 @@ function TictactoeWidget(init){
 	drawSymbols = function(){
 		
 		
-		$("#canvas").removeLayerGroup("symbols")		
+		$(canvas).removeLayerGroup("symbols")
+        $(canvas).removeLayerGroup("moves")
+
 		for(r=0; r<nrows; r++){
 			for(c=0; c<ncols; c++){
-
+                labelMove = ''
+				// if (c==lastMoveCol & r==lastMoveRow) {
+				// 	labelMove = moveCounter
+				// }
 				if(position[r][c] == 1){
 
-					drawX(r,c)
+					drawX(r,c,labelMove)
 				}
 				else if(position[r][c] == 2){
-					drawO(r,c)
+					drawO(r,c,labelMove)
 				}
-				
+
 			}
 		
 		}
 
 		
-		$("#canvas").drawLayers()	
+		$(canvas).drawLayers()
 		
+	}
+
+	drawMoves = function () {
+		counter = 1;
+		for (i=0;i<undoList.length;i++) {
+			pos = undoList[i];
+			row = pos[0];
+			col = pos[1];
+            drawMoveLabel(counter,(col+1.15)*cellSize,(row+1.15)*cellSize);
+			// drawMoveLabel(counter,row,col);
+			counter++;
+		}
 	}
 	
 	onReset = function(){
 		position = startPosition.dcopy();
 		nextPlayer = init.nextPlayer
+		undoList = []
+		moveCounter = 0
+        lastMoveCol = -1
+        lastMoveRow = -1
 
+		indexWinPath = -1
+		turnInLose = 0
+		turnInWin = 0
+
+		var sim = false;
+
+        $(canvas).removeLayerGroup('moves')
 		drawSymbols()
-	
-		servlog('reset', position)
-	}		
+        drawMoves()
+
+        var reset = 'reset'
+
+        if (practice == true) {
+            reset = reset.concat('_practice');
+        }
+
+		servlog(reset, position)
+	}
+
+	this.simulate = function () {
+		sim = true;
+    }
 
 	onUndo = function(){
 		
 		last = undoList.pop();
+		if (moveCounter>0) {
+            moveCounter = moveCounter - 1;
+            lastMoveCol = -1
+			lastMoveRow = -1
+		}
+
 		if(last === undefined){
 			return
 		}
@@ -256,12 +456,22 @@ function TictactoeWidget(init){
 		col = last[1]
 		position[row][col] = 0;
 		drawSymbols();
+		drawMoves();
 
         positionPlayer = 'row:' + row +'_' + 'col:' + col + '_' + nextPlayer;
 
 		flipNextPlayer();
-        servlog('undoPos', positionPlayer)
-		servlog('undo', position)
+
+        var undo = 'undo'
+        var undoPos = 'undoPos'
+
+        if (practice == true) {
+            undo = undo.concat('_practice');
+            undoPos = undoPos.concat('_practice');
+        }
+
+        servlog(undoPos, positionPlayer)
+		servlog(undo, position)
 	}
 	
 	positionString = function(){
@@ -287,10 +497,13 @@ function TictactoeWidget(init){
 				
 		
 		console.log("run")
-		
+
+        // $('#canvas').clearCanvas()
+        // $('#canvas').empty()
+
 		//create canvas
 		canvas = $('<canvas id="canvas">')
-		
+
 		canvas.attr("height", canvasHeight)
 		canvas.attr("width", canvasWidth)
 		
@@ -300,15 +513,28 @@ function TictactoeWidget(init){
 		drawGrid()
 		drawLabels()
 		drawSymbols()
+
+		undoList = []
+		moveCounter = 0
+		lastMoveCol = -1
+		lastMoveRow = -1
+
+		if (practice) {
+            $("#reset-practice").click(onReset)
+            $("#undo-practice").click(onUndo)
+		}
+		else {
+            $("#reset").click(onReset)
+            $("#undo").click(onUndo)
+		}
+
 		
-		$("#reset").click(onReset)
-		$("#undo").click(onUndo)
 		
 		
-		
-		$("#canvas").bind("contextmenu", function(e) {
+		$(canvas).bind("contextmenu", function(e) {
     			return false;
 				})
+
 
 	 	servlog('start', position)
 		

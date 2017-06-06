@@ -10,6 +10,27 @@ E.endTime = 0
 E.debugMode = false
 E.condition = 'solve'
 E.timerDone = false
+E.solvedCorrect = false;
+
+
+E.board6_practice = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [2,0,0,0,0,1],
+        [0,0,0,0,0,0],
+        [0,0,0,2,0,0],
+        [0,0,1,1,0,2],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
 
 E.board6_1 = {
     canvasContainerDiv : "#canvas-container",
@@ -62,7 +83,10 @@ E.board6_2_b = {
     ],
     nextPlayer: 1,
     streak:4,
-    turns: 5
+    turns: 5,
+    winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
+    losePath: [[[3,0],[0,5],[3,2],[2,4]]],
+    winMove: 'd6'
 }
 
 E.board6_2_c = {
@@ -92,7 +116,7 @@ E.board6_2_d = {
         [0,2,0,1,1,0],
         [0,2,1,2,0,0],
         [0,1,0,0,0,0],
-        [2,1,0,2,0,0],
+        [0,1,0,2,0,0],
         [0,1,0,0,0,0],
         [0,2,0,0,2,0]
     ],
@@ -199,8 +223,6 @@ function initialize_experiment() {
 }
 
 
-
-
 function onCheckbox() {
 	if($("#consentagree").prop("checked")) {
 		$("#btnContinue").removeAttr('disabled');
@@ -260,11 +282,18 @@ function run_block() {
 	 // 	position: E.position,
 	 // 	nextPlayer: 2
 	 // }
+
+    E.widget.reset();
 	 
 	 E.widget = new TictactoeWidget(E.configuration)
 	 E.widget.run()
 
 
+}
+
+function init_practice() {
+    E.widget = new TictactoeWidget(E.board6_practice)
+    E.widget.run()
 }
 
 
@@ -349,10 +378,6 @@ function showCode() {
 
 
 
-
-
-
-
 function show_page_real()
 {
 	$("#real.page").show()		
@@ -383,6 +408,7 @@ function submit_quiz() {
 	var q3 = $("#q3").val()
 	var q4 = $("#q4").val()	
 	var q5 = $("#q5").val()
+    var q6 = $("#q6").val()
 
 	
 	servlog("quiz1", q1);
@@ -390,9 +416,10 @@ function submit_quiz() {
 	servlog("quiz3", q3);
 	servlog("quiz4", q4);
 	servlog("quiz5", q5);
+    servlog("quiz6", q6);
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
+	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4' && q6=='b3'){
 		var passed = true;
 	}
 	
@@ -420,6 +447,10 @@ function submit_solution() {
         servlog("confidence", conf);
         servlog("verification_answer", ver);
 	// }
+
+    if (move == E.configuration.winMove) {
+        E.solvedCorrect = true;
+    }
 	// else {
      //    alert("Please answer what your level of confidence in the solution is")
      //    onContinue.curPage = 2;
@@ -500,7 +531,7 @@ function onContinue() {
 			
 			$("#btnContinue").html('Continue')
 			E.startTime=msTime();
-
+            init_practice();
 			$("#quiz.page").show()
 
             $(window).scrollTop(0,0);
@@ -528,6 +559,8 @@ function onContinue() {
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
+                $('#playGameInstructions').hide();
+				$('#timerFinal').hide()
                 if (E.condition=='solve') {
 				    $("#verify").hide()
                     $("#generalInstructionsVerify").hide()
@@ -545,9 +578,7 @@ function onContinue() {
                 // Update the count down every 1 second
                 var timerStart = new Date().getTime();
                 var diff = 10
-                if (E.debugMode) {
-                    diff = 2
-                }
+
                 var countDownDate =  new Date(timerStart + diff*60000);
                 var x = setInterval(function() {
 
@@ -566,14 +597,14 @@ function onContinue() {
                     // Display the result in the element with id="demo"
                     document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
-                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false) {
+                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
                         $("#timer").addClass("timeUp")
                         alert('You have one minute left. Make sure to submit your solution in the next minute.')
                     }
                     // If the count down is finished, write some text
-                    if (distance < 0 & E.timerDone == false) {
+                    if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
                         clearInterval(x);
-                        alert('Time is up! You will be advanced to the end of the experiment')
+                        alert('Time is up! You will be advanced to next stage of the experiment.')
                         E.timerDone = true
                         onContinue()
                     }
@@ -584,26 +615,89 @@ function onContinue() {
 
 			break;
 
-		// case 6:
-        //
-		// 	// show_page_real();
-		// 	E.endTime=msTime();
-		// 	var timeSolution = E.endTime-E.startTime
-		// 	servlog("timeSolution", timeSolution);
-		// 	submit_solution();
-		//
-		// 	E.startTime = msTime();
-		// 	suggest_solution();
-		//
-		// 	break;
-			
 		case 6:
+
+			// show_page_real();
+
+			E.endTime=msTime();
+			var timeSolution = E.endTime-E.startTime
+			servlog("timeSolution", timeSolution);
+			submit_solution();
+
+            if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
+                onContinue();
+                return;
+            }
+
+            $("#experiment.page").show()
+            $("#timer").hide()
+            $("#verify").hide()
+            $("#generalInstructionsVerify").hide()
+            $("#answerVerification").hide()
+            $("#generalInstructions").hide()
+            $("#solve").hide()
+            $("#answerSolution").hide()
+            $('#playGameInstructions').show();
+            $("#timerFinal").show()
+            $('#confidenceQuestion').hide()
+
+            E.widget.reset();
+            E.widget.simulate();
+            $('#undo').hide();
+
+            E.startTime = msTime();
+
+            var diff = 3
+
+            var timerStart = new Date().getTime();
+
+            $("#timerFinal");
+            E.timerDone = false;
+
+            var countDownDate =  new Date(timerStart + diff*60000);
+            var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var totalSeconds = minutes*60+seconds
+                // Display the result in the element with id="demo"
+                document.getElementById("timerFinal").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                // If the count down is finished, write some text
+                if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
+                    $("#timerFinal").addClass("timeUp")
+                    alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                }
+                // If the count down is finished, write some text
+                if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
+                    clearInterval(x);
+                    alert('Time is up! You will be advanced to the end of the experiment.')
+                    E.timerDone = true
+                    onContinue()
+                }
+            }, 1000);
+
+
+
+			// suggest_solution();
+
+			break;
+			
+		case 7:
 			// log_vote();
             E.timerDone = true
 			E.endTime = msTime()
-            var timeSolution = E.endTime-E.startTime
-            submit_solution();
-            servlog("timeSolution", timeSolution);
+            var timeGame = E.endTime-E.startTime
+            // submit_solution();
+            servlog("timeGame", timeGame);
 			// var timeVote = E.endTime - E.startTime
 			// servlog("timeVote", timeVote)
 			show_page_final()	
