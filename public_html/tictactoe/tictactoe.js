@@ -82,7 +82,9 @@ E.board6_2_b = {
     ],
     nextPlayer: 1,
     streak:4,
-    turns: 5
+    turns: 5,
+    winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
+    losePath: [[[3,0],[0,5],[3,2],[2,4]]]
 }
 
 E.board6_2_c = {
@@ -217,8 +219,6 @@ function initialize_experiment() {
 	// alert(E.position)
   	//servlog("start_position",E.position)
 }
-
-
 
 
 function onCheckbox() {
@@ -373,10 +373,6 @@ function showCode() {
 	$(".code").text(E.userid);
 
 }
-
-
-
-
 
 
 
@@ -557,6 +553,7 @@ function onContinue() {
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
+                $('#playGameInstructions').hide();
                 if (E.condition=='solve') {
 				    $("#verify").hide()
                     $("#generalInstructionsVerify").hide()
@@ -613,20 +610,70 @@ function onContinue() {
 
 			break;
 
-		// case 6:
-        //
-		// 	// show_page_real();
-		// 	E.endTime=msTime();
-		// 	var timeSolution = E.endTime-E.startTime
-		// 	servlog("timeSolution", timeSolution);
-		// 	submit_solution();
-		//
-		// 	E.startTime = msTime();
-		// 	suggest_solution();
-		//
-		// 	break;
-			
 		case 6:
+
+			// show_page_real();
+
+			E.endTime=msTime();
+			var timeSolution = E.endTime-E.startTime
+			servlog("timeSolution", timeSolution);
+			submit_solution();
+
+            $("#experiment.page").show()
+            $("#verify").hide()
+            $("#generalInstructionsVerify").hide()
+            $("#answerVerification").hide()
+            $("#generalInstructions").hide()
+            $("#solve").hide()
+            $("#answerSolution").hide()
+            $('#playGameInstructions').show();
+
+            E.widget.reset();
+            E.widget.simulate();
+            $('#undo').hide();
+
+            var diff = 3
+            if (E.debugMode) {
+                diff = 2
+            }
+            var countDownDate =  new Date(timerStart + diff*60000);
+            var x = setInterval(function() {
+
+                // Get todays date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var totalSeconds = minutes*60+seconds
+                // Display the result in the element with id="demo"
+                document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                // If the count down is finished, write some text
+                if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
+                    $("#timer").addClass("timeUp")
+                    alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                }
+                // If the count down is finished, write some text
+                if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
+                    clearInterval(x);
+                    alert('Time is up! You will be advanced to the end of the experiment')
+                    E.timerDone = true
+                    onContinue()
+                }
+            }, 1000);
+
+
+			E.startTime = msTime();
+			// suggest_solution();
+
+			break;
+			
+		case 7:
 			// log_vote();
             E.timerDone = true
 			E.endTime = msTime()

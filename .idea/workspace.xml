@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9f00f0f8-4d15-4cc1-8804-38123a08fd01" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget.js" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.css" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.html" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.js" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.js" />
     </list>
@@ -23,11 +22,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tictactoe.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tictactoe.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="283" column="16" lean-forward="false" selection-start-line="283" selection-start-column="16" selection-end-line="283" selection-end-column="16" />
+            <state relative-caret-position="185">
+              <caret line="630" column="22" lean-forward="true" selection-start-line="630" selection-start-column="22" selection-end-line="630" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tictactoe-widget.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="113">
+              <caret line="434" column="16" lean-forward="false" selection-start-line="434" selection-start-column="16" selection-end-line="434" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -36,14 +45,13 @@
       <file leaf-file-name="tictactoe.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="209" column="32" lean-forward="true" selection-start-line="209" selection-start-column="32" selection-end-line="209" selection-end-column="32" />
+            <state relative-caret-position="210">
+              <caret line="279" column="104" lean-forward="true" selection-start-line="279" selection-start-column="104" selection-end-line="279" selection-end-column="104" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-                <marker date="1496695400000" expanded="false" signature="12528:12539" ph="..." />
+                <element signature="n#style#0;n#div#4;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,16 +62,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="971">
               <caret line="233" column="9" lean-forward="false" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tictactoe-widget.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="405" column="36" lean-forward="true" selection-start-line="405" selection-start-column="36" selection-end-line="405" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -83,9 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>clickpo</find>
-      <find>experi</find>
-      <find>top</find>
       <find>oncon</find>
       <find>timer</find>
       <find>likert</find>
@@ -105,14 +100,17 @@
       <find>shown</find>
       <find>solutions</find>
       <find>15</find>
-      <find>oncell</find>
       <find>onres</find>
       <find>onund</find>
       <find>ques</find>
-      <find>run</find>
       <find>question</find>
-      <find>widget</find>
       <find>#canvas</find>
+      <find>onCellClick</find>
+      <find>oncell</find>
+      <find>click</find>
+      <find>run</find>
+      <find>widget</find>
+      <find>drawGrid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,8 +138,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1916" />
-    <option name="y" value="-58" />
+    <option name="x" value="-1919" />
+    <option name="y" value="-59" />
     <option name="width" value="1912" />
     <option name="height" value="1044" />
   </component>
@@ -308,15 +306,15 @@
       <updated>1490028702611</updated>
       <workItem from="1490028704002" duration="342000" />
       <workItem from="1494887531916" duration="21413000" />
-      <workItem from="1496326675718" duration="28685000" />
+      <workItem from="1496326675718" duration="36254000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50440000" />
+    <option name="totallyTimeSpent" value="58009000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1916" y="-58" width="1912" height="1044" extended-state="0" />
+    <frame x="-1919" y="-59" width="1912" height="1044" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13598326" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -363,9 +361,8 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-            <marker date="1496695400000" expanded="false" signature="12528:12539" ph="..." />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -409,9 +406,8 @@
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-            <marker date="1496695400000" expanded="false" signature="12528:12539" ph="..." />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -547,20 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="209" column="32" lean-forward="true" selection-start-line="209" selection-start-column="32" selection-end-line="209" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-            <marker date="1496695400000" expanded="false" signature="12528:12539" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="971">
@@ -569,18 +551,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
+    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="283" column="16" lean-forward="false" selection-start-line="283" selection-start-column="16" selection-end-line="283" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="279" column="104" lean-forward="true" selection-start-line="279" selection-start-column="104" selection-end-line="279" selection-end-column="104" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="405" column="36" lean-forward="true" selection-start-line="405" selection-start-column="36" selection-end-line="405" selection-end-column="36" />
+        <state relative-caret-position="113">
+          <caret line="434" column="16" lean-forward="false" selection-start-line="434" selection-start-column="16" selection-end-line="434" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="630" column="22" lean-forward="true" selection-start-line="630" selection-start-column="22" selection-end-line="630" selection-end-column="22" />
           <folding />
         </state>
       </provider>

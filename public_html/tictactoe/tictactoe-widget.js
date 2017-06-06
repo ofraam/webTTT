@@ -32,8 +32,17 @@ function TictactoeWidget(init){
         var firstMoveCol = 	init.firstMovrCol;
 	}
 
+	var winPath = init.winPath;
+    var losePath = init.losePath;
+
+    var indexWinPath = -1
+	var turnInWin = 0
+	var turnInLose = 0
+
 	var undoList = []
-	
+
+	var sim = false;
+
 	
 	var canvasHeight = (nrows+2)*cellSize;
 	var canvasWidth = (ncols+2)*cellSize;
@@ -65,6 +74,11 @@ function TictactoeWidget(init){
 	}
 	
 	onCellClick = function(cell){
+
+		if (sim == true) {
+			onCellClickSim(cell);
+			return;
+		}
 		
 		if(position[cell.row][cell.col] != 0){
 			conlog("nope")
@@ -101,10 +115,104 @@ function TictactoeWidget(init){
 
 		//$('canvas').drawLayers()	
 
-
-
-		
 	}
+
+    onCellClickSim = function(cell){
+
+        if(position[cell.row][cell.col] != 0){
+            conlog("nope")
+            errorSound.play();
+
+            return;
+        }
+
+        //moveSound.play();
+
+        position[cell.row][cell.col] = nextPlayer;
+        var positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer
+
+        var clickKey = 'click_sim'
+        var clickPosKey = 'clickPos_sim'
+
+		//check if move is on the one of the winning paths
+		for (pathIndex=0;pathIndex<winPath.length;pathIndex++) {
+			var path = winPath[pathIndex];
+        	var currMoveOnPath = path[turnInWin]
+			if (cell.row == currMoveOnPath[0] && cell.col == currMoveOnPath[1]) { //valid move on winning path
+				indexWinPath = pathIndex
+                servlog('simCorrectMove', indexWinPath+"_"+turnInWin)
+				turnInWin++
+				break;
+			}
+		}
+
+
+        servlog(clickKey, position)
+        servlog(clickPosKey, positionPlayer)
+
+
+        flipNextPlayer()
+
+
+        moveCounter = moveCounter + 1
+        lastMoveCol = cell.col
+        lastMoveRow = cell.row
+        undoList.push([cell.row, cell.col])
+
+        drawSymbols();
+        drawMoves();
+
+		// sleepGame(4000)
+
+        //play other player move
+        var currMoveOnLosingPath = chooseValidMove();
+
+		if (indexWinPath > -1) {
+			var pathLoser = losePath[indexWinPath];
+            currMoveOnLosingPath = pathLoser[turnInLose];
+            turnInLose++;
+		}
+
+        position[currMoveOnLosingPath[0]][currMoveOnLosingPath[1]] = nextPlayer;
+        positionPlayer = 'row:' + currMoveOnLosingPath[0] +'_' + 'col:' + currMoveOnLosingPath[1] + '_' + nextPlayer;
+
+        servlog(clickKey, position)
+        servlog(clickPosKey, positionPlayer)
+
+        moveCounter = moveCounter + 1
+        lastMoveCol = currMoveOnLosingPath[1]
+        lastMoveRow = currMoveOnLosingPath[0]
+        undoList.push([currMoveOnLosingPath[0], currMoveOnLosingPath[1]])
+
+        flipNextPlayer()
+        drawSymbols();
+        drawMoves();
+
+        //$('canvas').drawLayers()
+
+    }
+
+    playOtherResponse = function () {
+
+    }
+
+    sleepGame = function (miliseconds) {
+        var currentTime = new Date().getTime();
+
+        while (currentTime + miliseconds >= new Date().getTime()) {
+        }
+    }
+
+    chooseValidMove = function () {
+        for(r=0; r<nrows; r++) {
+            for (c = 0; c < ncols; c++) {
+				if (position[r][c]==0) {
+					return [r,c];
+				}
+            }
+        }
+        return undefined;
+    }
 
 	drawGrid = function(){
 		
@@ -304,6 +412,13 @@ function TictactoeWidget(init){
 		moveCounter = 0
         lastMoveCol = -1
         lastMoveRow = -1
+
+		indexWinPath = -1
+		turnInLose = 0
+		turnInWin = 0
+
+		var sim = false;
+
         $(canvas).removeLayerGroup('moves')
 		drawSymbols()
         drawMoves()
@@ -315,7 +430,11 @@ function TictactoeWidget(init){
         }
 
 		servlog(reset, position)
-	}		
+	}
+
+	this.simulate = function () {
+		sim = true;
+    }
 
 	onUndo = function(){
 		
