@@ -169,7 +169,10 @@ function TictactoeWidget(init){
 
 		if (indexWinPath > -1) {
 			var pathLoser = losePath[indexWinPath];
-            currMoveOnLosingPath = pathLoser[turnInLose];
+			var suggestedMove = pathLoser[turnInLose];
+			if (position[suggestedMove[0]][suggestedMove[1]]==0) {
+                currMoveOnLosingPath = pathLoser[turnInLose];
+			}
             turnInLose++;
 		}
 
