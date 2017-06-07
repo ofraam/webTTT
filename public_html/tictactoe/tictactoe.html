@@ -205,8 +205,14 @@
 					<div class="question">
 						<div>
 						<div>
+							<div id="exampleSolve">
 							<h3>Your task will be to find the winning move for X, such that
 								X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
+							</div>
+							<div id="exampleVerify">
+								<h3>Your task will be to determine whether a certain move that X makes will guarantee that
+									X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
+							</div>
 							<br>
 								When solving the problem, you will be able to use an interactive board (like the one on
 								the right) to try different strategies.
@@ -232,14 +238,16 @@
 						<div style="float: right; width: 320px; margin-left: 5px; margin-top: 50px;">
 							It is X's turn to play. In this position, X can force a win in 2 turns.
 							This means that X can win the game by placing 2 more marks,
-							even when the O player plays as best as it can to win as well.
+							even when the O player plays as best as psossible to win as well.
 							<br><br>
 							In this example, X can guarantee a win by playing b3.
 							After that, no matter what move O will make, X will still win. For example,
 							if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
 							cannot threaten X in any other position, so O will surely lose this game.
 
-							<br><br>Use the board to verify that X will indeed ensure a win by playing b3.
+							<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+							<br> Each X move you play will show the move number so you can easily count how
+							many moves you've played.
 
 							<br><br>
 							<b>First move to ensure a win for X is: </b>
@@ -311,21 +319,35 @@
 
 				<div  style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
 					<div id='solve'>
-					In this position <span class="player">O</span>  can force a win in <span class="turns">4</span> turns.
-					This means that <span class="player">O</span> can win the game by placing <span class="turns">4</span> marks,
+					In this position <span class="player">O</span>  can force a win in <span class="turns" style="font-weight:bold ">4</span> turns.
+					This means that <span class="player">O</span> can win the game by placing <span class="turns" style="font-weight:bold ">4</span> marks,
 						even when <span class="otherPlayer">O</span> plays to win as well.
+						<br>
 					<br><br>
 					Find <span class="player">O</span>'s winning strategy.
-						<br><br>Feel free to use the board to try out different strategies.
+						<br><br>Use the board to try out different strategies.
+						Each X move you play will show the move number so you can easily count how
+						many moves you've played.
 					</div>
 
 					<div id="verify">
-						<span class="player">O</span> can win the game in 5 moves no matter what
+						<span class="player">O</span> can win the game in <b>5</b> moves no matter what
 						<span class="otherPlayer">X</span> does. Is the first move to win the game <span class="firstMove">d6</span>
 						(cell shown with thick black border)?
 						Assume that both players try to win the game as fast as they can.
-						<br><br>Feel free to use the board to try out different strategies.
+						<br><br>Use the board to try out different strategies.
+						Each X move you play will show the move number so you can easily count how
+						many moves you've played.
 					</div>
+
+					<div id = "play">
+						Here is a list of the moves you played on the board when solving the problem
+						(after the last time you reset the board):
+						<div id="moves">
+
+						</div>
+					</div>
+
 						<p>If your solution is correct you will get a bonus of $1. </p>
 
 

@@ -12,6 +12,7 @@ E.condition = 'solve'
 E.timerDone = false
 E.solvedCorrect = false;
 
+E.positionMappings =
 
 E.board6_practice = {
     canvasContainerDiv : "#canvas-container-practice",
@@ -32,7 +33,26 @@ E.board6_practice = {
     practice: true
 }
 
+
 E.board6_1 = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,1,0,2,0,0],
+        [0,2,1,1,0,0],
+        [1,2,2,2,1,0],
+        [2,0,1,1,2,0],
+        [1,0,2,2,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4
+}
+
+E.board6_1_O = {
     canvasContainerDiv : "#canvas-container",
     nrows : 6,
     ncols : 6,
@@ -136,6 +156,28 @@ E.board10_1 = {
     position: [
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
+        [0,0,1,0,0,2,0,0,0,0],
+        [0,0,0,1,1,0,0,0,0,0],
+        [0,0,0,0,2,2,2,1,2,0],
+        [0,0,0,0,0,1,2,2,0,0],
+        [0,0,0,1,0,2,0,0,0,0],
+        [0,0,0,0,1,1,0,0,0,0],
+        [0,0,0,0,0,1,0,0,0,0],
+        [0,0,0,0,0,0,2,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4
+}
+
+E.board10_1_O = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
         [0,0,2,0,0,1,0,0,0,0],
         [0,0,0,2,2,0,0,0,0,0],
         [0,0,0,0,1,1,1,2,1,0],
@@ -146,8 +188,8 @@ E.board10_1 = {
         [0,0,0,0,0,0,1,0,0,0]
     ],
     nextPlayer: 2,
-    streak:4,
-    turns: 4
+    streak:5,
+    turns: 5
 }
 
 E.board10_1_five_steps = {
@@ -168,8 +210,8 @@ E.board10_1_five_steps = {
         [0,0,0,0,0,1,0,0,0,0]
     ],
     nextPlayer: 2,
-    streak:4,
-    turns: 4
+    streak:5,
+    turns: 5
 }
 
 E.board10_1_original = {
@@ -195,6 +237,28 @@ E.board10_1_original = {
 }
 
 E.board10_2 = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,2,0,1,0,0,0,0],
+        [0,0,0,0,0,2,0,0,0,0],
+        [0,0,2,0,0,2,0,0,0,0],
+        [0,0,0,0,1,1,0,0,0,0],
+        [0,0,2,0,0,1,1,1,2,0],
+        [2,1,0,0,2,1,2,0,0,0],
+        [1,0,0,0,0,1,2,2,0,0],
+        [0,0,0,0,0,2,0,0,0,0],
+        [0,0,0,1,1,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4
+}
+
+E.board10_2_O = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
     ncols : 10,
@@ -604,6 +668,7 @@ function onContinue() {
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
                 $('#playGameInstructions').hide();
+				$('#play').hide();
 				$('#timerFinal').hide()
                 if (E.condition=='solve') {
 				    $("#verify").hide()
@@ -683,11 +748,22 @@ function onContinue() {
             $("#answerSolution").hide()
             $('#playGameInstructions').show();
             $("#timerFinal").show()
+            $("#play").show()
+            $("#moves").show()
             $('#confidenceQuestion').hide()
+
+            var moves = E.widget.generateMoveList()
+            var moveListText = ''
+            for (i = 0;i<moves.length;i++) {
+                moveListText = moveListText + moves[i] + '<br>'
+            }
+            $('#moves').html(moveListText)
 
             E.widget.reset();
             E.widget.simulate();
+
             $('#undo').hide();
+
 
             E.startTime = msTime();
 

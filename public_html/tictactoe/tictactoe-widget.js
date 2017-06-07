@@ -288,6 +288,28 @@ function TictactoeWidget(init){
             text: text
         });
     }
+
+    this.generateMoveList = function() {
+		var moveList = []
+		var moveLabel = ''
+		var currPlayer = init.nextPlayer
+    	for (i=0;i<undoList.length;i++) {
+			var move = undoList[i]
+			var rowNum = nrows-move[0]
+            moveLabel = String.fromCharCode("a".charCodeAt(0) + move[1]) + rowNum.toString()
+
+
+			if (currPlayer == 1) {
+				moveLabel = "X: "+moveLabel
+			}
+			else {
+                moveLabel = "O: "+moveLabel
+			}
+            moveList.push(moveLabel)
+            currPlayer = 1 + (currPlayer)%2
+		}
+		return moveList
+	}
 	
 	drawLabels = function(){
 		
