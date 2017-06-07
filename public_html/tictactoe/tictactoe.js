@@ -556,17 +556,20 @@ function submit_solution() {
         servlog("verification_answer", ver);
 	// }
 
-    if (move == E.configuration.winMove) {
-        E.solvedCorrect = true;
+    if (E.condition == "solve") {
+        if (move == E.configuration.winMove)
+        {
+            E.solvedCorrect = true;
+        }
     }
-	// else {
-     //    alert("Please answer what your level of confidence in the solution is")
-     //    onContinue.curPage = 2;
-     //    onContinue();
-	// }
+    else {
+        if (ver=="yes") {
+            E.solvedCorrect = true;
+        }
+    }
+    servlog("correct",E.solvedCorrect);
 
 
-	// servlog("solution", solution);
 }
 
 function suggest_solution(){
@@ -640,8 +643,14 @@ function onContinue() {
 			$("#btnContinue").html('Continue')
 			E.startTime=msTime();
             init_practice();
+            run_block();
 			$("#quiz.page").show()
-
+            if (E.condition=="solve") {
+			    $('#exampleVerify').hide()
+            }
+            else {
+                $('#exampleSolve').hide()
+            }
             $(window).scrollTop(0,0);
 			
 			
@@ -657,7 +666,7 @@ function onContinue() {
 			{
 
 				E.startTime=msTime();
-				run_block();
+				// run_block();
 				if (E.configuration.nextPlayer == 1) {
                     $('.player').text('X');
 				}
