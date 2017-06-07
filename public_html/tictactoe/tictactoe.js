@@ -33,6 +33,77 @@ E.board6_practice = {
     practice: true
 }
 
+E.board10_tutorial = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
+
+E.board10_practice = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,2,0,0,0,0,1,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,2,0,2,0,0,0,0],
+        [0,0,0,1,1,1,0,2,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
+
+// E.board10_practice = {
+//     canvasContainerDiv : "#canvas-container-practice",
+//     nrows : 10,
+//     ncols : 10,
+//     cellSize: 32,
+//     position: [
+//         [0,0,0,0,0,1,0,0,2,0],
+//         [0,2,0,0,0,2,1,0,0,0],
+//         [0,0,0,0,2,1,2,2,2,0],
+//         [2,0,2,0,0,1,1,0,0,1],
+//         [0,2,2,0,1,1,2,0,0,1],
+//         [0,1,2,1,2,1,0,0,2,1],
+//         [2,0,0,2,2,2,2,1,1,2],
+//         [1,0,1,2,2,1,0,0,1,0],
+//         [0,0,2,0,1,1,2,1,0,0],
+//         [1,0,0,1,1,1,0,2,0,0]
+//
+//     ],
+//     nextPlayer: 1,
+//     streak:4,
+//     turns: 4
+// }
+
 
 E.board6_1 = {
     canvasContainerDiv : "#canvas-container",
@@ -372,10 +443,7 @@ function run_block() {
                 break;
         }
     }
-    var cond = getUrlVars()['cond']
-    if (cond=='v') {
-        E.condition='verify'
-    }
+
     servlog('condition',E.condition)
     servlog('board', tposition)
 
@@ -400,6 +468,10 @@ function run_block() {
 }
 
 function init_practice() {
+    var cond = getUrlVars()['cond']
+    if (cond=='v') {
+        E.condition='verify'
+    }
     E.widget = new TictactoeWidget(E.board6_practice)
     E.widget.run()
 }
@@ -643,7 +715,7 @@ function onContinue() {
 			$("#btnContinue").html('Continue')
 			E.startTime=msTime();
             init_practice();
-            run_block();
+
 			$("#quiz.page").show()
             if (E.condition=="solve") {
 			    $('#exampleVerify').hide()
@@ -666,7 +738,7 @@ function onContinue() {
 			{
 
 				E.startTime=msTime();
-				// run_block();
+				run_block();
 				if (E.configuration.nextPlayer == 1) {
                     $('.player').text('X');
 				}
