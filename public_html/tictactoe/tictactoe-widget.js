@@ -397,14 +397,20 @@ function TictactoeWidget(init){
 	}
 
 	drawMoves = function () {
-		counter = 1;
+		var counter = 1;
+		var currPlayer = init.nextPlayer
 		for (i=0;i<undoList.length;i++) {
 			pos = undoList[i];
 			row = pos[0];
 			col = pos[1];
-            drawMoveLabel(counter,(col+1.15)*cellSize,(row+1.15)*cellSize);
+			if (currPlayer ==  1) {
+                drawMoveLabel(counter,(col+1.15)*cellSize,(row+1.15)*cellSize);
+                counter++;
+			}
+
+            currPlayer = 1 + (currPlayer)%2
 			// drawMoveLabel(counter,row,col);
-			counter++;
+
 		}
 	}
 	
