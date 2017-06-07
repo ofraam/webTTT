@@ -116,35 +116,59 @@
 									
 				</div>
 				
-				<div class="question"> 
+				<div class="question">
+					<div class="6by6">
 
 					<img src="images/tut1.png" >
 
-					This version of the game Tic-tac-toe is played on a 6x6 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step. 
+					This version of the game Tic-tac-toe is played on a 6x6 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step.
+					</div>
 
+					<div class="10by10">
+
+						<img src="images/tut1_10.png" >
+
+						This version of the game Tic-tac-toe is played on a 10x10 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step.
+					</div>
 				</div>
 
 				<div class="question" id="monkey"> 
 
-					<img src="images/tut2.png">
+					<img class="6by6" src="images/tut2.png">
+
+					<img class="10by10" src="images/tut2_10.png">
 
 					Two players, X and O, take turns marking the spaces on the board.
 				</div>
 
 				<div class="question"> 
-
+					<div class="6by6">
 					<img src="images/tut3.png" >
 
 					The player who succeeds in marking <strong> four </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game. 
 					
-					<br><br>In the image on the right, O won the game by marking four spaces vertically. 
+					<br><br>In the image on the right, O won the game by marking four spaces vertically.
+					</div>
+					<div class="10by10">
+						<img src="images/tut3_10.png" >
+
+						The player who succeeds in marking <strong> five </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game.
+
+						<br><br>In the image on the right, O won the game by marking five spaces vertically.
+					</div>
 				</div>
 
-				<div class="question"> 
-
+				<div class="question">
+					<div class="6by6">
 					<img src="images/tut4.png" >
 
-					In this image X won by marking four spaces diagonally. 
+					In this image X won by marking four spaces diagonally.
+					</div>
+					<div class="10by10">
+						<img src="images/tut4_10.png" >
+
+						In this image X won by marking five spaces diagonally.
+					</div>
 				</div>
 	
 			</div>
@@ -156,7 +180,8 @@
 				<h1>Please answer the following questions:</h1>
 				
 					<div class="question">
-						<img src="images/q1.png" >
+						<img class="6by6" src="images/q1.png" >
+						<img class="10by10" src="images/q1_10.png" >
 						<h3>Who won?</h3>
 						<select id="q1">
 							<option value="0">&nbsp;</option>
@@ -167,7 +192,8 @@
 					</div>
 				
 					<div class="question">
-						<img src="images/q2.png" >
+						<img class="6by6" src="images/q2.png" >
+						<img class="10by10" src="images/q2_10.png" >
 						<h3>Who won?</h3>
 						<select id="q2">
 							<option value="0"> &nbsp;</option>
@@ -178,7 +204,8 @@
 					</div>
 
 					<div class="question">
-						<img src="images/q3.png">
+						<img class="6by6" src="images/q3.png">
+						<img class="10by10" src="images/q3_10.png">
 						<h3>Who won?</h3>
 						<select id="q3">
 							<option value="0"> &nbsp;</option>
@@ -189,14 +216,16 @@
 					</div>
 
 					<div class="question">
-						<img src="images/q4.png">
+						<img class="6by6" src="images/q4.png">
+						<img class="10by10" src="images/q4_10.png">
 						<h3>X can win in one move. What is the move?</h3>
 						<input type="text" id="q4" maxlength="2" size="2" />
 						example: a1
 					</div>
 
 					<div class="question">
-						<img src="images/q5.png">
+						<img class="6by6" src="images/q5.png">
+						<img class="10by10" src="images/q5_10.png">
 						<h3>O can win in one move. What is the move?</h3>
 						<input type="text" id="q5" maxlength="2" size="2" />
 						example: a1
@@ -236,36 +265,49 @@
 							</div>
 						</div>
 						<div style="float: right; width: 320px; margin-left: 5px; margin-top: 50px;">
-							It is X's turn to play. In this position, X can force a win in 2 turns.
-							This means that X can win the game by placing 2 more marks,
-							even when the O player plays as best as psossible to win as well.
-							<br><br>
-							In this example, X can guarantee a win by playing b3.
-							After that, no matter what move O will make, X will still win. For example,
-							if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
-							cannot threaten X in any other position, so O will surely lose this game.
+							<div class="6by6">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as psossible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3.
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
 
-							<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
-							<br> Each X move you play will show the move number so you can easily count how
-							many moves you've played.
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
+
+							<div class="10by10">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as psossible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3.
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
+
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
 
 							<br><br>
 							<b>First move to ensure a win for X is: </b>
 							<input type="text" id="q6" maxlength="2" size="2" />
+
+
+
 						</div>
-						</div>
-
-
-
-
 					</div>
-
 				</div>
-
-
-			
 			</div>
+
 		</div>
+	</div>
 
 
 
@@ -341,7 +383,9 @@
 					</div>
 
 					<div id = "play">
-						Here is a list of the moves you played on the board when solving the problem
+						The board as been reset to its starting position as now you will be playing against the computer.
+						<br>
+						For your convenience, this is a list of the moves you played on the board when solving the problem
 						(after the last time you reset the board):
 						<div id="moves">
 

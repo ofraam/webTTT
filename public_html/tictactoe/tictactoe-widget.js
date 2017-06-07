@@ -419,7 +419,6 @@ function TictactoeWidget(init){
 	}
 
 	drawMoves = function () {
-		return;
 		var counter = 1;
 		var currPlayer = init.nextPlayer
 		for (i=0;i<undoList.length;i++) {

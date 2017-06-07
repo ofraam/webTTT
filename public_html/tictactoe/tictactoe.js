@@ -12,7 +12,6 @@ E.condition = 'solve'
 E.timerDone = false
 E.solvedCorrect = false;
 
-E.positionMappings =
 
 E.board6_practice = {
     canvasContainerDiv : "#canvas-container-practice",
@@ -70,7 +69,7 @@ E.board10_practice = {
         [0,0,2,0,0,0,0,1,0,0],
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,2,0,2,0,0,0,0],
-        [0,0,0,1,1,1,0,2,0,0],
+        [0,0,1,1,1,0,2,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0]
 
@@ -80,6 +79,8 @@ E.board10_practice = {
     turns: 2,
     practice: true
 }
+
+E.board_practice = E.board10_practice;
 
 // E.board10_practice = {
 //     canvasContainerDiv : "#canvas-container-practice",
@@ -472,7 +473,8 @@ function init_practice() {
     if (cond=='v') {
         E.condition='verify'
     }
-    E.widget = new TictactoeWidget(E.board6_practice)
+
+    E.widget = new TictactoeWidget(E.board_practice)
     E.widget.run()
 }
 
@@ -679,6 +681,7 @@ function onContinue() {
 	//blank all pages
 	$(".page").hide();
 
+    E.size = getUrlVars()['size']
 
 	//run_block()
 	//$("#experiment.page").show()
@@ -702,6 +705,16 @@ function onContinue() {
 			submit_demographics();
 			E.startTime=msTime();
 			$("#instructions.page").show()
+            if (E.size == '6') {
+                $(".10by10").hide();
+                E.board_practice = E.board6_practice
+            }
+            else {
+                $(".6by6").hide();
+                E.board_practice = E.board10_practice
+            }
+
+
 			$("#btnContinue").html('Continue to quiz')
             $(window).scrollTop(0,0);
 			break;
