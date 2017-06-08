@@ -124,6 +124,28 @@ E.board6_1 = {
     turns: 4
 }
 
+E.board6_1_10 = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,1,0,2,0,0],
+        [0,0,0,1,0,2,1,1,0,0],
+        [0,2,0,2,1,2,2,2,1,0],
+        [0,0,2,1,2,0,1,1,2,0],
+        [0,0,0,1,0,0,2,2,0,0],
+        [0,2,1,0,0,0,0,0,0,0],
+        [0,2,2,0,0,0,0,0,0,0],
+        [0,1,2,0,0,0,0,0,0,0],
+        [2,1,1,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4
+}
+
 E.board6_1_O = {
     canvasContainerDiv : "#canvas-container",
     nrows : 6,
@@ -472,6 +494,9 @@ function run_block() {
         switch(tposition) {
             case '1':
                 E.configuration = E.board6_1;
+                break;
+            case '1em':
+                E.configuration = E.board6_1_10;
                 break;
             case '2':
                 E.configuration = E.board6_2;
