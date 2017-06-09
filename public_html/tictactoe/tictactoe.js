@@ -716,10 +716,19 @@ function submit_solution() {
         {
             E.solvedCorrect = true;
         }
+        else {
+            alert("Sorry, your solution is incorrect. The correct solution was "+move +". In the next screen you will" +
+                "receive a verification code to paste in your HIT submission.")
+        }
     }
     else {
         if (ver=="yes") {
             E.solvedCorrect = true;
+        }
+        else
+        {
+            alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
+                "receive a verification code to paste in your HIT submission.")
         }
     }
     servlog("correct",E.solvedCorrect);
