@@ -250,7 +250,7 @@ E.board10_2_b_5 = {
     turns: 5,
     winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
     losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    winMove: 'd6'
+    winMove: ['d6']
 }
 
 E.board6_2_c = {
@@ -311,7 +311,10 @@ E.board10_1 = {
     ],
     nextPlayer: 1,
     streak:5,
-    turns: 4
+    turns: 4,
+    winPath: [[[5,2],[3,2],[4,2],[6,2]], [[3,2],[5,2],[4,2],[6,2]]],
+    losePath: [[[4,1],[3,5],[1,2]], [[3,5],[4,1],[1,2]]],
+    winMove: ['c7','c5','C7','C5','7c', '5c','7C','5C']
 }
 
 E.board10_1_O = {
@@ -712,7 +715,8 @@ function submit_solution() {
 	// }
 
     if (E.condition == "solve") {
-        if (move == E.configuration.winMove)
+        alert(move)
+        if (E.configuration.winMove.indexOf(move) > -1)
         {
             E.solvedCorrect = true;
         }
