@@ -738,7 +738,10 @@ function submit_solution() {
 	// {
         // var solution = $("#solution").val();
         servlog("best_move", move);
+    if (conf!=undefined)
+    {
         servlog("confidence", conf);
+    }
         servlog("verification_answer", ver);
 	// }
 

@@ -23,8 +23,8 @@
       <file leaf-file-name="tictactoe.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+            <state relative-caret-position="446">
+              <caret line="743" column="5" lean-forward="true" selection-start-line="743" selection-start-column="5" selection-end-line="743" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -81,8 +81,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>question</find>
-      <find>#canvas</find>
       <find>onCellClick</find>
       <find>oncell</find>
       <find>click</find>
@@ -111,6 +109,8 @@
       <find>b4</find>
       <find>succes</find>
       <find>alert</find>
+      <find>conf</find>
+      <find>conf =</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -341,12 +341,12 @@
       <workItem from="1490028704002" duration="342000" />
       <workItem from="1494887531916" duration="21413000" />
       <workItem from="1496326675718" duration="68066000" />
-      <workItem from="1497365036997" duration="6289000" />
+      <workItem from="1497365036997" duration="6842000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96110000" />
+    <option name="totallyTimeSpent" value="96663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="-59" width="1920" height="1057" extended-state="6" />
@@ -643,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="148" column="54" lean-forward="true" selection-start-line="148" selection-start-column="54" selection-end-line="148" selection-end-column="54" />
+        <state relative-caret-position="446">
+          <caret line="743" column="5" lean-forward="true" selection-start-line="743" selection-start-column="5" selection-end-line="743" selection-end-column="5" />
           <folding />
         </state>
       </provider>
