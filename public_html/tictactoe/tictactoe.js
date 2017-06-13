@@ -124,6 +124,28 @@ E.board6_1 = {
     turns: 4
 }
 
+E.board6_1_10_5 = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,1,0,2,0,0,0],
+        [0,0,0,0,2,1,1,1,0,0],
+        [0,0,0,1,2,2,2,1,0,0],
+        [0,0,0,2,2,1,1,2,1,1],
+        [2,0,0,1,0,2,2,0,0,0],
+        [1,0,0,0,0,0,0,0,0,0],
+        [1,1,0,0,0,0,0,0,0,0],
+        [2,2,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,2,2,2,0,0]
+    ],
+    nextPlayer: 1,
+    streak:5,
+    turns: 4
+}
+
 E.board6_1_10 = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
@@ -200,7 +222,7 @@ E.board6_2_b = {
     turns: 5,
     winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
     losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    winMove: 'd6'
+    winMove: ['d6','D6','6d','6D']
 }
 
 E.board10_2_b = {
@@ -248,9 +270,9 @@ E.board10_2_b_5 = {
     nextPlayer: 1,
     streak:5,
     turns: 5,
-    winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
-    losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    winMove: ['d6']
+    winPath: [[[2,4],[2,4],[4,3],[4,4],[4,5]]],
+    losePath: [[[6,0],[2,7],[5,3],[4,0]]],
+    winMove: ['e8','E8','8e','8E']
 }
 
 E.board6_2_c = {
@@ -500,6 +522,9 @@ function run_block() {
                 break;
             case '1em':
                 E.configuration = E.board6_1_10;
+                break;
+            case '1em5':
+                E.configuration = E.board6_1_10_5;
                 break;
             case '2':
                 E.configuration = E.board6_2;
