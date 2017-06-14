@@ -121,7 +121,31 @@ E.board6_1 = {
     ],
     nextPlayer: 1,
     streak:4,
-    turns: 4
+    turns: 4,
+    winPath: [[[3,5],[1,5],[2,5],[4,5]],  [[1,5],[3,5],[2,5],[4,5]]],
+    losePath: [[[0,2],[1,4],[0,5]],  [[1,4],[0,2],[0,5]]],
+    winMove: ['f3','F3','3F','3F','f5','F5','5F','5F']
+}
+
+E.board6_1_pruned = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,1,2,2,0,0],
+        [0,2,1,1,0,0],
+        [1,2,2,2,1,0],
+        [2,0,1,1,2,1],
+        [1,0,2,2,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 3,
+    winPath: [[[1,5],[2,5],[4,5]]],
+    losePath: [[[1,4],[0,5]]],
+    winMove: ['f5','F5','5F','5F']
 }
 
 E.board6_1_10_5 = {
@@ -147,6 +171,31 @@ E.board6_1_10_5 = {
     winPath: [[[4,9],[1,9],[2,9],[5,9]],  [[1,9],[4,9],[2,9],[5,9]]],
     losePath: [[[0,5],[1,8],[0,9]],  [[1,8],[0,5],[0,9]]],
     winMove: ['j6','J6','6j','6J','j9','J9','9j','9J']
+}
+
+E.board6_1_10_5_pruned = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,1,2,2,0,0,0],
+        [0,0,0,0,2,1,1,1,0,0],
+        [0,0,0,1,2,2,2,1,0,0],
+        [0,0,0,2,2,1,1,2,1,1],
+        [2,0,0,1,0,2,2,0,0,1],
+        [1,0,0,0,0,0,0,0,0,0],
+        [1,1,0,0,0,0,0,0,0,0],
+        [2,2,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,2,2,2,0,0]
+    ],
+    nextPlayer: 1,
+    streak:5,
+    turns: 4,
+    winPath: [[[1,9],[2,9],[5,9]]],
+    losePath: [[[1,8],[0,9]]],
+    winMove: ['j9','J9','9j','9J']
 }
 
 E.board6_1_10 = {
@@ -228,6 +277,28 @@ E.board6_2_b = {
     winMove: ['d6','D6','6d','6D']
 }
 
+E.board6_2_b_pruned = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,2,0,1,1,0],
+        [0,2,1,2,0,0],
+        [0,1,0,0,0,0],
+        [2,1,0,2,0,0],
+        [0,1,0,0,0,0],
+        [0,2,0,0,2,0]
+    ],
+    nextPlayer: 1,
+    streak:4,
+    turns: 4,
+    winPath: [[[0,2],[2,2],[2,3],[2,0]]],
+    losePath: [[[0,5],[3,2],[2,4]]],
+    winMove: ['c6','C6','6c','6C']
+}
+
+
 E.board10_2_b = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
@@ -273,9 +344,34 @@ E.board10_2_b_5 = {
     nextPlayer: 1,
     streak:5,
     turns: 5,
-    winPath: [[[2,4],[2,4],[4,3],[4,4],[4,5]]],
+    winPath: [[[2,4],[2,3],[4,3],[4,4],[4,5]]],
     losePath: [[[6,0],[2,7],[5,3],[4,0]]],
     winMove: ['e8','E8','8e','8E']
+}
+
+E.board10_2_b_5_pruned = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,2,0,0,0,0,0,0],
+        [0,0,0,1,0,2,0,0,0,0],
+        [0,2,2,0,1,1,1,0,2,0],
+        [0,0,2,1,2,0,0,0,0,0],
+        [0,1,1,0,0,0,0,0,0,0],
+        [0,1,1,0,2,0,0,0,0,0],
+        [2,0,1,0,2,0,0,0,0,0],
+        [0,0,1,0,0,0,0,0,0,0],
+        [0,0,2,0,0,2,2,0,0,0],
+        [0,0,0,0,1,0,0,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:5,
+    turns: 4,
+    winPath: [[[2,3],[4,3],[4,4],[4,5]]],
+    losePath: [[[2,7],[5,3],[4,0]]],
+    winMove: ['d8','D8','8d','8D']
 }
 
 E.board6_2_c = {
@@ -340,6 +436,31 @@ E.board10_1 = {
     winPath: [[[5,2],[3,2],[4,2],[6,2]], [[3,2],[5,2],[4,2],[6,2]]],
     losePath: [[[4,1],[3,5],[1,2]], [[3,5],[4,1],[1,2]]],
     winMove: ['c7','c5','C7','C5','7c', '5c','7C','5C']
+}
+
+E.board10_1_pruned = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,1,0,0,2,0,0,0,0],
+        [0,0,1,1,1,2,0,0,0,0],
+        [0,0,0,0,2,2,2,1,2,0],
+        [0,0,0,0,0,1,2,2,0,0],
+        [0,0,0,1,0,2,0,0,0,0],
+        [0,0,0,0,1,1,0,0,0,0],
+        [0,0,0,0,0,1,0,0,0,0],
+        [0,0,0,0,0,0,2,0,0,0]
+    ],
+    nextPlayer: 1,
+    streak:5,
+    turns: 3,
+    winPath: [[[5,2],[4,2],[6,2]]],
+    losePath: [[[4,1],[1,2]]],
+    winMove: ['c5','C5','5c','5C']
 }
 
 E.board10_1_O = {
@@ -499,7 +620,7 @@ function initialize_experiment() {
         E.debugMode = true
     }
 	// alert(E.position)
-  	//servlog("start_position",E.position)
+  	servlog("start_position",E.position)
 }
 
 
@@ -523,17 +644,22 @@ function run_block() {
             case '1':
                 E.configuration = E.board6_1;
                 break;
+            case '1_p':
+                E.configuration = E.board6_1_pruned;
+                break;
             case '1em':
                 E.configuration = E.board6_1_10;
                 break;
-            case '1em5':
-                E.configuration = E.board6_1_10_5;
+            case '1em5_p':
+                E.configuration = E.board6_1_10_5_pruned;
                 break;
             case '2':
                 E.configuration = E.board6_2;
                 break;
             case '3':
                 E.configuration = E.board6_2_b;
+            case '3_p':
+                E.configuration = E.board6_2_b_pruned;
                 break;
             case '3p':
                 E.configuration = E.board6_2_c;
@@ -547,9 +673,14 @@ function run_block() {
             case '3em5':
                 E.configuration = E.board10_2_b_5;
                 break;
-
+            case '3em5_p':
+                E.configuration = E.board10_2_b_5_pruned;
+                break;
             case '4':
                 E.configuration = E.board10_1;
+                break;
+            case '4_p':
+                E.configuration = E.board10_1_pruned;
                 break;
             case '5':
                 E.configuration = E.board10_2;
@@ -752,7 +883,7 @@ function submit_solution() {
             E.solvedCorrect = true;
         }
         else {
-            alert("Sorry, your solution is incorrect. The correct solution was "+move +". In the next screen you will" +
+            alert("Sorry, your solution is incorrect. The correct solution was "+E.configuration.winMove[0] +". In the next screen you will" +
                 "receive a verification code to paste in your HIT submission.")
         }
     }
