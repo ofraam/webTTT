@@ -192,7 +192,7 @@ E.board6_1_10_5_pruned = {
     ],
     nextPlayer: 1,
     streak:5,
-    turns: 4,
+    turns: 3,
     winPath: [[[1,9],[2,9],[5,9]]],
     losePath: [[[1,8],[0,9]]],
     winMove: ['j9','J9','9j','9J']
