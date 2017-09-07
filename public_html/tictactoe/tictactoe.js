@@ -650,6 +650,9 @@ function run_block() {
             case '1em':
                 E.configuration = E.board6_1_10;
                 break;
+            case '1em5':
+                E.configuration = E.board6_1_10_5;
+                break;
             case '1em5_p':
                 E.configuration = E.board6_1_10_5_pruned;
                 break;
