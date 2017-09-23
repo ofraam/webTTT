@@ -120,10 +120,13 @@ function TictactoeWidget(init){
     onCellClickSim = function(cell){
 
         if(position[cell.row][cell.col] != 0){
-            conlog("nope")
-            errorSound.play();
+			if (cell.col!=firstMoveCol | cell.row != firstMoveRow) {
+				conlog("nope")
+				errorSound.play();
 
-            return;
+				return;
+			}
+
         }
 
         //moveSound.play();
@@ -420,6 +423,15 @@ function TictactoeWidget(init){
 
 	drawMoves = function () {
 		var counter = 1;
+		if (firstMoveCol!=undefined & firstMoveRow!=undefined)
+		{
+			// alert('here')
+			drawMoveLabel(counter,(parseInt(firstMoveCol)+1.15)*cellSize,(parseInt(firstMoveRow)+1.15)*cellSize);
+			// alert(firstMoveCol)
+			// alert(firstMoveRow)
+			// alert('here1')
+			counter++;
+		}
 		var currPlayer = init.nextPlayer
 		for (i=0;i<undoList.length;i++) {
 			pos = undoList[i];
@@ -437,6 +449,7 @@ function TictactoeWidget(init){
 	}
 	
 	onReset = function(){
+
 		position = startPosition.dcopy();
 		nextPlayer = init.nextPlayer
 		undoList = []
@@ -447,8 +460,15 @@ function TictactoeWidget(init){
 		indexWinPath = -1
 		turnInLose = 0
 		turnInWin = 0
+		if (sim) {
+			if (firstMoveCol!=undefined & firstMoveRow!=undefined)
+			{
+				simInit();
 
-		var sim = false;
+			}
+		}
+
+		// var sim = false; //TODO: check this does not cause unexpected problems
 
         $(canvas).removeLayerGroup('moves')
 		drawSymbols()
@@ -465,7 +485,25 @@ function TictactoeWidget(init){
 
 	this.simulate = function () {
 		sim = true;
+		if (firstMoveCol!=undefined & firstMoveRow!=undefined)
+		{
+			simInit();
+
+		}
     }
+
+	simInit = function () {
+		//make first move for the other player if we're in verification mode
+		var r = losePath[0][0][0];
+		var c = losePath[0][0][1]
+		startPosition[r][c] = nextPlayer;
+		position[r][c] = nextPlayer;
+		undoList.push([r, c]);
+		turnInLose++;
+		flipNextPlayer();
+		drawSymbols();
+		drawMoves();
+	}
 
 	onUndo = function(){
 		
@@ -541,6 +579,7 @@ function TictactoeWidget(init){
 		drawGrid()
 		drawLabels()
 		drawSymbols()
+		drawMoves()
 
 		undoList = []
 		moveCounter = 0

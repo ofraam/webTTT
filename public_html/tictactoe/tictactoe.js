@@ -410,6 +410,8 @@ E.board6_2_d = {
     turns: 4,
     firstMovrRow: '0',
     firstMovrCol: '3',
+    winPath: [[[0,2],[2,2],[2,3],[2,0]]],
+    losePath: [[[3,0],[0,5],[3,2],[2,4]]],
     firstMove: 'd6'
 }
 
@@ -1011,12 +1013,12 @@ function onContinue() {
 
 				E.startTime=msTime();
 				run_block();
-				if (E.configuration.nextPlayer == 1) {
+				// if (E.configuration.nextPlayer == 1) {
                     $('.player').text('X');
-				}
-				else {
-                    $('.player').text('O');
-				}
+				// }
+				// else {
+                 //    $('.player').text('O');
+				// }
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
 				$("#experiment.page").show()
