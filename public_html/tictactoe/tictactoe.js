@@ -736,6 +736,10 @@ function submit_quiz() {
 	}
 }
 
+function submit_strategy() {
+    var exp = $("#exp").val();
+    servlog("strategy", exp);
+}
 function submit_solution() {
 
 	var move = $("#bestmove").val();
@@ -759,20 +763,20 @@ function submit_solution() {
         {
             E.solvedCorrect = true;
         }
-        else {
-            alert("Sorry, your solution is incorrect. The correct solution was "+E.configuration.winMove[0] +". In the next screen you will" +
-                "receive a verification code to paste in your HIT submission.")
-        }
+        // else { //TODO: move from submit solution to screen
+        //     alert("Sorry, your solution is incorrect. The correct solution was "+E.configuration.winMove[0] +". In the next screen you will" +
+        //         "receive a verification code to paste in your HIT submission.")
+        // }
     }
     else {
         if (ver=="yes") {
             E.solvedCorrect = true;
         }
-        else
-        {
-            alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
-                "receive a verification code to paste in your HIT submission.")
-        }
+        // else  //TODO: move from submit solution to screen
+        // {
+        //     alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
+        //         "receive a verification code to paste in your HIT submission.")
+        // }
     }
     servlog("correct",E.solvedCorrect);
 
@@ -897,6 +901,7 @@ function onContinue() {
 				$("#experiment.page").show()
                 $('#playGameInstructions').hide();
 				$('#play').hide();
+                $("#explanation").hide()
 				$('#timerFinal').hide()
                 if (E.condition=='solve') {
 				    $("#verify").hide()
@@ -953,16 +958,35 @@ function onContinue() {
 
 			break;
 
-		case 6:
+        case 6:
+            E.endTime=msTime();
+            var timeSolution = E.endTime-E.startTime
+            servlog("timeSolution", timeSolution);
+            submit_solution();
+            $("#explain.page").show()
+            $("#explanation").show()
+            E.startTime = msTime();
+            break;
+
+		case 7:
 
 			// show_page_real();
 
 			E.endTime=msTime();
-			var timeSolution = E.endTime-E.startTime
-			servlog("timeSolution", timeSolution);
-			submit_solution();
+			var timeStrategy = E.endTime-E.startTime
+			servlog("timeStrategy", timeStrategy);
+            submit_strategy();
+			// submit_solution();
 
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
+                if (E.condition=='solve') {
+                    alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
+                        "receive a verification code to paste in your HIT submission.");
+                }
+                else {
+                    alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
+                            "receive a verification code to paste in your HIT submission.");
+                }
                 onContinue();
                 return;
             }
@@ -980,6 +1004,8 @@ function onContinue() {
             $("#play").show()
             $("#moves").show()
             $('#confidenceQuestion').hide()
+            $("#explanation").hide()
+
 
             var moves = E.widget.generateMoveList()
             var moveListText = ''
@@ -1048,7 +1074,7 @@ function onContinue() {
 
 			break;
 			
-		case 7:
+		case 8:
 			// log_vote();
             E.timerDone = true
 			E.endTime = msTime()
