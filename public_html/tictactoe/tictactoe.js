@@ -81,29 +81,7 @@ E.board10_practice = {
 }
 
 E.board_practice = E.board10_practice;
-//
-// E.board10_practice = {
-//     canvasContainerDiv : "#canvas-container-practice",
-//     nrows : 10,
-//     ncols : 10,
-//     cellSize: 32,
-//     position: [
-//         [0,1,0,0,0,1,0,0,0,1],
-//         [0,0,0,0,0,2,1,0,0,0],
-//         [0,0,0,0,2,2,2,2,0,2],
-//         [1,2,2,0,1,1,0,0,0,1],
-//         [2,0,2,0,0,0,0,2,2,1],
-//         [2,1,0,0,2,2,1,0,0,2],
-//         [1,0,2,1,2,1,0,0,0,0],
-//         [0,0,2,0,1,1,0,0,0,0],
-//         [1,0,0,1,1,1,2,2,2,1],
-//         [2,0,0,2,0,1,0,0,0,1]
-//
-//     ],
-//     nextPlayer: 1,
-//     streak:4,
-//     turns: 4
-// }
+
 
 
 E.board6_1 = {
@@ -146,6 +124,30 @@ E.board6_1_pruned = {
     winPath: [[[1,5],[2,5],[4,5]]],
     losePath: [[[1,4],[0,5]]],
     winMove: ['f5','F5','5F','5F']
+}
+
+E.board6_1_verify = {
+    canvasContainerDiv : "#canvas-container",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [0,1,0,2,0,0],
+        [0,2,1,1,0,0],
+        [1,2,2,2,1,0],
+        [2,0,1,1,2,1],
+        [1,0,2,2,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 2,
+    streak:4,
+    turns: 4,
+    firstMovrRow: '3',
+    firstMovrCol: '5',
+    winPath: [[[1,5],[2,5],[4,5]]],
+    losePath: [[[0,2],[1,4],[0,5]]],
+    winMove: ['f3','F3','3F','3F'],
+    firstMove: 'f3'
 }
 
 E.board6_1_10_5 = {
@@ -198,63 +200,33 @@ E.board6_1_10_5_pruned = {
     winMove: ['j9','J9','9j','9J']
 }
 
-E.board6_1_10 = {
+E.board6_1_10_5_verify = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
     ncols : 10,
     cellSize: 32,
     position: [
-        [0,0,0,0,0,1,0,2,0,0],
-        [0,0,0,1,0,2,1,1,0,0],
-        [0,2,0,2,1,2,2,2,1,0],
-        [0,0,2,1,2,0,1,1,2,0],
-        [0,0,0,1,0,0,2,2,0,0],
-        [0,2,1,0,0,0,0,0,0,0],
-        [0,2,2,0,0,0,0,0,0,0],
-        [0,1,2,0,0,0,0,0,0,0],
-        [2,1,1,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0]
-    ],
-    nextPlayer: 1,
-    streak:4,
-    turns: 4
-}
-
-E.board6_1_O = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 6,
-    ncols : 6,
-    cellSize: 46,
-    position: [
-        [0,2,0,1,0,0],
-        [0,1,2,2,0,0],
-        [2,1,1,1,2,0],
-        [1,0,2,2,1,0],
-        [2,0,1,1,0,0],
-        [0,0,0,0,0,0]
+        [0,0,0,0,1,0,2,0,0,0],
+        [0,0,0,0,2,1,1,1,0,0],
+        [0,0,0,1,2,2,2,1,0,0],
+        [0,0,0,2,2,1,1,2,1,1],
+        [2,0,0,1,0,2,2,0,0,1],
+        [1,0,0,0,0,0,0,0,0,0],
+        [1,1,0,0,0,0,0,0,0,0],
+        [2,2,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,0,1,0,0,0],
+        [0,0,0,0,0,2,2,2,0,0]
     ],
     nextPlayer: 2,
-	streak:4,
-	turns: 4
+    streak:5,
+    turns: 4,
+    firstMovrRow: '4',
+    firstMovrCol: '9',
+    winPath: [[[1,9],[2,9],[5,9]]],
+    losePath: [[[0,5],[1,8],[0,9]]],
+    winMove: ['j6','J6','6j','6J']
 }
 
-E.board6_2 = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 6,
-    ncols : 6,
-    cellSize: 46,
-    position: [
-        [0,2,0,0,1,0],
-        [0,2,0,2,0,0],
-        [0,1,0,0,0,0],
-        [0,1,0,0,0,0],
-        [0,1,0,0,0,0],
-        [0,2,0,0,2,0]
-    ],
-    nextPlayer: 1,
-    streak:4,
-    turns: 4
-}
 
 E.board6_2_b = {
     canvasContainerDiv : "#canvas-container",
@@ -298,31 +270,29 @@ E.board6_2_b_pruned = {
     winMove: ['c6','C6','6c','6C']
 }
 
-
-E.board10_2_b = {
+E.board6_2_b_verify = {
     canvasContainerDiv : "#canvas-container",
-    nrows : 10,
-    ncols : 10,
-    cellSize: 32,
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
     position: [
-        [0,2,0,0,1,0,0,0,0,0],
-        [0,2,1,2,0,0,0,0,0,0],
-        [0,1,0,0,0,0,0,0,0,0],
-        [0,1,0,2,0,0,0,2,1,0],
-        [0,1,0,0,0,0,0,0,2,1],
-        [0,2,0,0,2,0,0,0,2,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,1,2,0],
-        [0,0,0,0,0,0,0,0,1,0],
-        [0,0,0,0,0,0,1,0,0,2]
+        [0,2,0,1,1,0],
+        [0,2,1,2,0,0],
+        [0,1,0,0,0,0],
+        [0,1,0,2,0,0],
+        [0,1,0,0,0,0],
+        [0,2,0,0,2,0]
     ],
-    nextPlayer: 1,
+    nextPlayer: 2,
     streak:4,
     turns: 5,
-    winPath: [[[0,3],[0,2],[2,2],[2,3],[2,0]]],
+    firstMovrRow: '0',
+    firstMovrCol: '3',
+    winPath: [[[0,2],[2,2],[2,3],[2,0]]],
     losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    winMove: 'd6'
+    firstMove: ['d6','D6','6d','6D']
 }
+
 
 E.board10_2_b_5 = {
     canvasContainerDiv : "#canvas-container",
@@ -374,45 +344,31 @@ E.board10_2_b_5_pruned = {
     winMove: ['d8','D8','8d','8D']
 }
 
-E.board6_2_c = {
+E.board10_2_b_5_verify = {
     canvasContainerDiv : "#canvas-container",
-    nrows : 6,
-    ncols : 6,
-    cellSize: 46,
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
     position: [
-        [0,2,0,1,1,0],
-        [0,2,1,2,0,0],
-        [0,1,0,0,0,0],
-        [2,1,0,2,0,0],
-        [0,1,0,0,0,0],
-        [0,2,0,0,2,0]
-    ],
-    nextPlayer: 1,
-    streak:4,
-    turns: 4
-}
-
-E.board6_2_d = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 6,
-    ncols : 6,
-    cellSize: 46,
-    position: [
-        [0,2,0,1,1,0],
-        [0,2,1,2,0,0],
-        [0,1,0,0,0,0],
-        [0,1,0,2,0,0],
-        [0,1,0,0,0,0],
-        [0,2,0,0,2,0]
+        [0,0,0,2,0,0,0,0,0,0],
+        [0,0,0,1,0,2,0,0,0,0],
+        [0,2,2,0,1,1,1,0,2,0],
+        [0,0,2,1,2,0,0,0,0,0],
+        [0,1,1,0,0,0,0,0,0,0],
+        [0,1,1,0,2,0,0,0,0,0],
+        [0,0,1,0,2,0,0,0,0,0],
+        [0,0,1,0,0,0,0,0,0,0],
+        [0,0,2,0,0,2,2,0,0,0],
+        [0,0,0,0,1,0,0,0,0,0]
     ],
     nextPlayer: 2,
-    streak:4,
-    turns: 4,
-    firstMovrRow: '0',
-    firstMovrCol: '3',
-    winPath: [[[0,2],[2,2],[2,3],[2,0]]],
-    losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    firstMove: 'd6'
+    streak:5,
+    turns: 5,
+    firstMovrRow: '2',
+    firstMovrCol: '4',
+    winPath: [[[2,3],[4,3],[4,4],[4,5]]],
+    losePath: [[[6,0],[2,7],[5,3],[4,0]]],
+    winMove: ['e8','E8','8e','8E']
 }
 
 E.board10_1 = {
@@ -461,11 +417,11 @@ E.board10_1_pruned = {
     streak:5,
     turns: 3,
     winPath: [[[5,2],[4,2],[6,2]]],
-    losePath: [[[4,1],[1,2]]],
+    losePath: [[[3,5],[4,1],[1,2]]],
     winMove: ['c5','C5','5c','5C']
 }
 
-E.board10_1_O = {
+E.board10_1_verify = {
     canvasContainerDiv : "#canvas-container",
     nrows : 10,
     ncols : 10,
@@ -473,107 +429,26 @@ E.board10_1_O = {
     position: [
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
-        [0,0,2,0,0,1,0,0,0,0],
-        [0,0,0,2,2,0,0,0,0,0],
-        [0,0,0,0,1,1,1,2,1,0],
-        [0,0,0,0,0,2,1,1,0,0],
-        [0,0,0,2,0,1,0,0,0,0],
-        [0,0,0,0,2,2,0,0,0,0],
-        [0,0,0,0,0,2,0,0,0,0],
-        [0,0,0,0,0,0,1,0,0,0]
-    ],
-    nextPlayer: 2,
-    streak:5,
-    turns: 5
-}
-
-E.board10_1_five_steps = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 10,
-    ncols : 10,
-    cellSize: 32,
-    position: [
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,2,0,0,0,0,0,0,0,0],
-        [0,0,2,2,0,0,0,0,0,0],
-        [0,0,0,1,1,1,2,1,0,0],
-        [0,0,0,0,2,1,1,0,0,0],
-        [0,0,2,0,1,0,0,0,0,0],
-        [0,0,0,2,2,0,0,0,0,0],
-        [0,0,0,0,2,1,0,0,0,0],
-        [0,0,0,0,0,1,0,0,0,0]
-    ],
-    nextPlayer: 2,
-    streak:5,
-    turns: 5
-}
-
-E.board10_1_original = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 10,
-    ncols : 10,
-    cellSize: 32,
-    position: [
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0],
-        [0,0,2,0,0,1,0,0,0,0],
-        [0,0,0,2,2,0,0,0,0,0],
-        [0,0,0,0,1,1,1,2,1,0],
-        [0,0,0,0,0,2,1,1,0,0],
-        [0,0,0,2,0,1,0,0,0,0],
-        [0,0,0,0,2,2,0,0,0,0],
-        [0,0,0,0,0,2,0,0,0,0],
-        [0,0,0,0,0,0,1,0,0,0]
-    ],
-    nextPlayer: 2,
-    streak:4,
-    turns: 4
-}
-
-E.board10_2 = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 10,
-    ncols : 10,
-    cellSize: 32,
-    position: [
-        [0,0,0,2,0,1,0,0,0,0],
-        [0,0,0,0,0,2,0,0,0,0],
-        [0,0,2,0,0,2,0,0,0,0],
-        [0,0,0,0,1,1,0,0,0,0],
-        [0,0,2,0,0,1,1,1,2,0],
-        [2,1,0,0,2,1,2,0,0,0],
-        [1,0,0,0,0,1,2,2,0,0],
-        [0,0,0,0,0,2,0,0,0,0],
-        [0,0,0,1,1,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0]
-    ],
-    nextPlayer: 1,
-    streak:4,
-    turns: 4
-}
-
-E.board10_2_O = {
-    canvasContainerDiv : "#canvas-container",
-    nrows : 10,
-    ncols : 10,
-    cellSize: 32,
-    position: [
+        [0,0,1,0,0,2,0,0,0,0],
+        [0,0,1,1,1,0,0,0,0,0],
+        [0,0,0,0,2,2,2,1,2,0],
+        [0,0,0,0,0,1,2,2,0,0],
         [0,0,0,1,0,2,0,0,0,0],
+        [0,0,0,0,1,1,0,0,0,0],
         [0,0,0,0,0,1,0,0,0,0],
-        [0,0,1,0,0,1,0,0,0,0],
-        [0,0,0,0,2,2,0,0,0,0],
-        [0,0,1,0,0,2,2,2,1,0],
-        [1,2,0,0,1,2,1,0,0,0],
-        [2,0,0,0,0,2,1,1,0,0],
-        [0,0,0,0,0,1,0,0,0,0],
-        [0,0,0,2,2,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0,0,0]
+        [0,0,0,0,0,0,2,0,0,0]
     ],
     nextPlayer: 2,
-    streak:4,
-    turns: 4
+    streak:5,
+    turns: 4,
+    firstMovrRow: '3',
+    firstMovrCol: '2',
+    winPath: [[[5,2],[4,2],[6,2]]],
+    losePath: [[[3,5],[4,1],[1,2]]],
+    winMove: ['c7','C7','7c','7C']
 }
+
+
 
 E.configuration = {
     canvasContainerDiv : "#canvas-container",
@@ -643,52 +518,49 @@ function run_block() {
     if(tposition != undefined){
         // var position = ternaryToPosition(tposition, 6, 6)
         switch(tposition) {
-            case '1':
+            case '1f':
                 E.configuration = E.board6_1;
                 break;
-            case '1_p':
+            case '1p':
                 E.configuration = E.board6_1_pruned;
                 break;
-            case '1em':
-                E.configuration = E.board6_1_10;
+            case '1v':
+                E.configuration = E.board6_1_verify;
                 break;
-            case '1em5':
+            case '2f':
                 E.configuration = E.board6_1_10_5;
                 break;
-            case '1em5_p':
+            case '2p':
                 E.configuration = E.board6_1_10_5_pruned;
                 break;
-            case '2':
-                E.configuration = E.board6_2;
+            case '2v':
+                E.configuration = E.board6_1_10_5_verify;
                 break;
-            case '3':
+            case '3f':
                 E.configuration = E.board6_2_b;
-            case '3_p':
+            case '3p':
                 E.configuration = E.board6_2_b_pruned;
                 break;
-            case '3p':
-                E.configuration = E.board6_2_c;
+            case '3v':
+                E.configuration = E.board6_2_b_verify;
                 break;
-            case '3s':
-                E.configuration = E.board6_2_d;
-                break;
-            case '3em':
-                E.configuration = E.board10_2_b;
-                break;
-            case '3em5':
+            case '4f':
                 E.configuration = E.board10_2_b_5;
                 break;
-            case '3em5_p':
+            case '4p':
                 E.configuration = E.board10_2_b_5_pruned;
                 break;
-            case '4':
+            case '4v':
+                E.configuration = E.board10_2_b_5_verify;
+                break;
+            case '5f':
                 E.configuration = E.board10_1;
                 break;
-            case '4_p':
+            case '5p':
                 E.configuration = E.board10_1_pruned;
                 break;
-            case '5':
-                E.configuration = E.board10_2;
+            case '5v':
+                E.configuration = E.board10_1_verify;
                 break;
         }
     }
@@ -1014,7 +886,8 @@ function onContinue() {
 				E.startTime=msTime();
 				run_block();
 				// if (E.configuration.nextPlayer == 1) {
-                    $('.player').text('X');
+                $('.player').text('X');
+                $('.moves').text(E.configuration.turns);
 				// }
 				// else {
                  //    $('.player').text('O');
@@ -1035,6 +908,7 @@ function onContinue() {
                     $("#generalInstructions").hide()
                     $("#solve").hide()
                     $("#answerSolution").hide()
+                    $('.firstMove').text(E.configuration.winMove[0]);
                 }
 
 
@@ -1112,7 +986,15 @@ function onContinue() {
             for (i = 0;i<moves.length;i++) {
                 moveListText = moveListText + moves[i] + '<br>'
             }
+            if (moves.length == 0)
+            {
+                moveListText = 'You did not try any moves on the board.'
+            }
             $('#moves').html(moveListText)
+            if (E.condition!='solve')
+            {
+                $('#verifyNote').html('<br>Note that the computer already played the first move for the O player and it is now your turn.<br>');
+            }
 
             E.widget.reset();
             E.widget.simulate();
