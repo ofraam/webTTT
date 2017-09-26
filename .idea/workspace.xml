@@ -4,7 +4,6 @@
     <list default="true" id="9f00f0f8-4d15-4cc1-8804-38123a08fd01" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.html" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.js" afterPath="$PROJECT_DIR$/public_html/tictactoe/tictactoe.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,8 +48,8 @@
       <file leaf-file-name="tictactoe.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="330" column="66" selection-start-line="330" selection-start-column="66" selection-end-line="330" selection-end-column="66" />
+            <state relative-caret-position="161">
+              <caret line="311" column="37" selection-start-line="311" selection-start-column="37" selection-end-line="311" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
@@ -323,12 +322,12 @@
       <workItem from="1497365036997" duration="7957000" />
       <workItem from="1497442217797" duration="4302000" />
       <workItem from="1502914435553" duration="1030000" />
-      <workItem from="1506156849673" duration="24105000" />
+      <workItem from="1506156849673" duration="25224000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127215000" />
+    <option name="totallyTimeSpent" value="128334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1376" height="744" extended-state="0" />
@@ -727,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="330" column="66" selection-start-line="330" selection-start-column="66" selection-end-line="330" selection-end-column="66" />
+        <state relative-caret-position="161">
+          <caret line="311" column="37" selection-start-line="311" selection-start-column="37" selection-end-line="311" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#div#5;n#div#0;n#div#0;n#div#3;n#body#0;n#!!top" expanded="true" />
