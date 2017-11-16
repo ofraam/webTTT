@@ -291,7 +291,7 @@ E.board6_2_b_verify = {
     firstMovrCol: '3',
     winPath: [[[0,2],[2,2],[2,3],[2,0]]],
     losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    firstMove: ['d6','D6','6d','6D']
+    winMove: ['d6','D6','6d','6D']
 }
 
 
@@ -418,7 +418,7 @@ E.board10_1_pruned = {
     streak:5,
     turns: 3,
     winPath: [[[5,2],[4,2],[6,2]]],
-    losePath: [[[3,5],[4,1],[1,2]]],
+    losePath: [[[4,1],[1,2]]],
     winMove: ['c5','C5','5c','5C']
 }
 
@@ -504,8 +504,16 @@ function initialize_experiment() {
     {
         alert("no board specified!")
     }
+
+    if (tposition=='rand') {
+        var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
+        tposition = confs[Math.floor(Math.random()*confs.length)];
+        // alert(tposition)
+    }
         // var position = ternaryToPosition(tposition, 6, 6)
     switch(tposition) {
+
+
         case '1f':
             E.configuration = E.board6_1;
             E.condition = "full";
@@ -548,6 +556,7 @@ function initialize_experiment() {
             E.condition = "full";
             E.difficulty = "hard";
             E.size = 6;
+            break;
         case '3p':
             E.configuration = E.board6_2_b_pruned;
             E.condition = "pruned";
@@ -824,7 +833,7 @@ function onContinue() {
 	//blank all pages
 	$(".page").hide();
 
-    E.size = getUrlVars()['size']
+    // E.size = getUrlVars()['size']
 
 	//run_block()
 	//$("#experiment.page").show()
@@ -848,7 +857,7 @@ function onContinue() {
 			submit_demographics();
 			E.startTime=msTime();
 			$("#instructions.page").show()
-            if (E.size == '6') {
+            if (E.size == 6) {
                 $(".10by10").hide();
                 E.board_practice = E.board6_practice
             }
@@ -1020,7 +1029,7 @@ function onContinue() {
             }
             if (moves.length == 0)
             {
-                moveListText = 'You did not try any moves on the board.'
+                moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
             }
             $('#moves').html(moveListText)
             if (E.condition=='verify')

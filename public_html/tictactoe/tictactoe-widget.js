@@ -3,23 +3,24 @@
 function TictactoeWidget(init){
 	
 	var canvasContainerDiv = init.canvasContainerDiv
+
+	var nrows = init.nrows;
+	var ncols = init.ncols;
 	
-	var nrows = init.nrows
-	var ncols = init.ncols
-	
-	var cellSize = init.cellSize
+	var cellSize = init.cellSize;
 	
 	var startPosition = init.position;
 	var position = startPosition.dcopy();
-	var nextPlayer = init.nextPlayer
+	var nextPlayer = init.nextPlayer;
 
-	var moveCounter = 0
-	var lastMoveRow = -1
-	var lastMoveCol = -1
+	var moveCounter = 0;
+	var lastMoveRow = -1;
+	var lastMoveCol = -1;
 
-	var practice = false
+	var practice = false;
 
-	var canvas = '#canvas'
+	var canvas = '#canvas';
+
 
 
     if (typeof(init.practice)!=undefined) {
@@ -141,11 +142,13 @@ function TictactoeWidget(init){
 		for (pathIndex=0;pathIndex<winPath.length;pathIndex++) {
 			var path = winPath[pathIndex];
         	var currMoveOnPath = path[turnInWin]
-			if (cell.row == currMoveOnPath[0] && cell.col == currMoveOnPath[1]) { //valid move on winning path
-				indexWinPath = pathIndex
-                servlog('simCorrectMove', indexWinPath+"_"+turnInWin)
-				turnInWin++
-				break;
+			if (currMoveOnPath!=undefined) {
+				if (cell.row == currMoveOnPath[0] && cell.col == currMoveOnPath[1]) { //valid move on winning path
+					indexWinPath = pathIndex
+					servlog('simCorrectMove', indexWinPath+"_"+turnInWin)
+					turnInWin++
+					break;
+				}
 			}
 		}
 
@@ -172,11 +175,17 @@ function TictactoeWidget(init){
 
 		if (indexWinPath > -1) {
 			var pathLoser = losePath[indexWinPath];
-			var suggestedMove = pathLoser[turnInLose];
-			if (position[suggestedMove[0]][suggestedMove[1]]==0) {
-                currMoveOnLosingPath = pathLoser[turnInLose];
+			if (turnInLose < pathLoser.length) {
+				var suggestedMove = pathLoser[turnInLose];
+				if (position[suggestedMove[0]][suggestedMove[1]]==0) {
+					currMoveOnLosingPath = pathLoser[turnInLose];
+				}
+				turnInLose++;
 			}
-            turnInLose++;
+			// else
+			// {
+			// 	alert("Good job, you won!")
+			// }
 		}
 
         position[currMoveOnLosingPath[0]][currMoveOnLosingPath[1]] = nextPlayer;
@@ -479,6 +488,10 @@ function TictactoeWidget(init){
         if (practice == true) {
             reset = reset.concat('_practice');
         }
+
+		if (sim) {
+			reset = reset.concat('_sim');
+		}
 
 		servlog(reset, position)
 	}
