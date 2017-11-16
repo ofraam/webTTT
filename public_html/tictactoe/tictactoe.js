@@ -8,9 +8,10 @@ E = {}
 E.startTime = 0
 E.endTime = 0
 E.debugMode = false
-E.condition = 'solve'
+E.condition = ''
 E.timerDone = false
 E.solvedCorrect = false;
+E.difficulty = "easy";
 
 
 E.board6_practice = {
@@ -491,13 +492,121 @@ function initialize_experiment() {
 
 	E.userid = initialize_userid();
 	servlog("new_user", E.userid)
-  	E.position = getPosition();
     var debug = getUrlVars()['debug']
     if (debug == '1') {
         E.debugMode = true
     }
+
+    var tposition = getUrlVars()['board']
+    // alert(tposition)
+    E.configuration = E.board6_1;
+    if (tposition == undefined)
+    {
+        alert("no board specified!")
+    }
+        // var position = ternaryToPosition(tposition, 6, 6)
+    switch(tposition) {
+        case '1f':
+            E.configuration = E.board6_1;
+            E.condition = "full";
+            E.difficulty = "easy";
+            E.size = 6;
+            break;
+        case '1p':
+            E.configuration = E.board6_1_pruned;
+            E.condition = "pruned";
+            E.difficulty = "easy";
+            E.size = 6;
+            break;
+        case '1v':
+            E.configuration = E.board6_1_verify;
+            E.condition = "verify";
+            E.difficulty = "easy";
+            E.size = 6;
+            break;
+
+        case '2f':
+            E.configuration = E.board6_1_10_5;
+            E.condition = "full";
+            E.difficulty = "easy";
+            E.size = 10;
+            break;
+        case '2p':
+            E.configuration = E.board6_1_10_5_pruned;
+            E.condition = "pruned";
+            E.difficulty = "easy";
+            E.size = 10;
+            break;
+        case '2v':
+            E.configuration = E.board6_1_10_5_verify;
+            E.condition = "verify";
+            E.difficulty = "easy";
+            E.size = 10;
+            break;
+        case '3f':
+            E.configuration = E.board6_2_b;
+            E.condition = "full";
+            E.difficulty = "hard";
+            E.size = 6;
+        case '3p':
+            E.configuration = E.board6_2_b_pruned;
+            E.condition = "pruned";
+            E.difficulty = "hard";
+            E.size = 6;
+            break;
+        case '3v':
+            E.configuration = E.board6_2_b_verify;
+            E.condition = "verify";
+            E.difficulty = "hard";
+            E.size = 6;
+            break;
+        case '4f':
+            E.configuration = E.board10_2_b_5;
+            E.condition = "full";
+            E.difficulty = "hard";
+            E.size = 10;
+            break;
+        case '4p':
+            E.configuration = E.board10_2_b_5_pruned;
+            E.condition = "pruned";
+            E.difficulty = "hard";
+            E.size = 10;
+            break;
+        case '4v':
+            E.configuration = E.board10_2_b_5_verify;
+            E.condition = "verify";
+            E.difficulty = "hard";
+            E.size = 10;
+            break;
+        case '5f':
+            E.configuration = E.board10_1;
+            E.condition = "full";
+            E.difficulty = "medium";
+            E.size = 10;
+            break;
+        case '5p':
+            E.configuration = E.board10_1_pruned;
+            E.condition = "pruned";
+            E.difficulty = "medium";
+            E.size = 10;
+            break;
+        case '5v':
+            E.configuration = E.board10_1_verify;
+            E.condition = "verify";
+            E.difficulty = "medium";
+            E.size = 10;
+            break;
+    }
+
+
+
 	// alert(E.position)
-  	servlog("start_position",E.position)
+    servlog("experimentalCondition", E.size+"_"+E.condition+"_"+E.difficulty);
+    servlog("boardSize", E.size);
+    servlog("difficulty", E.difficulty);
+    servlog("condition",E.condition);
+
+  	servlog("start_position",E.configuration);
 }
 
 
@@ -512,73 +621,9 @@ function onCheckbox() {
 
 
 function run_block() {
-    var tposition = getUrlVars()['board']
-    // alert(tposition)
-    E.configuration = E.board6_1;
-    if(tposition != undefined){
-        // var position = ternaryToPosition(tposition, 6, 6)
-        switch(tposition) {
-            case '1f':
-                E.configuration = E.board6_1;
-                break;
-            case '1p':
-                E.configuration = E.board6_1_pruned;
-                break;
-            case '1v':
-                E.configuration = E.board6_1_verify;
-                break;
-            case '2f':
-                E.configuration = E.board6_1_10_5;
-                break;
-            case '2p':
-                E.configuration = E.board6_1_10_5_pruned;
-                break;
-            case '2v':
-                E.configuration = E.board6_1_10_5_verify;
-                break;
-            case '3f':
-                E.configuration = E.board6_2_b;
-            case '3p':
-                E.configuration = E.board6_2_b_pruned;
-                break;
-            case '3v':
-                E.configuration = E.board6_2_b_verify;
-                break;
-            case '4f':
-                E.configuration = E.board10_2_b_5;
-                break;
-            case '4p':
-                E.configuration = E.board10_2_b_5_pruned;
-                break;
-            case '4v':
-                E.configuration = E.board10_2_b_5_verify;
-                break;
-            case '5f':
-                E.configuration = E.board10_1;
-                break;
-            case '5p':
-                E.configuration = E.board10_1_pruned;
-                break;
-            case '5v':
-                E.configuration = E.board10_1_verify;
-                break;
-        }
-    }
 
-    servlog('condition',E.condition)
-    servlog('board', tposition)
-
-
-
-
-	 // var init = {
-	 // 	canvasContainerDiv : "#canvas-container",
-	 // 	nrows : 6,
-	 // 	ncols : 6,
-	 // 	cellSize: 46,
-	 // 	position: E.position,
-	 // 	nextPlayer: 2
-	 // }
+    // servlog('condition',E.condition)
+    servlog('board', E.configuration);
 
     E.widget.reset();
 	 
@@ -589,56 +634,17 @@ function run_block() {
 }
 
 function init_practice() {
-    var cond = getUrlVars()['cond']
-    if (cond=='v') {
-        E.condition='verify'
-    }
+    // var cond = getUrlVars()['cond']
+    // if (cond=='v') {
+    //     E.condition='verify'
+    // }
 
     E.widget = new TictactoeWidget(E.board_practice)
     E.widget.run()
 }
 
 
- function getPosition()
- {
-  	var tposition = getUrlVars()['board']
-	// alert(tposition)
-     var position = E.board6_1;
- 	if(tposition != undefined){
- 		// var position = ternaryToPosition(tposition, 6, 6)
-        switch(tposition) {
-			case '1':
-				position = E.board6_1;
-				break;
-            case '2':
-                position = E.board6_2;
-                break;
-            case '3':
-                position = E.board6_2_b;
-                break;
-            case '4':
-                position = E.board10_1;
-                break;
-            case '5':
-                position = E.board10_2;
-                break;
-        }
- 	}
- 	else{
-	 	 position = [
-	 		[0,2,0,1,0,0],
-	 		[0,1,2,2,0,0],
-	 		[2,1,1,1,2,0],
-	 		[1,0,2,2,1,0],
-	 		[2,0,1,1,0,0],
-	 		[0,0,0,0,0,0]		
-	 	]  		
- 	}
- 	// alert(position)
- 	return position	
- }
- 
- 
+
  function ternaryToPosition(tern, nrows, ncols){
 
 	var position = []
@@ -757,7 +763,7 @@ function submit_solution() {
         servlog("verification_answer", ver);
 	// }
 
-    if (E.condition == "solve") {
+    if (E.condition=="full" | E.condition=="pruned") {
         // alert(move)
         if (E.configuration.winMove.indexOf(move) > -1)
         {
@@ -867,7 +873,7 @@ function onContinue() {
             init_practice();
 
 			$("#quiz.page").show()
-            if (E.condition=="solve") {
+            if (E.condition=="full" | E.condition=="pruned") {
 			    $('#exampleVerify').hide()
             }
             else {
@@ -903,7 +909,7 @@ function onContinue() {
 				$('#play').hide();
                 $("#explanation").hide()
 				$('#timerFinal').hide()
-                if (E.condition=='solve') {
+                if (E.condition=="full" | E.condition=="pruned") {
 				    $("#verify").hide()
                     $("#generalInstructionsVerify").hide()
                     $("#answerVerification").hide()
@@ -979,7 +985,7 @@ function onContinue() {
 			// submit_solution();
 
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
-                if (E.condition=='solve') {
+                if (E.condition=="full" | E.condition=="pruned") {
                     alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
                         "receive a verification code to paste in your HIT submission.");
                 }
@@ -1017,7 +1023,7 @@ function onContinue() {
                 moveListText = 'You did not try any moves on the board.'
             }
             $('#moves').html(moveListText)
-            if (E.condition!='solve')
+            if (E.condition=='verify')
             {
                 $('#verifyNote').html('<br>Note that the computer already played the first move for the O player and it is now your turn.<br>');
             }

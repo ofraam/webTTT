@@ -616,7 +616,6 @@ function initialize_experiment() {
 
 	E.userid = initialize_userid();
 	servlog("new_user", E.userid)
-  	E.position = getPosition();
     var debug = getUrlVars()['debug']
     if (debug == '1') {
         E.debugMode = true
@@ -727,46 +726,7 @@ function init_practice() {
 }
 
 
- function getPosition()
- {
-  	var tposition = getUrlVars()['board']
-	// alert(tposition)
-     var position = E.board6_1;
- 	if(tposition != undefined){
- 		// var position = ternaryToPosition(tposition, 6, 6)
-        switch(tposition) {
-			case '1':
-				position = E.board6_1;
-				break;
-            case '2':
-                position = E.board6_2;
-                break;
-            case '3':
-                position = E.board6_2_b;
-                break;
-            case '4':
-                position = E.board10_1;
-                break;
-            case '5':
-                position = E.board10_2;
-                break;
-        }
- 	}
- 	else{
-	 	 position = [
-	 		[0,2,0,1,0,0],
-	 		[0,1,2,2,0,0],
-	 		[2,1,1,1,2,0],
-	 		[1,0,2,2,1,0],
-	 		[2,0,1,1,0,0],
-	 		[0,0,0,0,0,0]		
-	 	]  		
- 	}
- 	// alert(position)
- 	return position	
- }
- 
- 
+
  function ternaryToPosition(tern, nrows, ncols){
 
 	var position = []
