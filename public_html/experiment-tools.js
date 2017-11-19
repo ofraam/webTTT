@@ -62,7 +62,7 @@ function get_timestr(){
 	return timestr; 	
 }
 
-function servlog(key, value){
+function servlog_old(key, value){
 	//global experiment
 	//global logger_url
 	// alert('servlog')
@@ -82,12 +82,13 @@ function servlog(key, value){
 	// alert('after post')
 }
 
-function servlogfinal(){
+function servlog(key, value){
 	var timestr = get_timestr();
 	var time = msTime();
 	var jsonValue = JSON.stringify(value);
+
 	conlog(key +":" +jsonValue)
-	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, userid: E.userid };
+	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, expCondition:E.condition, boardSize:E.boardSize, board:E.difficulty, userid:E.userid };
 	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
 
 	function onSuccess(data){

@@ -28,6 +28,20 @@ class XKeyValue(Entity):
         return '<userid: "%s", key: "%s">' % (self.userid, self.key) 
 
 
+class XKeyValueNew(Entity):
+    using_options(tablename='keyvalue2')
+
+    userid = Field(VARCHAR(32))
+    clientTime = Field(VARCHAR(32))
+    key = Field(VARCHAR(32))
+    value = Field(VARCHAR(1024))
+    boardSize = Field(VARCHAR(32))
+    expCondition = Field(VARCHAR(32))
+    board = Field(VARCHAR(32))
+
+    def __repr__(self):
+        return '<userid: "%s", key: "%s">' % (self.userid, self.key)
+
 
 
 

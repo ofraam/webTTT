@@ -496,7 +496,7 @@ function initialize_experiment() {
 	
 
 	E.userid = initialize_userid();
-	servlog("new_user", E.userid)
+
     var debug = getUrlVars()['debug']
     if (debug == '1') {
         E.debugMode = true
@@ -513,7 +513,7 @@ function initialize_experiment() {
     if (tposition=='rand') {
         var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
         tposition = confs[Math.floor(Math.random()*confs.length)];
-        alert(tposition)
+        // alert(tposition)
     }
         // var position = ternaryToPosition(tposition, 6, 6)
     switch(tposition) {
@@ -615,6 +615,7 @@ function initialize_experiment() {
 
 
 	// alert(E.position)
+    servlog("new_user", E.userid)
     servlog("experimentalCondition", E.size+"_"+E.condition+"_"+E.difficulty);
     servlog("boardSize", E.size);
     servlog("difficulty", E.difficulty);

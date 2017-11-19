@@ -32,6 +32,17 @@ def logEvent():
     xkv = XKeyValue(userid=userid, key=key, value=value, clientTime=clientTime)
     reply("Event logged: " + key)
 
+def logNewEventTest():
+    userid = getQueryArgument("userid")
+    key = getQueryArgument("key")
+    value = getQueryArgument("value")
+    boardSize = getQueryArgument("boardSize")
+    expCondition = getQueryArgument("expCondition")
+    board = getQueryArgument("board")
+    clientTime = getQueryArgument("time")
+
+    xkv = XKeyValueNew(userid=userid, key=key, value=value, expCondition=expCondition, boardSize=boardSize, board=board, clientTime=clientTime)
+    reply("Event logged: " + key)
 
 def reply(status, data='nodata'):
     print "Content-Type: text/plain\n"
@@ -52,7 +63,7 @@ def main():
     try:
         requestType = getQueryArgument('reqType')
         if requestType == "logEvent":
-            logEvent()
+            logNewEventTest()
         else:
             abort400("unknown request type: " + requestType)
 
