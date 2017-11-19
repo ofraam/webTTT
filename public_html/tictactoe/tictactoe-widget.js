@@ -91,7 +91,7 @@ function TictactoeWidget(init){
 		//moveSound.play();
 		
 		position[cell.row][cell.col] = nextPlayer;
-		positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer
+		positionPlayer =  cell.row +'_' +  cell.col + '_' + nextPlayer
 
 		var clickKey = 'click'
 		var clickPosKey = 'clickPos'
@@ -135,7 +135,7 @@ function TictactoeWidget(init){
         //moveSound.play();
 
         position[cell.row][cell.col] = nextPlayer;
-        var positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer;
+        var positionPlayer =  cell.row +'_' + cell.col + '_' + nextPlayer;
 
         var clickKey = 'click_sim';
         var clickPosKey = 'clickPos_sim';
@@ -196,7 +196,7 @@ function TictactoeWidget(init){
 		}
 
         position[currMoveOnLosingPath[0]][currMoveOnLosingPath[1]] = nextPlayer;
-        positionPlayer = 'row:' + currMoveOnLosingPath[0] +'_' + 'col:' + currMoveOnLosingPath[1] + '_' + nextPlayer;
+        positionPlayer =   currMoveOnLosingPath[0] +'_'  + currMoveOnLosingPath[1] + '_' + nextPlayer;
 
         servlog(clickKey, position)
         servlog(clickPosKey, positionPlayer)
@@ -544,7 +544,7 @@ function TictactoeWidget(init){
 		drawSymbols();
 		drawMoves();
 
-        positionPlayer = 'row:' + row +'_' + 'col:' + col + '_' + nextPlayer;
+        positionPlayer =  row +'_' +  col + '_' + nextPlayer;
 
 		flipNextPlayer();
 
