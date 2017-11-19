@@ -58,9 +58,9 @@ def logFinalData():
     clientTime = getQueryArgument("time")
 
 
-    xkv = XKeyValueNew(userid=userid, key="TEsting", value="VAL", expCondition=expCondition, boardSize=boardSize, board=board, clientTime=clientTime)
+    #xkv = XKeyValueNew(userid=userid, key="TEsting", value="VAL", expCondition=expCondition, boardSize=boardSize, board=board, clientTime=clientTime)
 
-    #xkv = XKeyValueFinal(userid=userid, key=key, value=value, expCondition=expCondition, boardSize=boardSize,board=board,solvedCorrect=solvedCorrect,validatedCorrect=validatedCorrect, numActionsSolve=numActionsSolve,numActionsValidate=numActionsValidate, timeSolution=timeSolution, timeValidate=timeValidate, clientTime=clientTime)
+    xkv = XKeyValueFinal(userid=userid, expCondition=expCondition, boardSize=boardSize,board=board,solvedCorrect=solvedCorrect,validatedCorrect=validatedCorrect, numActionsSolve=numActionsSolve,numActionsValidate=numActionsValidate, timeSolution=timeSolution, timeValidate=timeValidate, clientTime=clientTime)
     reply("Event logged: " + "final")
 
 def reply(status, data='nodata'):
