@@ -511,7 +511,8 @@ function initialize_experiment() {
     }
 
     if (tposition=='rand') {
-        var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
+        // var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
+        var confs = ['1v', '2v','3v','4v','5v'];
         tposition = confs[Math.floor(Math.random()*confs.length)];
         // alert(tposition)
     }
