@@ -111,6 +111,8 @@ function TictactoeWidget(init){
 		lastMoveRow = cell.row
         undoList.push([cell.row, cell.col])
 
+		E.actionsSolve = E.actionsSolve + 1;
+
 		drawSymbols();
         drawMoves();
 
@@ -133,28 +135,33 @@ function TictactoeWidget(init){
         //moveSound.play();
 
         position[cell.row][cell.col] = nextPlayer;
-        var positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer
+        var positionPlayer = 'row:' + cell.row +'_' + 'col:' + cell.col + '_' + nextPlayer;
 
-        var clickKey = 'click_sim'
-        var clickPosKey = 'clickPos_sim'
+        var clickKey = 'click_sim';
+        var clickPosKey = 'clickPos_sim';
 
 		//check if move is on the one of the winning paths
 		for (pathIndex=0;pathIndex<winPath.length;pathIndex++) {
 			var path = winPath[pathIndex];
-        	var currMoveOnPath = path[turnInWin]
+        	var currMoveOnPath = path[turnInWin];
 			if (currMoveOnPath!=undefined) {
 				if (cell.row == currMoveOnPath[0] && cell.col == currMoveOnPath[1]) { //valid move on winning path
-					indexWinPath = pathIndex
-					servlog('simCorrectMove', indexWinPath+"_"+turnInWin)
-					turnInWin++
+					indexWinPath = pathIndex;
+					servlog('simCorrectMove', indexWinPath+"_"+turnInWin);
+					turnInWin++;
+					if (turnInWin == path.length) {
+						servlog('validatedCorrectly', true);
+						E.validation = true;
+					}
 					break;
 				}
 			}
 		}
 
 
-        servlog(clickKey, position)
-        servlog(clickPosKey, positionPlayer)
+        servlog(clickKey, position);
+        servlog(clickPosKey, positionPlayer);
+		E.actionsValidation = E.actionsValidation + 1;
 
 
         flipNextPlayer()

@@ -4,7 +4,7 @@
 logger_url = "../logger/logger.py"
 experiment = "tictactoe"
 
-E = {}
+// E = {}
 E.startTime = 0
 E.endTime = 0
 E.debugMode = false
@@ -12,6 +12,11 @@ E.condition = ''
 E.timerDone = false
 E.solvedCorrect = false;
 E.difficulty = "easy";
+E.validation = false;
+E.actionsSolve = 0;
+E.actionsValidation = 0;
+E.solutionTime = 0;
+E.validationTime = 0;
 
 
 E.board6_practice = {
@@ -508,7 +513,7 @@ function initialize_experiment() {
     if (tposition=='rand') {
         var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
         tposition = confs[Math.floor(Math.random()*confs.length)];
-        // alert(tposition)
+        alert(tposition)
     }
         // var position = ternaryToPosition(tposition, 6, 6)
     switch(tposition) {
@@ -701,7 +706,8 @@ function show_page_real()
 }
 
 function show_page_final(){
-			$("#final.page").show()	
+
+    $("#final.page").show()
 
 	$("#btnContinue").hide()
 	showCode();	
@@ -975,11 +981,12 @@ function onContinue() {
 
         case 6:
             E.endTime=msTime();
-            var timeSolution = E.endTime-E.startTime
+            var timeSolution = E.endTime-E.startTime;
+            E.solutionTime = timeSolution;
             servlog("timeSolution", timeSolution);
             submit_solution();
-            $("#explain.page").show()
-            $("#explanation").show()
+            $("#explain.page").show();
+            $("#explanation").show();
             E.startTime = msTime();
             break;
 
@@ -988,7 +995,7 @@ function onContinue() {
 			// show_page_real();
 
 			E.endTime=msTime();
-			var timeStrategy = E.endTime-E.startTime
+			var timeStrategy = E.endTime-E.startTime;
 			servlog("timeStrategy", timeStrategy);
             submit_strategy();
 			// submit_solution();
@@ -1006,24 +1013,24 @@ function onContinue() {
                 return;
             }
 
-            $("#experiment.page").show()
-            $("#timer").hide()
-            $("#verify").hide()
-            $("#generalInstructionsVerify").hide()
-            $("#answerVerification").hide()
-            $("#generalInstructions").hide()
-            $("#solve").hide()
-            $("#answerSolution").hide()
-            $('#playGameInstructions').show();
-            $("#timerFinal").show()
-            $("#play").show()
-            $("#moves").show()
-            $('#confidenceQuestion').hide()
-            $("#explanation").hide()
+            $("#experiment.page").show();
+            $("#timer").hide();
+            $("#verify").hide();
+            $("#generalInstructionsVerify").hide();
+            $("#answerVerification").hide();
+            $("#generalInstructions").hide();
+            $("#solve").hide();
+            $("#answerSolution").hide();
+            $('#playGameInstructions').show();;
+            $("#timerFinal").show();
+            $("#play").show();
+            $("#moves").show();
+            $('#confidenceQuestion').hide();
+            $("#explanation").hide();
 
 
-            var moves = E.widget.generateMoveList()
-            var moveListText = ''
+            var moves = E.widget.generateMoveList();
+            var moveListText = '';
             for (i = 0;i<moves.length;i++) {
                 moveListText = moveListText + moves[i] + '<br>'
             }
@@ -1031,7 +1038,7 @@ function onContinue() {
             {
                 moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
             }
-            $('#moves').html(moveListText)
+            $('#moves').html(moveListText);
             if (E.condition=='verify')
             {
                 $('#verifyNote').html('<br>Note that the computer already played the first move for the O player and it is now your turn.<br>');
@@ -1086,19 +1093,23 @@ function onContinue() {
 
 
 			// suggest_solution();
-
+            E.startTime = msTime();
 			break;
 			
 		case 8:
 			// log_vote();
-            E.timerDone = true
-			E.endTime = msTime()
-            var timeGame = E.endTime-E.startTime
+            E.timerDone = true;
+			E.endTime = msTime();
+            E.validationTime = E.endTime-E.startTime;
             // submit_solution();
-            servlog("timeGame", timeGame);
+            servlog("validationTime", E.validationTime);
 			// var timeVote = E.endTime - E.startTime
 			// servlog("timeVote", timeVote)
-			show_page_final()	
+
+            //store final summative info
+            
+
+            show_page_final()
 
 	}
 }

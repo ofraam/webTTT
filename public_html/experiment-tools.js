@@ -82,6 +82,23 @@ function servlog(key, value){
 	// alert('after post')
 }
 
+function servlogfinal(){
+	var timestr = get_timestr();
+	var time = msTime();
+	var jsonValue = JSON.stringify(value);
+	conlog(key +":" +jsonValue)
+	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, userid: E.userid };
+	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
+
+	function onSuccess(data){
+		conlog('posted to server')
+
+	}
+	// alert('before post')
+	$.post( logger_url, messageObject,onSuccess);
+	// alert('after post')
+}
+
  
  
  function fconlog(data){
