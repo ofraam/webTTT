@@ -61,7 +61,7 @@ def logFinalData():
     #xkv = XKeyValueNew(userid=userid, key="TEsting", value="VAL", expCondition=expCondition, boardSize=boardSize, board=board, clientTime=clientTime)
 
     #xkv = XKeyValueFinal(userid=userid, expCondition=expCondition, boardSize=boardSize,board=board,solvedCorrect=solvedCorrect,validatedCorrect=validatedCorrect, numActionsSolve=numActionsSolve,numActionsValidate=numActionsValidate, timeSolution=timeSolution, timeValidate=timeValidate, clientTime=clientTime)
-    xkv = XKeyValueFinal(userid=userid, expCondition="a", boardSize="b",board="c", solvedCorrect="d", validatedCorrect="e", numActionsSolve="f", numActionsValidate="g", timeSolution="h", timeValidate="i", clientTime=clientTime)
+    xkv = XKeyValueFinal(userid=userid, expCondition="a", boardSize="b",board="c", solvedCorrect="d", validatedCorrect="e", numActionsSolve="f", numActionsValidate="g", timeSolution="h", timeValidation="i", clientTime=clientTime)
     reply("Event logged: " + "final")
 
 def reply(status, data='nodata'):

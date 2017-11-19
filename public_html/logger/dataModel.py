@@ -53,7 +53,7 @@ class XKeyValueFinal(Entity):
     solvedCorrect=Field(VARCHAR(32))
     validatedCorrect=Field(VARCHAR(32))
     numActionsSolve=Field(VARCHAR(32))
-    numActionsValidate=Field(VARCHAR(32))
+    numActionsValidation=Field(VARCHAR(32))
     timeValidate=Field(VARCHAR(32))
     timeSolution=Field(VARCHAR(32))
 
