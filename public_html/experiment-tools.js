@@ -103,6 +103,7 @@ function servlog(key, value){
 }
 
 function servlogFinal(){
+	alert("in servlog final")
 	var timestr = get_timestr();
 	var time = msTime();
 	// var jsonValue = JSON.stringify(value);
@@ -119,6 +120,7 @@ function servlogFinal(){
 	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
 
 	function onSuccess(data){
+		alert("in servlog final - posted")
 		conlog('posted to server')
 
 	}
