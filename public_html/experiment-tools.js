@@ -86,7 +86,7 @@ function servlog(key, value){
 	var timestr = get_timestr();
 	var time = msTime();
 	var jsonValue = JSON.stringify(value);
-	var jsonBoardSize = parseInt(E.boardSize);
+	var jsonBoardSize = parseInt(E.size);
 
 	conlog(key +":" +jsonValue)
 	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, expCondition:E.condition, boardSize:jsonBoardSize, board:E.difficulty, userid:E.userid };
