@@ -42,7 +42,24 @@ class XKeyValueNew(Entity):
     def __repr__(self):
         return '<userid: "%s", key: "%s">' % (self.userid, self.key)
 
+class XKeyValueFinal(Entity):
+    using_options(tablename='tttResults')
 
+    userid = Field(VARCHAR(32))
+    clientTime = Field(VARCHAR(32))
+    boardSize = Field(VARCHAR(32))
+    expCondition = Field(VARCHAR(32))
+    board = Field(VARCHAR(32))
+    solvedCorrect=Field(VARCHAR(32))
+    validatedCorrect=Field(VARCHAR(32))
+    numActionsSolve=Field(VARCHAR(32))
+    numActionsValidate=Field(VARCHAR(32))
+    timeValidate=Field(VARCHAR(32))
+    timeSolution=Field(VARCHAR(32))
+
+
+    def __repr__(self):
+        return '<userid: "%s", key: "%s">' % (self.userid, self.key)
 
 
 def elixirConnect(credentials,dbname):

@@ -90,7 +90,7 @@ function servlog(key, value){
 
 	conlog(key +":" +jsonValue)
 	var messageObject = {reqType: "logEvent", experiment: experiment, time:time, key: key, value:jsonValue, expCondition:E.condition, boardSize:jsonBoardSize, board:E.difficulty, userid:E.userid };
-	alert(messageObject)
+	// alert(messageObject)
 	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
 
 	function onSuccess(data){
@@ -101,6 +101,33 @@ function servlog(key, value){
 	$.post( logger_url, messageObject,onSuccess);
 	// alert('after post')
 }
+
+function servlogFinal(){
+	var timestr = get_timestr();
+	var time = msTime();
+	// var jsonValue = JSON.stringify(value);
+	var jsonBoardSize = parseInt(E.size);
+	var numActionsSolve = parseInt(E.actionsSolve);
+	var numActionsValidation = parseInt(E.actionsValidation);
+	// conlog(key +":" +jsonValue)
+	var messageObject = {reqType: "logEventFinal", experiment: experiment, time:time, expCondition:E.condition,
+		boardSize:jsonBoardSize, board:E.difficulty, userid:E.userid, solvedCorrect:E.solvedCorrect,
+		validatedCorrect:E.validation, numActionsSolve:numActionsSolve, numActionsValidate:numActionsValidation,
+		timeSolution:E.solutionTime,timeValidate:E.validationTime
+	};
+	// alert(messageObject)
+	conlog('servlog: ' + JSON.stringify(messageObject).length + ' bytes');
+
+	function onSuccess(data){
+		conlog('posted to server')
+
+	}
+	// alert('before post')
+	$.post( logger_url, messageObject,onSuccess);
+	// alert('after post')
+}
+
+
 
  
  

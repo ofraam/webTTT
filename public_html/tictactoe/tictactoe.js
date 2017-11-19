@@ -1108,9 +1108,9 @@ function onContinue() {
 			// servlog("timeVote", timeVote)
 
             //store final summative info
-            
 
-            show_page_final()
+            servlogFinal();
+            show_page_final();
 
 	}
 }

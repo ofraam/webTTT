@@ -44,6 +44,25 @@ def logNewEventTest():
     xkv = XKeyValueNew(userid=userid, key=key, value=value, expCondition=expCondition, boardSize=boardSize, board=board, clientTime=clientTime)
     reply("Event logged: " + key)
 
+def logFinalData():
+    userid = getQueryArgument("userid")
+    solvedCorrect = getQueryArgument("solvedCorrect")
+    validatedCorrect = getQueryArgument("validatedCorrect")
+    numActionsSolve = getQueryArgument("numActionsSolve")
+    numActionsValidate = getQueryArgument("numActionsValidate")
+    timeSolution = getQueryArgument("timeSolution")
+    timeValidate = getQueryArgument("timeValidate")
+    boardSize = getQueryArgument("boardSize")
+    expCondition = getQueryArgument("expCondition")
+    board = getQueryArgument("board")
+    clientTime = getQueryArgument("time")
+
+
+    xkv = XKeyValueFinal(userid=userid, key=key, value=value, expCondition=expCondition, boardSize=boardSize,
+    board=board,solvedCorrect=solvedCorrect,validatedCorrect=validatedCorrect, numActionsSolve=numActionsSolve,
+    numActionsValidate=numActionsValidate, timeSolution=timeSolution, timeValidate=timeValidate, clientTime=clientTime)
+    reply("Event logged: " + key)
+
 def reply(status, data='nodata'):
     print "Content-Type: text/plain\n"
 
@@ -64,6 +83,8 @@ def main():
         requestType = getQueryArgument('reqType')
         if requestType == "logEvent":
             logNewEventTest()
+        elif requestType == "logEventFinal":
+            logFinalData()
         else:
             abort400("unknown request type: " + requestType)
 
