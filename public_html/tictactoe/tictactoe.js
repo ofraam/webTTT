@@ -1104,6 +1104,10 @@ function onContinue() {
             E.validationTime = E.endTime-E.startTime;
             // submit_solution();
             servlog("validationTime", E.validationTime);
+            servlog("validatedCorrect", E.validation);
+            servlog("solvedCorrect", E.solvedCorrect);
+            servlog("numActionsSolve", E.actionsSolve);
+            servlog("numActionsValidate", E.actionsValidation);
 			// var timeVote = E.endTime - E.startTime
 			// servlog("timeVote", timeVote)
 
