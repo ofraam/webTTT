@@ -61,7 +61,7 @@ def logFinalData():
     xkv = XKeyValueFinal(userid=userid, key=key, value=value, expCondition=expCondition, boardSize=boardSize,
     board=board,solvedCorrect=solvedCorrect,validatedCorrect=validatedCorrect, numActionsSolve=numActionsSolve,
     numActionsValidate=numActionsValidate, timeSolution=timeSolution, timeValidate=timeValidate, clientTime=clientTime)
-    reply("Event logged: " + key)
+    reply("Event logged: " + "final")
 
 def reply(status, data='nodata'):
     print "Content-Type: text/plain\n"
