@@ -17,6 +17,8 @@ E.actionsSolve = 0;
 E.actionsValidation = 0;
 E.solutionTime = 0;
 E.validationTime = 0;
+E.numClicksPractice = 0;
+E.interval = undefined;
 
 
 E.board6_practice = {
@@ -943,10 +945,10 @@ function onContinue() {
                 $(window).scrollTop(0,0);
                 // Update the count down every 1 second
                 var timerStart = new Date().getTime();
-                var diff = 10
+                var diff = 10;
 
                 var countDownDate =  new Date(timerStart + diff*60000);
-                var x = setInterval(function() {
+                E.interval = setInterval(function() {
 
                     // Get todays date and time
                     var now = new Date().getTime();
@@ -969,7 +971,7 @@ function onContinue() {
                     }
                     // If the count down is finished, write some text
                     if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
-                        clearInterval(x);
+                        clearInterval(E.interval);
                         alert('Time is up! You will be advanced to next stage of the experiment.')
                         E.timerDone = true
                         onContinue()
@@ -982,6 +984,8 @@ function onContinue() {
 			break;
 
         case 6:
+            E.timerDone = true;
+            clearInterval(E.interval)
             E.endTime=msTime();
             var timeSolution = E.endTime-E.startTime;
             E.solutionTime = timeSolution;
@@ -993,9 +997,7 @@ function onContinue() {
             break;
 
 		case 7:
-
-			// show_page_real();
-
+            E.timerDone = false;
 			E.endTime=msTime();
 			var timeStrategy = E.endTime-E.startTime;
 			servlog("timeStrategy", timeStrategy);
@@ -1058,11 +1060,12 @@ function onContinue() {
 
             var timerStart = new Date().getTime();
 
-            $("#timerFinal");
-            E.timerDone = false;
+            $("#timerFinal").show();
+
 
             var countDownDate =  new Date(timerStart + diff*60000);
-            var x = setInterval(function() {
+
+            E.interval = setInterval(function() {
 
                 // Get todays date and time
                 var now = new Date().getTime();
@@ -1085,7 +1088,7 @@ function onContinue() {
                 }
                 // If the count down is finished, write some text
                 if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
-                    clearInterval(x);
+                    clearInterval(E.interval);
                     alert('Time is up! You will be advanced to the end of the experiment.')
                     E.timerDone = true
                     onContinue()
@@ -1099,7 +1102,7 @@ function onContinue() {
 			break;
 			
 		case 8:
-			// log_vote();
+            clearInterval(E.interval);
             E.timerDone = true;
 			E.endTime = msTime();
             E.validationTime = E.endTime-E.startTime;
