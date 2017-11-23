@@ -99,6 +99,7 @@ function TictactoeWidget(init){
 		if (practice == true) {
             clickKey = clickKey.concat('_practice');
             clickPosKey = clickPosKey.concat('_practice');
+			E.numClicksPractice++;
 		}
 
 		servlog(clickKey, position)
@@ -580,7 +581,7 @@ function TictactoeWidget(init){
 	
 	
 	this.run = function(){
-				
+
 		
 		console.log("run")
 

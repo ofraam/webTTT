@@ -21,6 +21,7 @@ E.numClicksPractice = 0;
 E.interval = undefined;
 
 
+
 E.board6_practice = {
     canvasContainerDiv : "#canvas-container-practice",
     nrows : 6,
@@ -35,6 +36,27 @@ E.board6_practice = {
         [0,0,0,0,0,0]
     ],
     nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
+
+E.board6_practice_verify = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 6,
+    ncols : 6,
+    cellSize: 46,
+    position: [
+        [2,0,0,0,0,1],
+        [0,0,0,0,0,0],
+        [0,0,0,2,0,0],
+        [0,1,1,1,0,2],
+        [0,0,0,0,0,0],
+        [0,0,0,0,0,0]
+    ],
+    nextPlayer: 2,
+    firstMovrRow: '3',
+    firstMovrCol: '1',
     streak:4,
     turns: 2,
     practice: true
@@ -83,6 +105,32 @@ E.board10_practice = {
 
     ],
     nextPlayer: 1,
+    streak:4,
+    turns: 2,
+    practice: true
+}
+
+E.board10_practice_verify = {
+    canvasContainerDiv : "#canvas-container-practice",
+    nrows : 10,
+    ncols : 10,
+    cellSize: 32,
+    position: [
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,2,0,0,0,0,1,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,2,0,2,0,0,0,0],
+        [0,1,1,1,1,0,2,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0,0,0]
+
+    ],
+    nextPlayer: 2,
+    firstMovrRow: '7',
+    firstMovrCol: '1',
     streak:4,
     turns: 2,
     practice: true
@@ -527,30 +575,35 @@ function initialize_experiment() {
             E.condition = "full";
             E.difficulty = "easy";
             E.size = 6;
+            E.board_practice = E.board6_practice;
             break;
         case '1p':
             E.configuration = E.board6_1_pruned;
             E.condition = "pruned";
             E.difficulty = "easy";
             E.size = 6;
+            E.board_practice = E.board6_practice;
             break;
         case '1v':
             E.configuration = E.board6_1_verify;
             E.condition = "verify";
             E.difficulty = "easy";
             E.size = 6;
+            E.board_practice = E.board6_practice_verify;
             break;
 
         case '2f':
             E.configuration = E.board6_1_10_5;
             E.condition = "full";
             E.difficulty = "easy";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '2p':
             E.configuration = E.board6_1_10_5_pruned;
             E.condition = "pruned";
             E.difficulty = "easy";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '2v':
@@ -558,59 +611,69 @@ function initialize_experiment() {
             E.condition = "verify";
             E.difficulty = "easy";
             E.size = 10;
+            E.board_practice = E.board10_practice_verify;
             break;
         case '3f':
             E.configuration = E.board6_2_b;
             E.condition = "full";
             E.difficulty = "hard";
             E.size = 6;
+            E.board_practice = E.board6_practice;
             break;
         case '3p':
             E.configuration = E.board6_2_b_pruned;
             E.condition = "pruned";
             E.difficulty = "hard";
+            E.board_practice = E.board6_practice;
             E.size = 6;
             break;
         case '3v':
             E.configuration = E.board6_2_b_verify;
             E.condition = "verify";
             E.difficulty = "hard";
+            E.board_practice = E.board6_practice_verify;
             E.size = 6;
             break;
         case '4f':
             E.configuration = E.board10_2_b_5;
             E.condition = "full";
             E.difficulty = "hard";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '4p':
             E.configuration = E.board10_2_b_5_pruned;
             E.condition = "pruned";
             E.difficulty = "hard";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '4v':
             E.configuration = E.board10_2_b_5_verify;
             E.condition = "verify";
             E.difficulty = "hard";
+            E.board_practice = E.board10_practice_verify;
             E.size = 10;
             break;
         case '5f':
             E.configuration = E.board10_1;
             E.condition = "full";
             E.difficulty = "medium";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '5p':
             E.configuration = E.board10_1_pruned;
             E.condition = "pruned";
             E.difficulty = "medium";
+            E.board_practice = E.board10_practice;
             E.size = 10;
             break;
         case '5v':
             E.configuration = E.board10_1_verify;
             E.condition = "verify";
             E.difficulty = "medium";
+            E.board_practice = E.board10_practice_verify;
             E.size = 10;
             break;
     }
@@ -736,6 +799,7 @@ function submit_quiz() {
 	var q4 = $("#q4").val()	
 	var q5 = $("#q5").val()
     var q6 = $("#q6").val()
+    var q6v = $("#q6v").val()
 
 	
 	servlog("quiz1", q1);
@@ -744,10 +808,19 @@ function submit_quiz() {
 	servlog("quiz4", q4);
 	servlog("quiz5", q5);
     servlog("quiz6", q6);
+    servlog("quiz6v", q6v)
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4' && q6=='b3'){
-		var passed = true;
+	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
+        if(E.condition=="verify") {
+                if (q6v=="yes") {
+                    passed = true;
+                }
+            }
+        else if( q6=='b3')
+        {
+            passed = true;
+        }
 	}
 	
 
@@ -869,12 +942,11 @@ function onContinue() {
 			$("#instructions.page").show()
             if (E.size == 6) {
                 $(".10by10").hide();
-                E.board_practice = E.board6_practice
             }
             else {
                 $(".6by6").hide();
-                E.board_practice = E.board10_practice
             }
+
 
 
 			$("#btnContinue").html('Continue to quiz')
@@ -891,7 +963,43 @@ function onContinue() {
 			E.startTime=msTime();
             init_practice();
 
-			$("#quiz.page").show()
+
+
+			$("#quiz.page").show();
+            // $(".10by10").show();
+            // $(".6by6").show();
+            if (E.size == 6) {
+                $(".10by10").hide();
+                $(".10by10_solve").hide();
+                $(".10by10_verify").hide();
+                if (E.condition=="verify") {
+                    $(".practice_solve").hide();
+                    $(".6by6_solve").hide();
+
+                }
+                else {
+                    $(".practice_verify").hide();
+                    $(".6by6_verify").hide();
+
+                }
+
+                // E.board_practice = E.board6_practice
+            }
+            else {
+                $(".6by6").hide();
+                $(".6by6_solve").hide();
+                $(".6by6_verify").hide();
+                if (E.condition=="verify") {
+                    $(".practice_solve").hide();
+                    $(".10by10_solve").hide();
+
+                }
+                else {
+                    $(".practice_verify").hide();
+                    $(".10by10_verify").hide();
+                }
+            }
+
             if (E.condition=="full" | E.condition=="pruned") {
 			    $('#exampleVerify').hide()
             }
@@ -908,7 +1016,14 @@ function onContinue() {
 			E.endTime=msTime();
 			var timeQuiz = E.endTime-E.startTime
 			servlog("timeQuiz", timeQuiz);
-			submit_quiz();
+            if (E.numClicksPractice==0) {
+                alert("please practice using the board (in the last question) before you submit your answer.")
+                onContinue.curPage=3;
+                onContinue()
+            }
+            else {
+                submit_quiz();
+            }
 			if (onContinue.curPage==5)
 			{
 
@@ -950,7 +1065,7 @@ function onContinue() {
                 var countDownDate =  new Date(timerStart + diff*60000);
                 E.interval = setInterval(function() {
 
-                    // Get todays date and time
+                    // Get today's date and time
                     var now = new Date().getTime();
 
                     // Find the distance between now an the count down date
