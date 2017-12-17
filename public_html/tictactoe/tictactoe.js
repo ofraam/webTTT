@@ -792,8 +792,64 @@ function show_page_final_litw(){
     else {
         $("#correctFeedback").hide();
     }
-    alert(LITW.numClicksMatrix[0].z)
-    Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix);
+    // alert(LITW.numClicksMatrix[0].z)
+
+    var layout = {
+        title: 'Annotated Heatmap',
+        annotations: [],
+        xaxis: {
+            ticks: '',
+            side: 'top'
+        },
+        yaxis: {
+            ticks: '',
+            ticksuffix: ' ',
+            width: 400,
+            height: 400,
+            autosize: false
+        }
+    };
+
+    yValues = LITW.numClicksMatrix[0].y;
+    xValues = LITW.numClicksMatrix[0].x;
+    zValues = LITW.numClicksMatrix[0].z;
+    for ( var i = 0; i < yValues.length; i++ ) {
+        for ( var j = 0; j < xValues.length; j++ ) {
+            var currentValue = zValues[i][j];
+            if (currentValue != 0.0) {
+                var textColor = 'white';
+            } else {
+                var textColor = 'white';
+            }
+            var result = {
+                xref: 'x1',
+                yref: 'y1',
+                x: xValues[j],
+                y: yValues[i],
+                text: zValues[i][j],
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
+            };
+            if (E.configuration.position[i][j] == 1) {
+                result.text = 'X';
+            }
+            if (E.configuration.position[i][j] == 2) {
+                result.text = 'O';
+            }
+            if (result.text == 0) {
+                result.text = "";
+            }
+            layout.annotations.push(result);
+        }
+    }
+    Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix, layout);
     Plotly.newPlot('heatmap_all', LITW.numClicksMatrix);
     $("#btnContinue").hide()
 }

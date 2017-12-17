@@ -20,7 +20,7 @@ LITW.numClicksMatrix10 = [{z: [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0]
 
-], x: [a,b,c,d,e,f,g,h,i,j],y: [1,2,3,4,5,6,7,8,9,10], type: 'heatmap'
+], x: ['a','b','c','d','e','f','g','h','i','j'],y: [1,2,3,4,5,6,7,8,9,10], type: 'heatmap'
 }];
 
 LITW.numClicksMatrix6 = [{z: [
@@ -30,5 +30,5 @@ LITW.numClicksMatrix6 = [{z: [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
-], x: [a,b,c,d,e,f],y: [1,2,3,4,5,6],type: 'heatmap'}];
+], x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],type: 'heatmap'}];
 
