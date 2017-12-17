@@ -103,8 +103,8 @@ function TictactoeWidget(init){
 		}
 
 		else { //update click count
-			LITW.numClicksMatrix.clickMatrix[row][col]++;
-			alert(LITW.numClicksMatrix.clickMatrix)
+			LITW.numClicksMatrix[0].z[row][col]++;
+			// alert(LITW.numClicksMatrix.clickMatrix)
 		}
 
 		servlog(clickKey, position)

@@ -777,15 +777,24 @@ function show_page_real()
 
 function show_page_final_litw(){
     //get all values and populate as needed
+    // alert(LITW.boardStats.correct);
 
     $("#feedback").show();
+    $('.percentCorrect').text(LITW.boardStats.correct);
+    $("#timeSpentAvg").text(LITW.boardStats.time);
+    $("#numMovesAvg").text(LITW.boardStats.actions);
+    var timeMinutes = E.solutionTime/60/1000;
+    $("#timeSpentPar").text(timeMinutes);
+    $("#numMovesPar").text(E.actionsSolve);
     if (E.solvedCorrect) {
         $("#incorrectFeedback").hide();
     }
     else {
         $("#correctFeedback").hide();
     }
-
+    alert(LITW.numClicksMatrix[0].z)
+    Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix);
+    Plotly.newPlot('heatmap_all', LITW.numClicksMatrix);
     $("#btnContinue").hide()
 }
 
@@ -1257,8 +1266,8 @@ function onContinue() {
 
             //store final summative info
 
-            servlogFinal();
-            show_page_final();
+            show_page_final_litw();
+            // show_page_final();
 
 	}
 }
