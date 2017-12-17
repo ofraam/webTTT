@@ -102,6 +102,11 @@ function TictactoeWidget(init){
 			E.numClicksPractice++;
 		}
 
+		else { //update click count
+			LITW.numClicksMatrix.clickMatrix[row][col]++;
+			alert(LITW.numClicksMatrix.clickMatrix)
+		}
+
 		servlog(clickKey, position)
         servlog(clickPosKey, positionPlayer)
 

@@ -9,20 +9,106 @@
 
 	<script type='text/javascript' >
 		E = {};
+		LITW = {};
 	</script>
         <script src="../jquery-1.8.2.min.js"></script>
         <script src="../jcanvas.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+
+
+	<script src="plotly.min.js"></script>
 
         <script src="../generic-tools.js"></script>    
-        <script src="../experiment-tools.js"></script>       
+        <script src="../experiment-tools.js"></script>
+	<script src="feedback.js"></script>
         <script src="tictactoe-widget.js"></script>
-        <script src="tictactoe.js"></script>        
+        <script src="tictactoe.js"></script>
+
     </head>
     <body>
-    	
-    	
-    	
-    	
+
+
+
+	<div id="landing" class="page">
+		<div class = "question">
+
+			<img class="6by6" src="images/tttLanding.png" style="width: 150px; height: 150px">
+			<h2> Problem-Solving Test</h2>
+
+			<p>
+				Welcome! You're about to take a test on Lab in the Wild.
+			</p>
+
+
+
+			<p><b>What is your problem-solving style?</b> How do you approach complex strategic problems?
+				Try to solve a difficult puzzle to find out.</p>
+
+			<p><b>Find out for yourself and compare your performance to others!</b> </p>
+
+			<p><b>This test typically takes 15 minutes to complete</b> </p>
+
+			<p><i>
+				This study requires a laptop or a tablet. It will not work on a phone.
+				The test may also not work properly on older versions of Internet Explorer.
+				We apologize for not being able to support all browsers.</i>
+			</p>
+
+
+
+		</div>
+	</div>
+
+
+	<div id="feedback" class="page">
+		<div class = "intro">
+
+			<h2> Thank you for participating in our study! Here' some information about your problem-solving strategy
+				and how it compares to others.
+			</h2>
+
+			<div id="correctFeedback">
+				Your solution was correct! Good job, only <span class="percentCorrect">20%</span>
+				of participants solve this problem correctly.
+			</div>
+
+			<div id="incorrectFeedback">
+				Your solution was incorrect. But don’t be disappointed, only <span class="percentCorrect">20%</span>
+				of participants solved this problem correctly.
+			</div>
+
+			<p>
+				You spent <span id="timeSpentPar"></span> minutes working on this problem.
+				On average, participants spend <span id="timeSpentAvg">6.5</span> minutes on their solution.
+			</p>
+
+			<h3>Wait, there's more!</h3>
+			<p>
+			In this study, we are looking at the way in which people solve complex problem such as the one you were presented with.
+			</p>
+			<p>
+			When solving the problem, you considered <span id="numMovesPar">20</span> moves
+				(this means that you clicked on squares in the tic-tac-toe board XX times).
+				The average number of moves participants in our study consider is <span id="numMovesAvg">15</span>
+			</p>
+
+			<p>
+				The image on the left shows the number of times each square in the board that was presented to you was
+				clicked on by b>all</b> the participants in the study.
+				The image on the right shows the number of times that you clicked on each of the squares while
+				<b>you</b> were working on the problem.
+			</p>
+			<div style="width: 100%; overflow: hidden;">
+				<div id="heatmap_all" style="width: 600px; float: left;"> Left </div>
+				<div id="heatmap_participant" style="margin-left: 620px;"> Right </div>
+			</div>
+
+
+
+
+
+		</div>
+	</div>
 
 		
 		<div id="consent" class="page">
@@ -49,9 +135,9 @@
 				<p>
 					RISKS: There are no anticipated risks associated with participating in this study. The effects of participating should be comparable to those you would experience from viewing a computer monitor for 20 minutes and using a mouse.
 				</p>
-				<p>
-					COMPENSATION: Upon completion of this task, you will receive a code to enter on the Amazon Mechanical Turk task page, and you will receive the amount that was indicated on the task page.
-				</p>
+				<!--<p>-->
+					<!--COMPENSATION: Upon completion of this task, you will receive a code to enter on the Amazon Mechanical Turk task page, and you will receive the amount that was indicated on the task page.-->
+				<!--</p>-->
 				<p>
 					CONFIDENTIALITY: Your participation in this study will remain confidential. Your responses will be assigned a code number.
 					You will NOT be asked to provide your name. You will be asked to provide your age and gender.
@@ -81,6 +167,9 @@
 				</p>
 			</div>
 		</div>
+
+
+
 		<div id="demographics" class="page">
 			<div class="intro demographics">
 		
@@ -129,9 +218,9 @@
 					
 					</p>
 					
-					<p>
-						You will have the opportunity to get a bonus based on your performance. If your solution is correct you get a bonus of $1.
-					</p>
+					<!--<p>-->
+						<!--You will have the opportunity to get a bonus based on your performance. If your solution is correct you get a bonus of $1.-->
+					<!--</p>-->
 									
 				</div>
 				
@@ -470,7 +559,7 @@
 						</div>
 					</div>
 
-						<p>If your solution is correct you will get a bonus of $1. </p>
+						<!--<p>If your solution is correct you will get a bonus of $1. </p>-->
 
 
 					<br><br>
@@ -519,32 +608,7 @@
 
 
 
-		<div id="group" class="page">
-			<div class="intro" >
-				
-				<div style="float:left;" id="suggest">
-					
-				</div>
-				
-				<div style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
-					<h3>Below are three solutions - your proposed solution, followed by two solutions proposed by other participants. </h3>
-					<p>Please examine all solutions (yours and the two proposed solutions) and vote for ALL solutions you think are correct</p>
 
-					<p>After the experiment you will be randomly matched with 3 other workers. If the majority of your group memebers
-						 vote on correct solutions, each of you will get an additional bonus of 10 cents.</p>
-					
-					<p><input type="checkbox" id='cbown' value='own'/> Yours: <span id="own">?</span> </p>
-					<p><input type="checkbox" id='cba' value='A'/> c6</p>
-					<p><input type="checkbox" id='cbb' value='B'/> f3</p>							
-				</div>
-			
-				<div>
-					Please explain your voting:
-					<textarea id="explanationVote" rows="16" cols="40" maxlength = "500" required = "required"></textarea>
-				</div>
-				
-			</div>
-		</div>		
 		
 
 		<div class="overlay" style="display: none;">

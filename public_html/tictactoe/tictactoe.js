@@ -773,6 +773,22 @@ function show_page_real()
 	$("#real.page").show()		
 }
 
+
+
+function show_page_final_litw(){
+    //get all values and populate as needed
+
+    $("#feedback").show();
+    if (E.solvedCorrect) {
+        $("#incorrectFeedback").hide();
+    }
+    else {
+        $("#correctFeedback").hide();
+    }
+
+    $("#btnContinue").hide()
+}
+
 function show_page_final(){
 
     $("#final.page").show()
@@ -911,7 +927,7 @@ function log_vote(){
 function onContinue() {
 
 	if( typeof onContinue.curPage == 'undefined')
-		onContinue.curPage = 0;
+		onContinue.curPage = -1;
 	onContinue.curPage++;
 
 	//blank all pages
@@ -926,8 +942,14 @@ function onContinue() {
 
 	switch(onContinue.curPage) {
 
+        case 0:
+            $("#landing.page").show()
+            $("#btnContinue").prop('disabled', false);
+            break;
+
 		case 1:
 			$("#consent.page").show()
+            $("#btnContinue").prop('disabled', true);
 			break;
 
 		case 2:
@@ -943,9 +965,11 @@ function onContinue() {
 			$("#instructions.page").show()
             if (E.size == 6) {
                 $(".10by10").hide();
+                LITW.numClicksMatrix = LITW.numClicksMatrix6;
             }
             else {
                 $(".6by6").hide();
+                LITW.numClicksMatrix = LITW.numClicksMatrix10;
             }
 
 
