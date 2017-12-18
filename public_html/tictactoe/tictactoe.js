@@ -784,7 +784,7 @@ function show_page_final_litw(){
     $("#timeSpentAvg").text(LITW.boardStats.time);
     $("#numMovesAvg").text(LITW.boardStats.actions);
     var timeMinutes = E.solutionTime/60/1000;
-    $("#timeSpentPar").text(timeMinutes);
+    $("#timeSpentPar").text(round(timeMinutes,2));
     $("#numMovesPar").text(E.actionsSolve);
     if (E.solvedCorrect) {
         $("#incorrectFeedback").hide();
@@ -795,7 +795,7 @@ function show_page_final_litw(){
     // alert(LITW.numClicksMatrix[0].z)
 
     var layout = {
-        title: 'Annotated Heatmap',
+        title: 'Your Moves',
         annotations: [],
         xaxis: {
             ticks: '',
@@ -809,6 +809,11 @@ function show_page_final_litw(){
             autosize: false
         }
     };
+
+
+
+    var entropy = convertClickCountsToProbability();
+    alert(entropy)
 
     yValues = LITW.numClicksMatrix[0].y;
     xValues = LITW.numClicksMatrix[0].x;
@@ -837,10 +842,10 @@ function show_page_final_litw(){
                     color: textColor
                 }
             };
-            if (E.configuration.position[i][j] == 1) {
+            if (E.configuration.position[5-i][j] == 1) {
                 result.text = 'X';
             }
-            if (E.configuration.position[i][j] == 2) {
+            if (E.configuration.position[5-i][j] == 2) {
                 result.text = 'O';
             }
             if (result.text == 0) {
@@ -849,9 +854,94 @@ function show_page_final_litw(){
             layout.annotations.push(result);
         }
     }
+
     Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix, layout);
-    Plotly.newPlot('heatmap_all', LITW.numClicksMatrix);
+
+    var layout_avg = {
+        title: 'Average Participants Moves',
+        annotations: [],
+        xaxis: {
+            ticks: '',
+            side: 'top'
+        },
+        yaxis: {
+            ticks: '',
+            ticksuffix: ' ',
+            width: 400,
+            height: 400,
+            autosize: false
+        }
+    };
+
+    yValues = LITW.boardStats.heatmap[0].y;
+    xValues = LITW.boardStats.heatmap[0].x;
+    zValues = LITW.boardStats.heatmap[0].z;
+    for ( var i = 0; i < yValues.length; i++ ) {
+        for ( var j = 0; j < xValues.length; j++ ) {
+            var currentValue = zValues[i][j];
+            if (currentValue != 0.0) {
+                var textColor = 'white';
+            } else {
+                var textColor = 'white';
+            }
+            var result = {
+                xref: 'x1',
+                yref: 'y1',
+                x: xValues[j],
+                y: yValues[i],
+                text: zValues[i][j],
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
+            };
+            if (E.configuration.position[5-i][j] == 1) {
+                result.text = 'X';
+            }
+            if (E.configuration.position[5-i][j] == 2) {
+                result.text = 'O';
+            }
+            if (result.text == 0) {
+                result.text = "";
+            }
+            layout_avg.annotations.push(result);
+        }
+    }
+
+
+    Plotly.newPlot('heatmap_all', LITW.boardStats.heatmap,layout_avg);
     $("#btnContinue").hide()
+}
+
+function convertClickCountsToProbability() {
+    var numClicks = 0.0;
+    var entropy = 0.0;
+
+    for ( var i = 0; i < LITW.numClicksMatrix[0].z.length; i++ ) {
+        for (var j = 0; j < LITW.numClicksMatrix[0].z[0].length; j++) {
+            numClicks = numClicks + LITW.numClicksMatrix[0].z[i][j];
+        }
+    }
+
+    for ( var i = 0; i < LITW.numClicksMatrix[0].z.length; i++ ) {
+        for (var j = 0; j < LITW.numClicksMatrix[0].z[0].length; j++) {
+            LITW.numClicksMatrix[0].z[i][j] = LITW.numClicksMatrix[0].z[i][j]/numClicks;
+            if (LITW.numClicksMatrix[0].z[i][j]!=0) {
+                entropy = entropy - LITW.numClicksMatrix[0].z[i][j] * Math.log(LITW.numClicksMatrix[0].z[i][j]);
+            }
+        }
+    }
+    // alert('entropy = '+ entropy);
+    return entropy;
+}
+
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 function show_page_final(){

@@ -103,7 +103,11 @@ function TictactoeWidget(init){
 		}
 
 		else { //update click count
-			LITW.numClicksMatrix[0].z[row][col]++;
+			if (nextPlayer ==1) {
+				// alert(5-cell.row + ","+ cell.col)
+				LITW.numClicksMatrix[0].z[5 - cell.row][cell.col]++;
+			}
+			// alert(LITW.numClicksMatrix[0].z[5-cell.row][cell.col])
 			// alert(LITW.numClicksMatrix.clickMatrix)
 		}
 

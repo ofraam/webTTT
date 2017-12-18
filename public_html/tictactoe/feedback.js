@@ -3,8 +3,15 @@
  */
 
 LITW.stats = [
-    {board: "1f", correct: 30, time: 8.5, actions: 30, depth: 3, paths: 10, entropy: 1.5, heatmap: "images/heat1f"},
-    {board: "1p", correct: 30, time: 8.5, actions: 30, depth: 3, paths: 10, entropy: 1.5, heatmap: "images/heat1p"}
+    {board: "1f", correct: 42, time: 5.64, actions: 40.75, depth: 3, paths: 10, entropy: 1.78,
+        heatmap: [{z:[[ 0. ,   0. ,   0.23 , 0.,    0.08,  0.08],
+            [ 0. ,   0. ,   0.   , 0.   , 0.,    0.15],
+            [ 0. ,   0.  ,  0.  ,  0. ,   0. ,   0.15],
+    [ 0.   , 0. ,   0.   , 0. ,   0.,    0.15],
+[ 0.  ,  0.08 , 0.  ,  0.  ,  0.08 , 0.  ],
+    [ 0.  ,  0. ,   0.  ,  0. ,   0. ,   0.  ]], x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],type: 'heatmap'}]
+    },
+    {board: "1p", correct: 42, time: 5.64, actions: 40.75, depth: 3, paths: 10, entropy: 1.78, heatmap: "images/heat1p"}
 ];
 LITW.boardStats = LITW.stats[0];
 
