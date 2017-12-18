@@ -101,6 +101,23 @@ body {
 
 }
 
+.introh3{
+	width: 800px;
+	margin: auto;
+	border: 2px solid #AAA;
+	text-align: left;
+	padding: 16px;
+	background-color: #FFF;
+	font-size: 14px;
+	overflow: hidden;
+
+}
+
+
+.introh3 h2 {
+	text-align: left;
+}
+
 .intro h2 {
 	text-align: left;
 }

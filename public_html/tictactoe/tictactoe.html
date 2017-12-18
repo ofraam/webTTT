@@ -61,7 +61,7 @@
 
 
 	<div id="feedback" class="page">
-		<div class = "intro">
+		<div class = "introh3">
 
 			<h2> Thank you for participating in our study! Here' some information about your problem-solving strategy
 				and how it compares to others.
@@ -79,7 +79,7 @@
 
 			<p>
 				You spent <span id="timeSpentPar"></span> minutes working on this problem.
-				On average, participants spend <span id="timeSpentAvg">6.5</span> minutes on their solution.
+				On average, participants took <span id="timeSpentAvg">6.5</span> minutes to submit their solution.
 			</p>
 
 			<h3>Wait, there's more!</h3>
@@ -87,17 +87,47 @@
 			In this study, we are looking at the way in which people solve complex problem such as the one you were presented with.
 			</p>
 			<p>
-			When solving the problem, you considered <span id="numMovesPar">20</span> moves
-				(this means that you clicked on squares in the tic-tac-toe board XX times).
+			When solving the problem, you considered <span class="numMovesPar">20</span> moves
+				(this means that you clicked on squares in the tic-tac-toe board <span class="numMovesPar">20</span> times).
 				The average number of moves participants in our study consider is <span id="numMovesAvg">15</span>
 			</p>
 
+			<div id="high_entropy">
+			<p>
+				Compared to others, your problem-solving strategy was <i>more spread</i>. This means that you alternated between game paths that cover different parts of the game board.
+
+			</p>
+		</div>
+
+			<div id="low_entropy">
+				<p>
+					Compared to others, your problem-solving strategy was <i>more focused</i>. This means that you tried alternative game paths that were similar to each other, exploring different responses of each of the player.
+
+				</p>
+			</div>
+
+			<div id="avg_entropy">
+				<p>
+					Your problem-solving strategy was <i>balanced</i>. This means that you explored some parts of the game board in depth, testing different responses of the players, while also exploring alternative game paths that covered different parts of the game board.
+
+				</p>
+			</div>
+
 			<p>
 				The image on the left shows the number of times each square in the board that was presented to you was
-				clicked on by b>all</b> the participants in the study.
+				clicked on by <b>all</b> the participants in the study.
 				The image on the right shows the number of times that you clicked on each of the squares while
 				<b>you</b> were working on the problem.
+				<br>
+				Squares that are <i>brighter</i> have been played more frequently.
+				By looking at these two plots you can see how your moves compared to aggregated moves of the study participants.
+				<br>
+
 			</p>
+
+			<div id="no_actions">
+
+			</div>
 
 			<!--<div id="heatmap_participant">  </div>-->
 			<div style="width: 100%; overflow: hidden">

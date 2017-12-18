@@ -109,6 +109,7 @@ function TictactoeWidget(init){
 			}
 			// alert(LITW.numClicksMatrix[0].z[5-cell.row][cell.col])
 			// alert(LITW.numClicksMatrix.clickMatrix)
+			E.actionsSolve = E.actionsSolve + 1;
 		}
 
 		servlog(clickKey, position)
@@ -121,7 +122,7 @@ function TictactoeWidget(init){
 		lastMoveRow = cell.row
         undoList.push([cell.row, cell.col])
 
-		E.actionsSolve = E.actionsSolve + 1;
+
 
 		drawSymbols();
         drawMoves();

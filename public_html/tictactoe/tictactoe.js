@@ -562,7 +562,8 @@ function initialize_experiment() {
 
     if (tposition=='rand') {
         // var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
-        var confs = ['1f', '1p', '2f', '2p', '3f', '3p', '4f', '4p', '5f', '5p'];
+        // var confs = ['1f', '1p', '2f', '2p', '3f', '3p', '4f', '4p', '5f', '5p'];
+        var confs = ['1f']
         // var confs = ['1v', '2v','3v','4v','5v'];
         tposition = confs[Math.floor(Math.random()*confs.length)];
         // alert(tposition)
@@ -785,7 +786,7 @@ function show_page_final_litw(){
     $("#numMovesAvg").text(LITW.boardStats.actions);
     var timeMinutes = E.solutionTime/60/1000;
     $("#timeSpentPar").text(round(timeMinutes,2));
-    $("#numMovesPar").text(E.actionsSolve);
+    $(".numMovesPar").text(E.actionsSolve);
     if (E.solvedCorrect) {
         $("#incorrectFeedback").hide();
     }
@@ -813,7 +814,20 @@ function show_page_final_litw(){
 
 
     var entropy = convertClickCountsToProbability();
-    alert(entropy)
+    // alert(entropy)
+    if (entropy<LITW.boardStats.entropy_low) {
+        $("#high_entropy").hide();
+        $("#avg_entropy").hide();
+    }
+    else if (entropy>LITW.boardStats.entropy_high) {
+        $("#low_entropy").hide();
+        $("#avg_entropy").hide();
+    }
+    else {
+        $("#low_entropy").hide();
+        $("#high_entropy").hide();
+    }
+    // alert(entropy)
 
     yValues = LITW.numClicksMatrix[0].y;
     xValues = LITW.numClicksMatrix[0].x;
@@ -831,7 +845,7 @@ function show_page_final_litw(){
                 yref: 'y1',
                 x: xValues[j],
                 y: yValues[i],
-                text: zValues[i][j],
+                text: "",
                 font: {
                     family: 'Arial',
                     size: 12,
@@ -854,9 +868,13 @@ function show_page_final_litw(){
             layout.annotations.push(result);
         }
     }
-
-    Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix, layout);
-
+    // alert(E.actionsSolve)
+    if (E.actionsSolve>0) {
+        Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix, layout);
+    }
+    else {
+        $('#no_actions').html("<b>You did not play any moves, therefore we cannot show a plot of your game play</b>")
+    }
     var layout_avg = {
         title: 'Average Participants Moves',
         annotations: [],
@@ -875,6 +893,7 @@ function show_page_final_litw(){
 
     yValues = LITW.boardStats.heatmap[0].y;
     xValues = LITW.boardStats.heatmap[0].x;
+    flipRows(LITW.boardStats.heatmap[0].z)
     zValues = LITW.boardStats.heatmap[0].z;
     for ( var i = 0; i < yValues.length; i++ ) {
         for ( var j = 0; j < xValues.length; j++ ) {
@@ -889,7 +908,7 @@ function show_page_final_litw(){
                 yref: 'y1',
                 x: xValues[j],
                 y: yValues[i],
-                text: zValues[i][j],
+                text: "",
                 font: {
                     family: 'Arial',
                     size: 12,
@@ -918,6 +937,22 @@ function show_page_final_litw(){
     $("#btnContinue").hide()
 }
 
+function flipRows(matrix) {
+    var flipped_matrix = [];
+    for ( var i = 0; i < matrix.length; i++ ) {
+        flipped_matrix[i] = []
+        for (var j = 0; j < matrix[0].length; j++) {
+            flipped_matrix[i][j] = matrix[matrix.length-1-i][j];
+        }
+    }
+
+    for ( var i = 0; i < matrix.length; i++ ) {
+        for (var j = 0; j < matrix[0].length; j++) {
+            matrix[i][j] = flipped_matrix[i][j];
+        }
+    }
+    // return flipped_matrix;
+}
 function convertClickCountsToProbability() {
     var numClicks = 0.0;
     var entropy = 0.0;
