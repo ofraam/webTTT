@@ -937,6 +937,209 @@ function show_page_final_litw(){
     $("#btnContinue").hide()
 }
 
+function show_page_final_litw_v2(){
+    //get all values and populate as needed
+    // alert(LITW.boardStats.correct);
+    var superhero_assigned = false;
+    $("#feedback").show();
+    $(".superhero").hide();
+    $('.percentCorrect').text(LITW.boardStats.correct);
+
+    // $("#timeSpentAvg").text(LITW.boardStats.time);
+
+    if (E.solvedCorrect) {
+        $("#incorrectFeedback").hide();
+        $("#superman").show();
+        superhero_assigned = true;
+    }
+    else {
+        $("#correctFeedback").hide();
+    }
+
+
+    // alert(LITW.numClicksMatrix[0].z)
+
+    var layout = {
+        title: 'Your Moves',
+        annotations: [],
+        xaxis: {
+            ticks: '',
+            side: 'top'
+        },
+        yaxis: {
+            ticks: '',
+            ticksuffix: ' ',
+            width: 400,
+            height: 400,
+            autosize: false
+        }
+    };
+
+
+
+    var entropy = convertClickCountsToProbability();
+    // alert(entropy)
+    if (entropy<LITW.boardStats.entropy_low) {
+        $("#high_entropy").hide();
+        $("#avg_entropy").hide();
+        if (superhero_assigned==false) {
+            $("#batman").show();
+            superhero_assigned = true;
+        }
+    }
+    else if (entropy>LITW.boardStats.entropy_high) {
+        $("#low_entropy").hide();
+        $("#avg_entropy").hide();
+        if (superhero_assigned==false) {
+            $("#wonderwoman").show();
+            superhero_assigned = true;
+        }
+    }
+    else {
+        $("#low_entropy").hide();
+        $("#high_entropy").hide();
+        // if (superhero_assigned==false) {
+        //     $("").show();
+        // }
+
+    }
+
+    $("#numMovesAvg").text(LITW.boardStats.actions);
+    var timeMinutes = E.solutionTime/60/1000;
+    if (timeMinutes>LITW.boardStats.time) {
+        var ratio = timeMinutes/LITW.boardStats.time;
+        $('#timeComp').text(round(ratio,2));
+        $('#timeComp2').text('slower');
+        // if (ratio>1.5 & superhero_assigned==false) {
+        if (superhero_assigned==false) {
+            $("#thor").show();
+            superhero_assigned = true;
+            // }
+        }
+    }
+    else {
+        var ratio = LITW.boardStats.time/timeMinutes;
+        $('#timeComp').text(round(ratio,2));
+        $('#timeComp2').text('faster');
+        // if (ratio>1.5 & superhero_assigned==false) {
+        if (superhero_assigned==false) {
+            $("#flash").show();
+            superhero_assigned = true;
+        }
+        // }
+    }
+    $("#timeSpentPar").text(round(timeMinutes,2));
+    $(".numMovesPar").text(E.actionsSolve);
+    // alert(entropy)
+
+    yValues = LITW.numClicksMatrix[0].y;
+    xValues = LITW.numClicksMatrix[0].x;
+    zValues = LITW.numClicksMatrix[0].z;
+    for ( var i = 0; i < yValues.length; i++ ) {
+        for ( var j = 0; j < xValues.length; j++ ) {
+            var currentValue = zValues[i][j];
+            if (currentValue != 0.0) {
+                var textColor = 'white';
+            } else {
+                var textColor = 'white';
+            }
+            var result = {
+                xref: 'x1',
+                yref: 'y1',
+                x: xValues[j],
+                y: yValues[i],
+                text: "",
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
+            };
+            if (E.configuration.position[5-i][j] == 1) {
+                result.text = 'X';
+            }
+            if (E.configuration.position[5-i][j] == 2) {
+                result.text = 'O';
+            }
+            if (result.text == 0) {
+                result.text = "";
+            }
+            layout.annotations.push(result);
+        }
+    }
+    // alert(E.actionsSolve)
+    if (E.actionsSolve>0) {
+        Plotly.newPlot('heatmap_participant', LITW.numClicksMatrix, layout);
+    }
+    else {
+        $('#no_actions').html("<b>You did not play any moves, therefore we cannot show a plot of your game play</b>")
+    }
+    var layout_avg = {
+        title: 'Average Participants Moves',
+        annotations: [],
+        xaxis: {
+            ticks: '',
+            side: 'top'
+        },
+        yaxis: {
+            ticks: '',
+            ticksuffix: ' ',
+            width: 400,
+            height: 400,
+            autosize: false
+        }
+    };
+
+    yValues = LITW.boardStats.heatmap[0].y;
+    xValues = LITW.boardStats.heatmap[0].x;
+    flipRows(LITW.boardStats.heatmap[0].z)
+    zValues = LITW.boardStats.heatmap[0].z;
+    for ( var i = 0; i < yValues.length; i++ ) {
+        for ( var j = 0; j < xValues.length; j++ ) {
+            var currentValue = zValues[i][j];
+            if (currentValue != 0.0) {
+                var textColor = 'white';
+            } else {
+                var textColor = 'white';
+            }
+            var result = {
+                xref: 'x1',
+                yref: 'y1',
+                x: xValues[j],
+                y: yValues[i],
+                text: "",
+                font: {
+                    family: 'Arial',
+                    size: 12,
+                    color: 'rgb(50, 171, 96)'
+                },
+                showarrow: false,
+                font: {
+                    color: textColor
+                }
+            };
+            if (E.configuration.position[5-i][j] == 1) {
+                result.text = 'X';
+            }
+            if (E.configuration.position[5-i][j] == 2) {
+                result.text = 'O';
+            }
+            if (result.text == 0) {
+                result.text = "";
+            }
+            layout_avg.annotations.push(result);
+        }
+    }
+
+
+    Plotly.newPlot('heatmap_all', LITW.boardStats.heatmap,layout_avg);
+    $("#btnContinue").hide()
+}
+
 function flipRows(matrix) {
     var flipped_matrix = [];
     for ( var i = 0; i < matrix.length; i++ ) {
@@ -1447,7 +1650,7 @@ function onContinue() {
 
             //store final summative info
 
-            show_page_final_litw();
+            show_page_final_litw_v2();
             // show_page_final();
 
 	}

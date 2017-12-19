@@ -6,7 +6,7 @@ LITW.stats = [
     {board: "1f", correct: 42, time: 5.64, actions: 40.75, depth: 3, paths: 10, entropy_low: 1.8, entropy_high: 2.2,
         heatmap: [{z:[[0.0, 0, 0.23076923076923078, 0, 0.07692307692307693, 0.07692307692307693], [0.0, 0, 0, 0, 0.0, 0.15384615384615385], [0, 0, 0, 0, 0, 0.15384615384615385], [0, 0.0, 0, 0, 0, 0.15384615384615385], [0, 0.07692307692307693, 0, 0, 0.07692307692307693, 0.0], [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]]
             ,
-            x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],colorscale: 'Greys',type: 'heatmap'}]
+            x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],type: 'heatmap'}]
     },
     {board: "1p", correct: 42, time: 5.64, actions: 40.75, depth: 3, paths: 10, entropy: 1.78, heatmap: "images/heat1p"}
 ];
@@ -24,7 +24,7 @@ LITW.numClicksMatrix10 = [{z: [
     [0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0]
 
-], x: ['a','b','c','d','e','f','g','h','i','j'],y: [1,2,3,4,5,6,7,8,9,10], colorscale: 'Greys',type: 'heatmap'
+], x: ['a','b','c','d','e','f','g','h','i','j'],y: [1,2,3,4,5,6,7,8,9,10],type: 'heatmap'
 }];
 
 LITW.numClicksMatrix6 = [{z: [
@@ -34,5 +34,5 @@ LITW.numClicksMatrix6 = [{z: [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
-], x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],colorscale: 'Greys',type: 'heatmap'}];
+], x: ['a','b','c','d','e','f'],y: [1,2,3,4,5,6],type: 'heatmap'}];
 
