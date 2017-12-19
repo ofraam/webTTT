@@ -982,7 +982,7 @@ function show_page_final_litw_v2(){
     if (entropy<LITW.boardStats.entropy_low) {
         $("#high_entropy").hide();
         $("#avg_entropy").hide();
-        if (superhero_assigned==false) {
+        if (superhero_assigned==false & E.actionsSolve>7) {
             $("#batman").show();
             superhero_assigned = true;
         }
@@ -990,7 +990,7 @@ function show_page_final_litw_v2(){
     else if (entropy>LITW.boardStats.entropy_high) {
         $("#low_entropy").hide();
         $("#avg_entropy").hide();
-        if (superhero_assigned==false) {
+        if (superhero_assigned==false & E.actionsSolve>7) {
             $("#wonderwoman").show();
             superhero_assigned = true;
         }
