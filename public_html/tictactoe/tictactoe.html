@@ -60,12 +60,42 @@
 	</div>
 
 
+
+
 	<div id="feedback" class="page">
 		<div class = "introh3">
 
-			<h2> Thank you for participating in our study! Here' some information about your problem-solving strategy
+			<h2> Thank you for participating in our study! <br> Here' some information about your problem-solving strategy
 				and how it compares to others.
 			</h2>
+
+			<div id="character">
+
+				<div id="superman" class = "question">
+					<img class="6by6" src="images/superheroes/superman.png" style="width: 150px; height: 150px">
+					Your strategic problem solving reminds us of <b>Superman<\b>: you were able to overcome the challenge of a
+					very difficult problem and win the game.
+				</div>
+
+				<div id="wonderwoman" class = "question">
+					<img class="6by6" src="images/superheroes/wonderwoman.jpg" style="width: 150px; height: 150px">
+					Your strategic problem solving reminds us of <b>Wonder Woman</b>: you played the game in a unique way which
+					differed from most of our participants.
+				</div>
+
+				<div id="batman" class = "question">
+					<img class="6by6" src="images/superheroes/batman1.jpg" style="width: 150px; height: 150px">
+					Your strategic problem solving reminds us of <b>Batman</b>: your problem-solving strategy was characterized
+					deep exploration of alternative game plays.
+				</div>
+
+				<div id="flash" class = "question">
+					<img class="6by6" src="images/superheroes/falsh.jpg" style="width: 150px; height: 150px">
+					Your strategic problem solving reminds us of  <b>Flash</b>: your problem-solving strategy was characterized
+					deep exploration of alternative game plays.
+				</div>
+
+			</div>
 
 			<div id="correctFeedback">
 				Your solution was correct! Good job, only <span class="percentCorrect">20%</span>%
@@ -79,50 +109,52 @@
 
 			<p>
 				You spent <span id="timeSpentPar"></span> minutes working on this problem.
-				On average, participants took <span id="timeSpentAvg">6.5</span> minutes to submit their solution.
+				This is <span id="timeComp"></span> times <span id="timeComp2">faster</span> than the average participant.
 			</p>
 
 			<h3>Wait, there's more!</h3>
 			<p>
-			In this study, we are looking at the way in which people solve complex problem such as the one you were presented with.
+				In this study, we are looking at the way in which people solve complex problem such as the one you were
+				presented with.
 			</p>
 			<p>
-			When solving the problem, you considered <span class="numMovesPar">20</span> moves
+				When solving the problem, you considered <span class="numMovesPar">20</span> moves
 				(this means that you clicked on squares in the tic-tac-toe board <span class="numMovesPar">20</span> times).
-				The average number of moves participants in our study consider is <span id="numMovesAvg">15</span>
+				The average number of moves participants in our study considered is <span id="numMovesAvg">15</span>
 			</p>
 
 			<div id="high_entropy">
-			<p>
-				Compared to others, your problem-solving strategy was <i>more spread</i>. This means that you alternated between game paths that cover different parts of the game board.
+				<p>
+					Compared to others, your problem-solving strategy was <i>more spread</i>.
+					This means that you alternated between game paths that cover different parts of the game board.
 
-			</p>
-		</div>
+				</p>
+			</div>
 
 			<div id="low_entropy">
 				<p>
-					Compared to others, your problem-solving strategy was <i>more focused</i>. This means that you tried alternative game paths that were similar to each other, exploring different responses of each of the player.
+					Compared to others, your problem-solving strategy was <i>more focused</i>. This means that you tried
+					alternative game paths that were similar to each other, exploring different responses of each of the player.
 
 				</p>
 			</div>
 
 			<div id="avg_entropy">
 				<p>
-					Your problem-solving strategy was <i>balanced</i>. This means that you explored some parts of the game board in depth, testing different responses of the players, while also exploring alternative game paths that covered different parts of the game board.
+					Your problem-solving strategy was <i>balanced</i>. This means that you explored some parts of the
+					game board in depth, testing different responses of the players, while also exploring alternative
+					game paths that covered different parts of the game board.
 
 				</p>
 			</div>
 
 			<p>
-				The image on the left shows the number of times each square in the board that was presented to you was
-				clicked on by <b>all</b> the participants in the study.
-				The image on the right shows the number of times that you clicked on each of the squares while
-				<b>you</b> were working on the problem.
+				Here's a comparison between how you solved it and how others did: <br>
+				The image on the left shows the number of times different players clicked each square.
+				On the right image, the number of clicks you made on each square is shown.
+				Darker Red means many clicks, Darker Blue means a small number of clicks.
 				<br>
-				<br>
-				Squares that are <i>brighter</i> have been played more frequently.
-				By looking at these two plots you can see how your moves compared to aggregated moves of the study participants.
-				<br>
+				By looking at these two images, you can compare your way of playing vs. all the other participants in the study.
 
 			</p>
 
@@ -142,6 +174,90 @@
 
 		</div>
 	</div>
+
+
+		<!--<div id="feedback" class="page">-->
+			<!--<div class = "introh3">-->
+
+				<!--<h2> Thank you for participating in our study! Here' some information about your problem-solving strategy-->
+					<!--and how it compares to others.-->
+				<!--</h2>-->
+
+				<!--<div id="correctFeedback">-->
+					<!--Your solution was correct! Good job, only <span class="percentCorrect">20%</span>%-->
+					<!--of participants solved this problem correctly.-->
+				<!--</div>-->
+
+				<!--<div id="incorrectFeedback">-->
+					<!--Your solution was incorrect. But don't be disappointed, only <span class="percentCorrect">20%</span>%-->
+					<!--of participants solved this problem correctly.-->
+				<!--</div>-->
+
+				<!--<p>-->
+					<!--You spent <span id="timeSpentPar"></span> minutes working on this problem.-->
+					<!--On average, participants took <span id="timeSpentAvg">6.5</span> minutes to submit their solution.-->
+				<!--</p>-->
+
+				<!--<h3>Wait, there's more!</h3>-->
+				<!--<p>-->
+					<!--In this study, we are looking at the way in which people solve complex problem such as the one you were presented with.-->
+				<!--</p>-->
+				<!--<p>-->
+					<!--When solving the problem, you considered <span class="numMovesPar">20</span> moves-->
+					<!--(this means that you clicked on squares in the tic-tac-toe board <span class="numMovesPar">20</span> times).-->
+					<!--The average number of moves participants in our study consider is <span id="numMovesAvg">15</span>-->
+				<!--</p>-->
+
+				<!--<div id="high_entropy">-->
+					<!--<p>-->
+						<!--Compared to others, your problem-solving strategy was <i>more spread</i>. This means that you alternated between game paths that cover different parts of the game board.-->
+
+					<!--</p>-->
+				<!--</div>-->
+
+				<!--<div id="low_entropy">-->
+					<!--<p>-->
+						<!--Compared to others, your problem-solving strategy was <i>more focused</i>. This means that you tried alternative game paths that were similar to each other, exploring different responses of each of the player.-->
+
+					<!--</p>-->
+				<!--</div>-->
+
+				<!--<div id="avg_entropy">-->
+					<!--<p>-->
+						<!--Your problem-solving strategy was <i>balanced</i>. This means that you explored some parts of the game board in depth, testing different responses of the players, while also exploring alternative game paths that covered different parts of the game board.-->
+
+					<!--</p>-->
+				<!--</div>-->
+
+				<!--<p>-->
+					<!--The image on the left shows the number of times each square in the board that was presented to you was-->
+					<!--clicked on by <b>all</b> the participants in the study.-->
+					<!--The image on the right shows the number of times that you clicked on each of the squares while-->
+					<!--<b>you</b> were working on the problem.-->
+					<!--<br>-->
+					<!--<br>-->
+					<!--Squares that are <i>brighter</i> have been played more frequently.-->
+					<!--By looking at these two plots you can see how your moves compared to aggregated moves of the study participants.-->
+					<!--<br>-->
+
+				<!--</p>-->
+
+				<!--<div id="no_actions">-->
+
+				<!--</div>-->
+
+				<!--&lt;!&ndash;<div id="heatmap_participant">  </div>&ndash;&gt;-->
+				<!--<div style="width: 100%; overflow: hidden">-->
+					<!--<div id="heatmap_all" style="width: 400px; height: 400px; float: left;">  </div>-->
+					<!--<div id="heatmap_participant" style="margin-left: 400px; width: 400px; height: 400px;">  </div>-->
+				<!--</div>-->
+
+
+
+
+
+			<!--</div>-->
+	<!--</div>-->
 
 		
 		<div id="consent" class="page">
@@ -220,7 +336,8 @@
 							<option value=""></option>					
 							<option value="male">male</option>
 							<option value="female">female</option>
-							</select>
+							<option value="other">other</option>
+						</select>
 						</td>
 					</tr>
 					<tr>
