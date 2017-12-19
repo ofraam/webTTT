@@ -1651,6 +1651,7 @@ function onContinue() {
             //store final summative info
 
             show_page_final_litw_v2();
+            $(window).scrollTop(0,0);
             // show_page_final();
 
 	}
