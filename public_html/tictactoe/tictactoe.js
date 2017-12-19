@@ -949,8 +949,8 @@ function show_page_final_litw_v2(){
 
     if (E.solvedCorrect) {
         $("#incorrectFeedback").hide();
-        $("#superman").show();
-        superhero_assigned = true;
+        // $("#superman").show();
+        // superhero_assigned = true;
     }
     else {
         $("#correctFeedback").hide();
@@ -1539,12 +1539,12 @@ function onContinue() {
 
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
                 if (E.condition=="full" | E.condition=="pruned") {
-                    alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
-                        "receive a verification code to paste in your HIT submission.");
+                    alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will " +
+                        "receive feedback on your problem-solving superpowers.");
                 }
                 else {
-                    alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
-                            "receive a verification code to paste in your HIT submission.");
+                    alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will " +
+                        "receive feedback on your problem-solving superpowers.");
                 }
                 onContinue();
                 return;
