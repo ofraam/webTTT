@@ -400,7 +400,11 @@
 				</div>
 
 				<div id="generalInstructionsVerify">
-					<h2>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span>?.
+					<h2>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span>? <br>
+						If so, what is the next move X will need to make to ensure the win?
+						<br>
+						If not, what move can O make
+						to block X?
 						<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
 						(row, column or diagonal).
 						<br> If you answer correctly, you will be asked to play the game against the computer, so try to
@@ -486,6 +490,16 @@
 							<option value="yes">Yes</option>
 							<option value="no">No</option>
 						</select>
+						<br><br>
+						<div id="nextMoveVerification">
+							<b>If you answered <i>"yes"</i>, what is the next move that X should play (after f3) to enforce the win? <br>
+							If you answered <i>"no"</i>, what is the first move O should play to block X from winning?
+								<br>
+								Your answer:
+							</b>:
+							<input type="text" id="nextmove" maxlength="2" size="2" />
+						</div>
+
 					</div>
 								<!--<br />-->
 								<!--<br />-->
