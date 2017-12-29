@@ -850,6 +850,7 @@ function submit_solution() {
     var conf = $('input[name=confidence]:checked', '#experiment').val()
     var ver = $("#verification").val()
     var nextmove = $("#nextmove").val()
+    servlog("next_move", nextmove);
     // if(typeof conf != 'undefined')
 	// {
         // var solution = $("#solution").val();
@@ -1131,11 +1132,11 @@ function onContinue() {
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
                 if (E.condition=="full" | E.condition=="pruned") {
                     alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
-                        "receive a verification code to paste in your HIT submission.");
+                        " receive a verification code to paste in your HIT submission.");
                 }
                 else {
                     alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
-                            "receive a verification code to paste in your HIT submission.");
+                            " receive a verification code to paste in your HIT submission.");
                 }
                 onContinue();
                 return;
