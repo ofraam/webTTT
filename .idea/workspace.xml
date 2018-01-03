@@ -57,8 +57,8 @@
       <file leaf-file-name="tictactoe.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2070">
-              <caret line="992" column="30" selection-start-line="992" selection-start-column="30" selection-end-line="992" selection-end-column="30" />
+            <state relative-caret-position="344">
+              <caret line="569" column="23" selection-start-line="569" selection-start-column="23" selection-end-line="569" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -346,12 +346,12 @@
       <workItem from="1511791765291" duration="1237000" />
       <workItem from="1511902474749" duration="2148000" />
       <workItem from="1514966501801" duration="13352000" />
-      <workItem from="1514984409828" duration="4432000" />
+      <workItem from="1514984409828" duration="4774000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199056000" />
+    <option name="totallyTimeSpent" value="199398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -815,6 +815,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/feedback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="89" column="98" selection-start-line="89" selection-start-column="98" selection-end-line="89" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -842,18 +850,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/feedback.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="89" column="98" selection-start-line="89" selection-start-column="98" selection-end-line="89" selection-end-column="98" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2070">
-          <caret line="992" column="30" selection-start-line="992" selection-start-column="30" selection-end-line="992" selection-end-column="30" />
+        <state relative-caret-position="344">
+          <caret line="569" column="23" selection-start-line="569" selection-start-column="23" selection-end-line="569" selection-end-column="23" />
           <folding />
         </state>
       </provider>
