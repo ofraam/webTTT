@@ -680,6 +680,13 @@ function initialize_experiment() {
             break;
     }
 
+    for (i=0;i<LITW.stats.length;i++) {
+        if (LITW.stats[i].board==tposition) {
+            LITW.boardStats = LITW.stats[i];
+            break;
+        }
+    }
+
 
 
 	// alert(E.position)
@@ -856,10 +863,10 @@ function show_page_final_litw(){
                     color: textColor
                 }
             };
-            if (E.configuration.position[5-i][j] == 1) {
+            if (E.configuration.position[E.size-1-i][j] == 1) {
                 result.text = 'X';
             }
-            if (E.configuration.position[5-i][j] == 2) {
+            if (E.configuration.position[E.size-1-i][j] == 2) {
                 result.text = 'O';
             }
             if (result.text == 0) {
@@ -919,10 +926,10 @@ function show_page_final_litw(){
                     color: textColor
                 }
             };
-            if (E.configuration.position[5-i][j] == 1) {
+            if (E.configuration.position[E.size-1-i][j] == 1) {
                 result.text = 'X';
             }
-            if (E.configuration.position[5-i][j] == 2) {
+            if (E.configuration.position[E.size-1-i][j] == 2) {
                 result.text = 'O';
             }
             if (result.text == 0) {
@@ -1059,10 +1066,10 @@ function show_page_final_litw_v2(){
                     color: textColor
                 }
             };
-            if (E.configuration.position[5-i][j] == 1) {
+            if (E.configuration.position[E.size-1-i][j] == 1) {
                 result.text = 'X';
             }
-            if (E.configuration.position[5-i][j] == 2) {
+            if (E.configuration.position[E.size-1-i][j] == 2) {
                 result.text = 'O';
             }
             if (result.text == 0) {
@@ -1122,10 +1129,10 @@ function show_page_final_litw_v2(){
                     color: textColor
                 }
             };
-            if (E.configuration.position[5-i][j] == 1) {
+            if (E.configuration.position[E.size-1-i][j] == 1) {
                 result.text = 'X';
             }
-            if (E.configuration.position[5-i][j] == 2) {
+            if (E.configuration.position[E.size-1-i][j] == 2) {
                 result.text = 'O';
             }
             if (result.text == 0) {
@@ -1204,16 +1211,28 @@ function submit_demographics() {
     servlog("participated", participated);
 }
 
+function submit_distractions() {
+    var participatedEnd = document.getElementById("participated1").value;
+    var technical = document.getElementById("technical").value;
+    var cheat = document.getElementById("cheat").value;
+    var distractions = document.getElementById("distraction").value;
+
+    servlog("participatedEnd", participatedEnd);
+    servlog("technical", technical);
+    servlog("cheat", cheat);
+    servlog("distractions", distractions);
+}
+
 function submit_quiz() {
 
 	
-	var q1 = $("#q1").val()
-	var q2 = $("#q2").val()
-	var q3 = $("#q3").val()
-	var q4 = $("#q4").val()	
-	var q5 = $("#q5").val()
-    var q6 = $("#q6").val()
-    var q6v = $("#q6v").val()
+	var q1 = $("#q1").val();
+	var q2 = $("#q2").val();
+	var q3 = $("#q3").val();
+	var q4 = $("#q4").val()	;
+	var q5 = $("#q5").val();
+    var q6 = $("#q6").val();
+    var q6v = $("#q6v").val();
 
 	
 	servlog("quiz1", q1);
@@ -1222,7 +1241,7 @@ function submit_quiz() {
 	servlog("quiz4", q4);
 	servlog("quiz5", q5);
     servlog("quiz6", q6);
-    servlog("quiz6v", q6v)
+    servlog("quiz6v", q6v);
 	
 	var passed = false;
 	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
@@ -1644,7 +1663,7 @@ function onContinue() {
 		case 8:
             clearInterval(E.interval);
             E.timerDone = true;
-			E.endTime = msTime();
+            E.endTime = msTime();
             E.validationTime = E.endTime-E.startTime;
             // submit_solution();
             servlog("validationTime", E.validationTime);
@@ -1652,14 +1671,36 @@ function onContinue() {
             servlog("solvedCorrect", E.solvedCorrect);
             servlog("numActionsSolve", E.actionsSolve);
             servlog("numActionsValidate", E.actionsValidation);
-			// var timeVote = E.endTime - E.startTime
-			// servlog("timeVote", timeVote)
+            // var timeVote = E.endTime - E.startTime
+            // servlog("timeVote", timeVote)
+
+            //store final summative info
+            $('#distractions').show()
+
+            $(window).scrollTop(0,0);
+            break;
+            // show_page_final();
+
+
+        case 9:
+            submit_distractions();
+            // clearInterval(E.interval);
+            // E.timerDone = true;
+            // E.endTime = msTime();
+            // E.validationTime = E.endTime-E.startTime;
+            // // submit_solution();
+            // servlog("validationTime", E.validationTime);
+            // servlog("validatedCorrect", E.validation);
+            // servlog("solvedCorrect", E.solvedCorrect);
+            // servlog("numActionsSolve", E.actionsSolve);
+            // servlog("numActionsValidate", E.actionsValidation);
+            // var timeVote = E.endTime - E.startTime
+            // servlog("timeVote", timeVote)
 
             //store final summative info
 
             show_page_final_litw_v2();
             $(window).scrollTop(0,0);
-            // show_page_final();
 
 	}
 }

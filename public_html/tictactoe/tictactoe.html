@@ -119,32 +119,32 @@
 			<div id="character">
 
 				<div id="superman" class = "question superhero">
-					<img class="6by6" src="images/superheroes/superman.png" style="width: 150px; height: 150px">
+					<img  src="images/superheroes/superman.png" style="width: 150px; height: 150px">
 					Your strategic problem solving reminds us of <b>Superman</b>: <br> you were able to overcome the challenge of a
 					very difficult problem and win the game.
 				</div>
 
 				<div id="wonderwoman" class = "question superhero">
-					<img class="6by6" src="images/superheroes/wonderwoman.jpg" style="width: 150px; height: 150px">
+					<img  src="images/superheroes/wonderwoman.jpg" style="width: 150px; height: 150px">
 					Your strategic problem solving reminds us of <b>Wonder Woman</b>:
 					<br> you played the game in a unique way which
 					differed from most of our participants.
 				</div>
 
 				<div id="batman" class = "question superhero">
-					<img class="6by6" src="images/superheroes/batman1.jpg" style="width: 150px; height: 150px">
+					<img  src="images/superheroes/batman1.jpg" style="width: 150px; height: 150px">
 					Your strategic problem solving reminds us of <b>Batman</b>: your problem-solving strategy was characterized
 					deep exploration of alternative game plays.
 				</div>
 
 				<div id="flash" class = "question superhero">
-					<img class="6by6" src="images/superheroes/falsh.jpg" style="width: 150px; height: 150px">
+					<img  src="images/superheroes/falsh.jpg" style="width: 150px; height: 150px">
 					Your strategic problem solving reminds us of  <b>Flash</b>: <br> your problem-solving strategy was characterized
 					by a fast exploration of game plays.
 				</div>
 
 				<div id="thor" class = "question superhero">
-					<img class="6by6" src="images/superheroes/thor.jpg" style="width: 150px; height: 150px">
+					<img  src="images/superheroes/thor.jpg" style="width: 150px; height: 150px">
 					Your strategic problem solving reminds us of  <b>Thor</b>: <br> your problem-solving strategy was characterized
 					by a slow and thoughtful exploration of game plays.
 				</div>
@@ -204,8 +204,8 @@
 
 			<p>
 				Here's a comparison between how you solved the problem and how others did: <br>
-				The image on the left shows the number of times different players clicked each square.
-				On the right image, we show your number of clicks on each square.
+				The image on the left shows the number of times different players placed an X on each square.
+				On the right image, we show the number of times you placed an X on each square.
 				Darker Red means many clicks, Darker Blue means a small number of clicks.
 				<br>
 				By looking at these two images, you can compare your way of playing vs. all the other participants in the study.
@@ -426,8 +426,8 @@
 						<td width="30%"><p>Have you taken this test before?</p></td>
 						<td> <select id="participated">
 							<option value=""></option>
-							<option value="firstTime">no</option>
-							<option value="takenTest">yes</option>
+							<option value=0>no</option>
+							<option value=1>yes</option>
 						</select>
 						</td>
 					</tr>
@@ -472,8 +472,60 @@
 				</table>
 		
 			</div> 
-		</div> 
-		<div id="instructions" class="page">
+		</div>
+
+	<div id="distractions" class="page">
+		<div class="intro ">
+
+
+			<h2>A couple of quick questions before we show you your results:</h2>
+
+
+			<table>
+				</tr>
+				<tr>
+					<td width="30%"><p>Have you taken this test before?</p></td>
+					<td> <select id="participated1">
+						<option value=""></option>
+						<option value="0">no</option>
+						<option value="1">yes</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><p>Did you experience any technical difficulties?</p></td>
+					<td> <select id="technical">
+						<option value=""></option>
+						<option value="0">no</option>
+						<option value="1">yes</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><p>Did you cheat in any way?</p></td>
+					<td> <select id="cheat">
+						<option value=""></option>
+						<option value="0">no</option>
+						<option value="1">yes</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td width="30%"><p>Were you distracted during the test?</p></td>
+					<td> <select id="distraction">
+						<option value=""></option>
+						<option value="0">no</option>
+						<option value="1">yes</option>
+					</select>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+
+	<div id="instructions" class="page">
 			<div class="intro">
 				<h1>
 					Instructions - Tic-tac-toe
