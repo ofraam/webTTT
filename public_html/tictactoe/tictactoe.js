@@ -1194,10 +1194,14 @@ function submit_demographics() {
 	var gender=document.getElementById("gender").options[document.getElementById("gender").selectedIndex].value;
 	var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
 	var age=document.getElementById("age").value;
+    var chess = document.getElementById("chess").value;
+    var participated = document.getElementById("participated").value;
 
 	servlog("gender", gender);
 	servlog("education", education);
 	servlog("age", age);
+    servlog("chess", chess);
+    servlog("participated", participated);
 }
 
 function submit_quiz() {
@@ -1242,6 +1246,9 @@ function submit_quiz() {
 		onContinue.curPage = 2;
 		onContinue();
 	}
+    else {
+        alert("Great job, you answered all questions correctly! You will now proceed to the real task.")
+    }
 }
 
 function submit_strategy() {
