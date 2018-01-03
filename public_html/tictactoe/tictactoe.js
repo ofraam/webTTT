@@ -700,6 +700,7 @@ function initialize_experiment() {
     servlog("boardSize", E.size);
     servlog("difficulty", E.difficulty);
     servlog("condition",E.condition);
+    servlog("litw",1)
 
   	servlog("start_position",E.configuration);
 }
