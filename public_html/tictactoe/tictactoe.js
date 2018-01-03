@@ -203,6 +203,7 @@ E.board6_1_verify = {
     winPath: [[[1,5],[2,5],[4,5]]],
     losePath: [[[0,2],[1,4],[0,5]]],
     winMove: ['f3','F3','3F','3F'],
+    nextMove: ['f5','F5','5F','5F'],
     firstMove: 'f3'
 }
 
@@ -280,7 +281,8 @@ E.board6_1_10_5_verify = {
     firstMovrCol: '9',
     winPath: [[[1,9],[2,9],[5,9]]],
     losePath: [[[0,5],[1,8],[0,9]]],
-    winMove: ['j6','J6','6j','6J']
+    winMove: ['j6','J6','6j','6J'],
+    nextMove: ['j9','J9','9j','9J']
 }
 
 
@@ -346,7 +348,8 @@ E.board6_2_b_verify = {
     firstMovrCol: '3',
     winPath: [[[0,2],[2,2],[2,3],[2,0]]],
     losePath: [[[3,0],[0,5],[3,2],[2,4]]],
-    winMove: ['d6','D6','6d','6D']
+    winMove: ['d6','D6','6d','6D'],
+    nextMove: ['c6','C6','6c','6C']
 }
 
 
@@ -424,7 +427,8 @@ E.board10_2_b_5_verify = {
     firstMovrCol: '4',
     winPath: [[[2,3],[4,3],[4,4],[4,5]]],
     losePath: [[[6,0],[2,7],[5,3],[4,0]]],
-    winMove: ['e8','E8','8e','8E']
+    winMove: ['e8','E8','8e','8E'],
+    nextMove: ['d8','D8','8d','8D']
 }
 
 E.board10_1 = {
@@ -461,9 +465,9 @@ E.board10_1_pruned = {
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,1,0,0,2,0,0,0,0],
-        [0,0,1,1,1,2,0,0,0,0],
-        [0,0,0,0,2,2,2,1,2,0],
-        [0,0,0,0,0,1,2,2,0,0],
+        [0,0,0,1,1,0,0,0,0,0],
+        [0,2,0,0,2,2,2,1,2,0],
+        [0,0,1,0,0,1,2,2,0,0],
         [0,0,0,1,0,2,0,0,0,0],
         [0,0,0,0,1,1,0,0,0,0],
         [0,0,0,0,0,1,0,0,0,0],
@@ -472,9 +476,9 @@ E.board10_1_pruned = {
     nextPlayer: 1,
     streak:5,
     turns: 3,
-    winPath: [[[5,2],[4,2],[6,2]]],
-    losePath: [[[4,1],[1,2]]],
-    winMove: ['c5','C5','5c','5C']
+    winPath: [[[3,2],[4,2],[6,2]]],
+    losePath: [[[3,5],[1,2]]],
+    winMove: ['c7','C7','57','57']
 }
 
 E.board10_1_verify = {
@@ -486,9 +490,9 @@ E.board10_1_verify = {
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,1,0,0,2,0,0,0,0],
-        [0,0,1,1,1,0,0,0,0,0],
+        [0,0,0,1,1,0,0,0,0,0],
         [0,0,0,0,2,2,2,1,2,0],
-        [0,0,0,0,0,1,2,2,0,0],
+        [0,0,1,0,0,1,2,2,0,0],
         [0,0,0,1,0,2,0,0,0,0],
         [0,0,0,0,1,1,0,0,0,0],
         [0,0,0,0,0,1,0,0,0,0],
@@ -497,11 +501,12 @@ E.board10_1_verify = {
     nextPlayer: 2,
     streak:5,
     turns: 4,
-    firstMovrRow: '3',
+    firstMovrRow: '5',
     firstMovrCol: '2',
-    winPath: [[[5,2],[4,2],[6,2]]],
-    losePath: [[[3,5],[4,1],[1,2]]],
-    winMove: ['c7','C7','7c','7C']
+    winPath: [[[3,2],[4,2],[6,2]]],
+    losePath: [[[4,1],[3,5],[1,2]]],
+    winMove: ['c5','C5','5c','5C'],
+    nextMove: ['c7','C7','7c','7C']
 }
 
 
@@ -1197,6 +1202,10 @@ function show_page_final(){
 	showCode();	
 }
 
+function record_share(media, screen) {
+    servlog('shared', media +"_"+screen)
+}
+
 function submit_demographics() {
 	var gender=document.getElementById("gender").options[document.getElementById("gender").selectedIndex].value;
 	var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
@@ -1279,7 +1288,9 @@ function submit_solution() {
 	var move = $("#bestmove").val();
 	E.move = move;
     var conf = $('input[name=confidence]:checked', '#experiment').val()
-    var ver = $("#verification").val()
+    var ver = $("#verification").val();
+    var nextmove = $("#nextmove").val();
+    servlog("next_move", nextmove);
     // if(typeof conf != 'undefined')
 	// {
         // var solution = $("#solution").val();
@@ -1304,7 +1315,9 @@ function submit_solution() {
     }
     else {
         if (ver=="yes") {
-            E.solvedCorrect = true;
+            if (E.configuration.nextMove.indexOf(nextmove) > -1 ) {
+                E.solvedCorrect = true;
+            }
         }
         // else  //TODO: move from submit solution to screen
         // {

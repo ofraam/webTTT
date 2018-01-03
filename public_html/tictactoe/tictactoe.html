@@ -76,22 +76,22 @@
 			<!-- Email -->
 			<br>
 			<div>
-			<a href="mailto:?Subject=Siscover your problem solving super-powers&amp;Body=Discover your problem solving super-powers by taking this test: https://goo.gl/btrZui" style = "text-decoration: none">
+			<a href="mailto:?Subject=Siscover your problem solving super-powers&amp;Body=Discover your problem solving super-powers by taking this test: https://goo.gl/btrZui" style = "text-decoration: none" onclick="record_share('email','splash')">
 				<img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" style = "width: 30px;margin:0px;box-shadow: none"/>
 			</a>
 
 			<!-- Facebook -->
-			<a href="http://www.facebook.com/sharer.php?u=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none">
+			<a href="http://www.facebook.com/sharer.php?u=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none" onclick="record_share('facebook','splash')">
 				<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" style = "width: 30px;margin:0px;box-shadow: none"/>
 			</a>
 
 			<!-- Google+ -->
-			<a href="https://plus.google.com/share?url=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none">
+			<a href="https://plus.google.com/share?url=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none" onclick="record_share('gplus','splash')">
 				<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" style = "width: 30px;margin:0px;box-shadow: none"/>
 			</a>
 
 			<!-- Twitter -->
-			<a href="https://twitter.com/share?url=https://goo.gl/btrZui&amp;text=Discover your problem solving super-powers &amp;hashtags=problemsolvingstudy" target="_blank" style = "text-decoration: none">
+			<a href="https://twitter.com/share?url=https://goo.gl/btrZui&amp;text=Discover your problem solving super-powers &amp;hashtags=problemsolvingstudy" target="_blank" style = "text-decoration: none" onclick="record_share('twitter','splash')">
 				<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" style = "width: 30px;margin:0px;box-shadow: none"/>
 			</a>
 			</div>
@@ -228,22 +228,22 @@
 				<br>
 				<br>
 				<div>
-					<a href="mailto:?Subject=Siscover your problem solving super-powers&amp;Body=Discover your problem solving super-powers by taking this test: https://goo.gl/btrZui" style = "text-decoration: none">
+					<a href="mailto:?Subject=Siscover your problem solving super-powers&amp;Body=Discover your problem solving super-powers by taking this test: https://goo.gl/btrZui" style = "text-decoration: none" onclick="record_share('email','results')">
 						<img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" style = "width: 30px;margin:0px;box-shadow: none"/>
 					</a>
 
 					<!-- Facebook -->
-					<a href="http://www.facebook.com/sharer.php?u=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none">
+					<a href="http://www.facebook.com/sharer.php?u=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none" onclick="record_share('facebook','results')">
 						<img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" style = "width: 30px;margin:0px;box-shadow: none"/>
 					</a>
 
 					<!-- Google+ -->
-					<a href="https://plus.google.com/share?url=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none">
+					<a href="https://plus.google.com/share?url=https://goo.gl/btrZui" target="_blank" style = "text-decoration: none" onclick="record_share('gplus','results')">
 						<img src="https://simplesharebuttons.com/images/somacro/google.png" alt="Google" style = "width: 30px;margin:0px;box-shadow: none"/>
 					</a>
 
 					<!-- Twitter -->
-					<a href="https://twitter.com/share?url=https://goo.gl/btrZui&amp;text=Discover your problem solving super-powers &amp;hashtags=problemsolvingstudy" target="_blank" style = "text-decoration: none">
+					<a href="https://twitter.com/share?url=https://goo.gl/btrZui&amp;text=Discover your problem solving super-powers &amp;hashtags=problemsolvingstudy" target="_blank" style = "text-decoration: none" onclick="record_share('twitter','results')">
 						<img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" style = "width: 30px;margin:0px;box-shadow: none"/>
 					</a>
 				</div>
@@ -258,7 +258,7 @@
 			</div>
 			<br>
 			<div>
-				<b>Want to learn more about yourself? Check out other tests on <a href="http://www.labinthewild.org">Lab in the Wild</a>!</b>
+				<b>Want to learn more about yourself? Check out other tests on <a href="http://www.labinthewild.org" target="_blank">Lab in the Wild</a>!</b>
 			</div>
 
 
@@ -810,7 +810,7 @@
 					<h2>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span>?.
 						<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
 						(row, column or diagonal).
-						<br> If you answer correctly, you will be asked to play the game against the computer, so try to
+						<br> After you submit your answer, you will be asked to explain your strategy and play the game against the computer, so try to
 						remember the moves you make.
 						<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
 				</div>
@@ -857,12 +857,13 @@
 						<span class="player">X</span> can win the game in <b><span class="moves">5</span></b> moves no matter what
 						O does. Is the first move to win the game <span class="firstMove">d6</span>
 						(square shown with thick black border)?
-						Assume that both players try to win the game as fast as they can.
+						Assume that both players try their best to win the game.
 						<br><br><b>Use the board to try out different strategies.</b>
 						Each X move you play will show the move number so you can easily count how
 						many moves you've played. <b>Note that it is now the turn of the O player (after X played the square shown with
 						the thick black border).</b>
 					</div>
+
 
 					<div id = "play">
 						The board as been reset to its starting position as now you will be playing against the computer.
@@ -893,6 +894,16 @@
 							<option value="yes">Yes</option>
 							<option value="no">No</option>
 						</select>
+						<br><br>
+						<div id="nextMoveVerification">
+							<b>If you answered <i>"yes"</i>, what is the next move that X should play (after f3) to enforce the win? (assume that O responded as best as possible to the f3 move)<br>
+								If you answered <i>"no"</i>, what is the first move O should play to block X from winning?
+								<br>
+								Your answer:
+							</b>:
+							<input type="text" id="nextmove" maxlength="2" size="2" />
+						</div>
+
 					</div>
 								<!--<br />-->
 								<!--<br />-->
