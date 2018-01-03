@@ -990,6 +990,7 @@ function show_page_final_litw_v2(){
 
 
     var entropy = convertClickCountsToProbability();
+    servlog("entropy", entropy)
     // alert(entropy)
     if (entropy<LITW.boardStats.entropy_low) {
         $("#high_entropy").hide();
