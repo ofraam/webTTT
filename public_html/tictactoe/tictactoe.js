@@ -1712,7 +1712,7 @@ function onContinue() {
             // servlog("timeVote", timeVote)
 
             //store final summative info
-
+            servlogFinal();
             show_page_final_litw_v2();
             $(window).scrollTop(0,0);
 
