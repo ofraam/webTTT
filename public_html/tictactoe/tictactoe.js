@@ -534,11 +534,18 @@ E.configuration = {
 
 
 $(document).ready(function() {
+    if( screen.width <= 480 ) {
+        alert ("Sorry, this experiment does not run on mobile at the moment. Please use a laptop/desktop/tablet.")
+        $(".page").hide();
+        $("#btnContinue").attr('disabled', 'disabled');
+    }
 
-	initialize_experiment();
+    else {
+        initialize_experiment();
 
 
-	onContinue();
+        onContinue();
+    }
 });
 
 function initialize_experiment() {
@@ -563,6 +570,7 @@ function initialize_experiment() {
     if (tposition == undefined)
     {
         alert("no board specified!")
+
     }
 
     if (tposition=='rand') {
@@ -1227,6 +1235,8 @@ function submit_distractions() {
     var technical = document.getElementById("technical").value;
     var cheat = document.getElementById("cheat").value;
     var distractions = document.getElementById("distraction").value;
+    var comments = $("#comments").val();
+    servlog("comments", comments);
 
     servlog("participatedEnd", participatedEnd);
     servlog("technical", technical);
@@ -1255,13 +1265,13 @@ function submit_quiz() {
     servlog("quiz6v", q6v);
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
+	if( q1 == '2' && q2 == '2' && q3 =='3' && ((q4 == 'c1') | (q4 == 'C1') ) && ((q5=='b4') | (q5=='B4'))){
         if(E.condition=="verify") {
                 if (q6v=="yes") {
                     passed = true;
                 }
             }
-        else if( q6=='b3')
+        else if( (q6=='b3') | (q6=='B3') )
         {
             passed = true;
         }
