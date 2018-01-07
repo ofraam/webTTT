@@ -534,18 +534,18 @@ E.configuration = {
 
 
 $(document).ready(function() {
-    if( screen.width <= 480 ) {
-        alert ("Sorry, this experiment does not run on mobile at the moment. Please use a laptop/desktop/tablet.")
-        $(".page").hide();
-        $("#btnContinue").attr('disabled', 'disabled');
-    }
+    // if( screen.width <= 480 ) {
+    //     alert ("Sorry, this experiment does not run on mobile at the moment. Please use a laptop/desktop/tablet.")
+    //     $(".page").hide();
+    //     $("#btnContinue").attr('disabled', 'disabled');
+    // }
 
-    else {
+    // else {
         initialize_experiment();
 
 
         onContinue();
-    }
+    // }
 });
 
 function initialize_experiment() {
@@ -1392,8 +1392,15 @@ function onContinue() {
             break;
 
 		case 1:
-			$("#consent.page").show()
-            $("#btnContinue").prop('disabled', true);
+            if( screen.width <= 480 ) {
+                alert ("Sorry, this experiment does not run on mobile at the moment. Please use a laptop/desktop/tablet.")
+                $(".page").hide();
+                $("#btnContinue").attr('disabled', 'disabled');
+            }
+            else {
+                $("#consent.page").show()
+                $("#btnContinue").prop('disabled', true);
+            }
 			break;
 
 		case 2:
