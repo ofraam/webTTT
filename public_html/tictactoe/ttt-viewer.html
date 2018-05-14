@@ -1,0 +1,93 @@
+<head>
+    <!-- Plotly.js -->
+
+
+    <script src="../jquery-1.8.2.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="tictactoe-widget-view.js"></script>
+    <script src="ttt-viewer.js"></script>
+    <link rel="stylesheet" href="tictactoe.css">
+    <link rel="stylesheet" type="text/css" href="../experiment-style.css" />
+
+
+
+    <script src="../jcanvas.min.js"></script>
+
+    <script src="../generic-tools.js"></script>
+    <script src="../experiment-tools.js"></script>
+
+</head>
+
+<body>
+<div id="menu">
+    <table>
+        <tr>
+            <td><p>Board:</p></td>
+            <td> <select id="board">
+                <option value="6_hard_full">6_hard_full</option>
+                <option value="6_hard_pruned">6_hard_pruned</option>
+                <<option value="6_easy_full">6_easy_full</option>
+            </select>
+            </td>
+        </tr>
+        <tr>
+            <td><p>Solved</p> </td>
+            <td> <select id="solved">
+                <option value="all">All</option>
+                <option value="solvedCorrect" >solved_correct</option>
+                <option value="validatedCorrect" >validated_correct</option>
+                <option value="wrong" >wrong</option>
+            </select>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<div id="btn"><button onclick="draw_chart();">show data</button></div>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="boardDiv">
+
+</div>
+<div id="nextUser"><button onclick="next_user();">next</button></div>
+<div id="prevUser"><button onclick="prev_user();">previous</button></div>
+<script>
+
+
+//    var myPlot = document.getElementById('myDiv'),
+//            d3 = Plotly.d3,
+//            N = 16,
+//            x = d3.range(N),
+//            y = d3.range(N).map( d3.random.normal() ),
+//            data = [ { x:x, y:y, type:'scatter',
+//                mode:'markers', marker:{size:16} } ],
+//            layout = {
+//                hovermode:'closest',
+//                title:'Click on Points',
+//            'shapes':     [
+//                {'type': 'line',
+//            'x0': 1,
+//            'y0': 0,
+//            'x1': 1,
+//            'y1': 2,
+//            'line': {
+//                'color': 'rgb(50, 171, 96)',
+//                'width': 4,
+//                'dash': 'dashdot',
+//    },},]
+//            };
+//
+//    Plotly.newPlot('myDiv', data, layout);
+//
+//    myPlot.on('plotly_click', function(data){
+//        var pts = '';
+//        alert(data.points[0].x);
+//        for(var i=0; i < data.points.length; i++){
+//            pts = 'x = '+data.points[i].x +'\ny = '+
+//                    data.points[i].y.toPrecision(4) + '\n\n';
+//
+//        }
+//        alert('Closest point clicked:\n\n'+pts);
+//    });
+</script>
+</body>
