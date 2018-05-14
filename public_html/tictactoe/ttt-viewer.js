@@ -53,18 +53,24 @@ Array.prototype.unique = function() {
     return arr;
 }
 
-function draw_board() {
+function draw_board(myPlot) {
     var board_data = E.curr_data.filter(function (el) {
         return (el.time_rel_sec == E.curr_point)
     });
-    var position1 = board_data[0].board_state
+    var position1 = board_data[0].board_state;
     var array_pos = JSON.parse("[" + position1 + "]");
-    array_pos =array_pos[0]
+    array_pos =array_pos[0];
+    var move = board_data[0].position.split('_');
+    var player = parseInt(board_data[0].player);
+    array_pos[parseInt(move[0])][parseInt(move[1])] = player;
+
     E.widget = new TictactoeWidget({
         canvasContainerDiv : "#boardDiv",
-        nrows : 6,
-        ncols :  6,
-        // parseInt(board_data[0].board_size)
+        nrows : parseInt(board_data[0].board_size),
+        ncols :  parseInt(board_data[0].board_size),
+        firstMovrRow: move[0],
+        firstMovrCol: move[1],
+        // )
         cellSize: 32,
         position: array_pos,
         nextPlayer: 1,
@@ -75,6 +81,21 @@ function draw_board() {
         winMove: ['j9','J9','9j','9J']
     })
     E.widget.run()
+    var count = myPlot.data[0].x.length;
+    colors = []
+    sizes = []
+    ind = 0
+    for (i=0;i<count;i++) {
+        colors.push('#00000');
+        sizes.push(10);
+        if (myPlot.data[0].x[i] == E.curr_point) {
+            ind = i;
+        }
+    }
+    colors[ind] = '#C54C82';
+    sizes[ind] = 16;
+    var update = {'marker':{color: colors, size:sizes}};
+    Plotly.restyle('myDiv',update,[0]);
 }
 
 function draw_chart() {
@@ -159,19 +180,25 @@ function draw_chart() {
            'shapes':   shapes
        };
         E.curr_point = rows_user[0].time_rel_sec;
+
+        var myPlot = document.getElementById('myDiv')
+
         Plotly.newPlot('myDiv', data, layout);
+
+
 
        myPlot.on('plotly_click', function(data){
        var pts = '';
-       alert(data.points[0].x);
+       // alert(data.points[0].x);
        for(var i=0; i < data.points.length; i++){
            E.curr_point = data.points[i].x;
-           draw_board()
+           // alert(data.points[i].pointNumber)
+           draw_board(myPlot)
 
        }
        // alert('Closest point clicked:\n\n'+pts);
    });
-        draw_board();
+        draw_board(myPlot);
     // })
 }
 
