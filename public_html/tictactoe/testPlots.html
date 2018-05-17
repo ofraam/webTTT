@@ -1,0 +1,62 @@
+HTML   JS  Result
+Edit on
+<head>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+    var trace1 = {
+        x: [1, 2, 3],
+        y: [2, 3, 4],
+        type: 'scatter'
+    };
+
+//    var trace2 = {
+//        x: [20, 30, 40],
+//        y: [5, 5, 5],
+//        xaxis: 'x2',
+//        yaxis: 'y',
+//        type: 'scatter'
+//    };
+
+    var trace3 = {
+        x: [2, 3, 4],
+        y: [600, 700, 800],
+        xaxis: 'x',
+        yaxis: 'y3',
+        type: 'scatter'
+    };
+//
+//    var trace4 = {
+//        x: [4000, 5000, 6000],
+//        y: [7000, 8000, 9000],
+//        xaxis: 'x4',
+//        yaxis: 'y4',
+//        type: 'scatter'
+//    };
+
+    var data = [trace1, trace3];
+
+    var layout = {
+//        xaxis: {domain: [0, 1]},
+        yaxis: {domain: [0, 0.45]},
+//        xaxis4: {
+//            domain: [0.55, 1],
+//            anchor: 'y4'
+//        },
+//        xaxis2: {domain: [0.55, 1]},
+        yaxis3: {domain: [0.55, 1]},
+//        yaxis4: {
+//            domain: [0.55, 1],
+//            anchor: 'x4'
+//        }
+    };
+
+    Plotly.newPlot('myDiv', data, layout);
+</script>
+</body>

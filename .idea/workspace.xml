@@ -58,12 +58,12 @@
       <file leaf-file-name="ttt-viewer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+            <state relative-caret-position="527">
+              <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#4;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,11 +72,21 @@
       <file leaf-file-name="ttt-viewer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="811">
-              <caret line="189" column="60" selection-start-line="189" selection-start-column="60" selection-end-line="189" selection-end-column="60" />
+            <state relative-caret-position="429">
+              <caret line="151" column="50" selection-start-line="151" selection-start-column="50" selection-end-line="151" selection-end-column="50" />
               <folding>
                 <element signature="e#0#41#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="testPlots.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public_html/tictactoe/testPlots.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="46" column="35" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="35" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,6 +177,7 @@
         <option value="$PROJECT_DIR$/public_html/tictactoe/tictactoe.html" />
         <option value="$PROJECT_DIR$/public_html/tictactoe/tictactoe-widget-view.js" />
         <option value="$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.html" />
+        <option value="$PROJECT_DIR$/public_html/tictactoe/testPlots.html" />
         <option value="$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.js" />
       </list>
     </option>
@@ -398,12 +409,12 @@
       <workItem from="1516438436798" duration="3119000" />
       <workItem from="1520610736736" duration="6057000" />
       <workItem from="1522654208127" duration="2423000" />
-      <workItem from="1525703122711" duration="21066000" />
+      <workItem from="1525703122711" duration="27788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257531000" />
+    <option name="totallyTimeSpent" value="264253000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -474,23 +485,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.js</url>
-          <line>88</line>
+          <line>89</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/public_html/tictactoe/testPlots.html</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3495">
-          <caret line="233" column="9" selection-start-line="233" selection-start-column="1" selection-end-line="233" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public_html/experiment-style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -809,20 +819,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="53" column="24" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
+        <state relative-caret-position="527">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#3;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#4;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#body#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public_html/tictactoe/testPlots.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="46" column="35" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/ttt-viewer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="811">
-          <caret line="189" column="60" selection-start-line="189" selection-start-column="60" selection-end-line="189" selection-end-column="60" />
+        <state relative-caret-position="429">
+          <caret line="151" column="50" selection-start-line="151" selection-start-column="50" selection-end-line="151" selection-end-column="50" />
           <folding>
             <element signature="e#0#41#0" expanded="false" />
           </folding>
