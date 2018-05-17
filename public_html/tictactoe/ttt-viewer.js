@@ -298,7 +298,7 @@ function draw_chart() {
 }
 
 $(document).ready(function(){
-    Plotly.d3.csv("data/moves_hueristic_scores_explore.csv", function (err, rows) {
+    Plotly.d3.csv("moves_hueristic_scores_explore.csv", function (err, rows) {
         E.data = rows;
         E.users = unpack(E.data,'userid');
         E.users = E.users.unique();
