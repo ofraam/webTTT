@@ -126,7 +126,7 @@ function draw_board() {
             E.curr_point_index = i;
         }
     }
-    colors[ind] = '#C54C82';
+    // colors[ind] = '#C54C82';
     sizes[ind] = 16;
     var update = {'marker':{color: colors, size:sizes}};
     var update_times = {'marker':{color: colors_times, size:sizes}};
