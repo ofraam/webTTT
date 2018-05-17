@@ -26,7 +26,12 @@
             <td> <select id="board">
                 <option value="6_hard_full">6_hard_full</option>
                 <option value="6_hard_pruned">6_hard_pruned</option>
-                <<option value="6_easy_full">6_easy_full</option>
+                <option value="6_easy_full">6_easy_full</option>
+                <option value="6_easy_pruned">6_easy_pruned</option>
+                <option value="10_easy_full">10_easy_full</option>
+                <option value="10_easy_pruned">10_easy_pruned</option>
+                <option value="10_medium_full">10_medium_full</option>
+                <option value="10_medium_pruned">10_medium_pruned</option>
             </select>
             </td>
         </tr>
@@ -46,11 +51,17 @@
 </div>
 <div id="btn"><button onclick="draw_chart();">show data</button></div>
 <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<div id="boardContainer">
 <div id="boardDiv">
 
 </div>
-<div id="nextUser"><button onclick="next_user();">next</button></div>
-<div id="prevUser"><button onclick="prev_user();">previous</button></div>
+<div id="prevMove" style="float: left; margin-right: 10pt"><button onclick="prev_move();">back</button></div>
+<div id="nextMove"><button onclick="next_move();">next</button></div>
+</div>
+<div style="margin-top: 10pt; margin-bottom: 10pt">
+    <div id="prevUser" style="float: left; margin-right: 10pt"><button onclick="prev_user();">previous participant</button></div>
+    <div id="nextUser" ><button onclick="next_user();">next participant</button></div>
+</div>
 <script>
 
 

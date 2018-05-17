@@ -4,10 +4,13 @@
 E = {};
 E.data = {};
 E.curr_data = {};
+E.curr_user_clicks = {};
 E.users = {};
 E.curr_user_index = 0;
-E.widget = {}
-E.curr_point = {}
+E.widget = {};
+E.curr_point = {};
+E.curr_point_index = {};
+E.myPlot = {};
 
 function unpack(rows, key) {
     return rows.map(function (row) {
@@ -53,7 +56,26 @@ Array.prototype.unique = function() {
     return arr;
 }
 
-function draw_board(myPlot) {
+function next_move(){
+
+    if (E.curr_point_index<E.curr_user_clicks.length-1) {
+        E.curr_point_index += 1;
+        E.curr_point = E.curr_user_clicks[E.curr_point_index].time_rel_sec;
+        draw_board();
+    }
+    else {alert("last move")}
+}
+
+function prev_move(){
+    if (E.curr_point_index>0) {
+        E.curr_point_index -= 1;
+        E.curr_point = E.curr_user_clicks[E.curr_point_index].time_rel_sec;
+        draw_board();
+    }
+    else {alert("first move")}
+}
+
+function draw_board() {
     var board_data = E.curr_data.filter(function (el) {
         return (el.time_rel_sec == E.curr_point)
     });
@@ -81,15 +103,16 @@ function draw_board(myPlot) {
         winMove: ['j9','J9','9j','9J']
     })
     E.widget.run()
-    var count = myPlot.data[0].x.length;
+    var count = E.myPlot.data[0].x.length;
     colors = []
     sizes = []
     ind = 0
     for (i=0;i<count;i++) {
         colors.push('#00000');
         sizes.push(10);
-        if (myPlot.data[0].x[i] == E.curr_point) {
+        if (E.myPlot.data[0].x[i] == E.curr_point) {
             ind = i;
+            E.curr_point_index = i;
         }
     }
     colors[ind] = '#C54C82';
@@ -120,7 +143,7 @@ function draw_chart() {
         E.users = E.users.unique();
         // E.curr_user_index = 0;
         // alert (board);
-        var rows_user = E.curr_data.filter(function (el) {
+        E.curr_user_clicks = E.curr_data.filter(function (el) {
             return (el.userid == E.users[E.curr_user_index] & el.action == 'click')
         });
 
@@ -163,8 +186,8 @@ function draw_chart() {
     var trace1 = {
             type: "scatter",
             mode: "lines+markers",
-            x: unpack(rows_user, 'time_rel_sec'),
-            y: unpack(rows_user, 'state_score_x'),
+            x: unpack(E.curr_user_clicks, 'time_rel_sec'),
+            y: unpack(E.curr_user_clicks, 'score_heuristic_x'),
             line: {color: '#17BECF'}
         }
 
@@ -179,26 +202,27 @@ function draw_chart() {
            // }
            'shapes':   shapes
        };
-        E.curr_point = rows_user[0].time_rel_sec;
+        E.curr_point = E.curr_user_clicks[0].time_rel_sec;
+        E.curr_point_index = 0;
 
-        var myPlot = document.getElementById('myDiv')
+        E.myPlot = document.getElementById('myDiv')
 
         Plotly.newPlot('myDiv', data, layout);
 
 
 
-       myPlot.on('plotly_click', function(data){
+       E.myPlot.on('plotly_click', function(data){
        var pts = '';
        // alert(data.points[0].x);
        for(var i=0; i < data.points.length; i++){
            E.curr_point = data.points[i].x;
            // alert(data.points[i].pointNumber)
-           draw_board(myPlot)
+           draw_board(E.myPlot)
 
        }
        // alert('Closest point clicked:\n\n'+pts);
    });
-        draw_board(myPlot);
+        draw_board();
     // })
 }
 
