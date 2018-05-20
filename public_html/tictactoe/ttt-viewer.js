@@ -262,7 +262,7 @@ function draw_chart() {
         // var data_times = [trace2];
 
        var layout = {
-           title: E.users[E.curr_user_index] + '_'+ E.curr_user_clicks[0].solved + '_'+ E.curr_user_clicks[0].heuristic,
+           title: E.users[E.curr_user_index] + '_'+ E.curr_user_clicks[0].solved + '_'+ E.curr_user_clicks[0].heuristic + '_'+ E.curr_user_clicks[0].solution,
            // yaxis: {
            //     type: 'log',
            //     autorange: true
@@ -297,7 +297,7 @@ function draw_chart() {
 }
 
 $(document).ready(function(){
-    Plotly.d3.csv("moves_hueristic_scores_explore_200518.csv", function (err, rows) {
+    Plotly.d3.csv("moves_hueristic_scores_200518.csv", function (err, rows) {
         E.data = rows;
         E.users = unpack(E.data,'userid');
         E.users = E.users.unique();
