@@ -126,7 +126,7 @@ function draw_board() {
             E.curr_point_index = i;
         }
     }
-    // colors[ind] = '#C54C82';
+    colors[ind] = '#C54C82';
     sizes[ind] = 16;
     var update = {'marker':{color: colors, size:sizes}};
     var update_times = {'marker':{color: colors_times, size:sizes}};
@@ -137,7 +137,6 @@ function draw_board() {
 function draw_chart() {
 
 
-    // Plotly.d3.csv("data/moves_hueristic_scores_explore.csv", function (err, rows) {
     //     user_index == user_index || 0;
     //     alert('draw chart')
     //     alert(E.curr_user_index)
@@ -298,7 +297,7 @@ function draw_chart() {
 }
 
 $(document).ready(function(){
-    Plotly.d3.csv("moves_hueristic_scores_explore.csv", function (err, rows) {
+    Plotly.d3.csv("moves_hueristic_scores_explore_200518.csv", function (err, rows) {
         E.data = rows;
         E.users = unpack(E.data,'userid');
         E.users = E.users.unique();
