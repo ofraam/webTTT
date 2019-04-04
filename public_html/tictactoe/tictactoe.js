@@ -451,9 +451,11 @@ E.board10_1 = {
     nextPlayer: 1,
     streak:5,
     turns: 4,
-    winPath: [[[5,2],[3,2],[4,2],[6,2]], [[3,2],[5,2],[4,2],[6,2]]],
-    losePath: [[[4,1],[3,5],[1,2]], [[3,5],[4,1],[1,2]]],
-    winMove: ['c7','c5','C7','C5','7c', '5c','7C','5C']
+    // winPath: [[[5,2],[3,2],[4,2],[6,2]], [[3,2],[5,2],[4,2],[6,2]]],
+    // losePath: [[[4,1],[3,5],[1,2]], [[3,5],[4,1],[1,2]]],
+    winPath: [[[4,2],[5,3],[6,4],[8,6]], [[3,2],[5,2],[4,2],[6,2]]],
+    losePath: [[[5,2],[4,3],[3,1]], [[3,5],[4,1],[1,2]]],
+    winMove: ['c7','c6','C7','C6','7c', '6c','7C','6C']
 }
 
 E.board10_1_pruned = {
@@ -565,9 +567,10 @@ function initialize_experiment() {
     }
 
     if (tposition=='rand') {
+        var confs = ['1f', '1p', '2f', '2p', '4f', '4p', '5f', '5p'];
         // var confs = ['1f', '1p', '1v', '2f', '2p', '2v', '3f', '3p', '3v', '4f', '4p', '4v', '5f', '5p', '5v'];
         // var confs = ['1f', '1p', '2f', '2p', '3f', '3p', '4f', '4p', '5f', '5p'];
-        var confs = ['1v'];
+        // var confs = ['1v'];
         tposition = confs[Math.floor(Math.random()*confs.length)];
         // alert(tposition)
     }
