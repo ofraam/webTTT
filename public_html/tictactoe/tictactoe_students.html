@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<head xmlns="http://www.w3.org/1999/html">
+
+        <title>TicTacToe</title>
+        <link rel="stylesheet" href="tictactoe.css"> 
+   		<link rel="stylesheet" type="text/css" href="../experiment-style.css" />
+
+
+	<script type='text/javascript' >
+		E = {};
+	</script>
+        <script src="../jquery-1.8.2.min.js"></script>
+        <script src="../jcanvas.min.js"></script>
+
+        <script src="../generic-tools.js"></script>    
+        <script src="../experiment-tools.js"></script>       
+        <script src="tictactoe-widget.js"></script>
+        <script src="tictactoe_students.js"></script>
+    </head>
+    <body>
+    	
+    	
+    	
+    	
+
+		
+		<div id="consent" class="page">
+			<div class = "intro">
+
+					<h2> Consent</h2>
+
+				<p>
+					Please consider this information carefully before deciding whether to accept this task.
+				</p>
+				<p>
+					TITLE OF RESEARCH: Problem demonstrability as pruning of the solution space.
+
+				</p>
+				<p>
+					PURPOSE OF RESEARCH: To examine problem solving performance.
+				</p>
+				<p>
+					WHAT YOU WILL DO: You will be asked to solve a Tic-tac-toe game problem.
+				</p>
+				<p>
+					TIME REQUIRED: Participation will take approximately 30 minutes.
+				</p>
+				<p>
+					RISKS: There are no anticipated risks associated with participating in this study. The effects of participating should be comparable to those you would experience from viewing a computer monitor for 20 minutes and using a mouse.
+				</p>
+				<p>
+					COMPENSATION: We will randomly chose 2 students who solve the problems correctly who will win 50 shekels.
+				</p>
+				<p>
+					CONFIDENTIALITY: Your participation in this study will remain confidential. Your responses will be assigned a code number.
+					You will NOT be asked to provide your name. You will be asked to provide your age and gender.
+					Throughout the experiment, we may collect data such as browser type, operating system version, mouse movements, and error rates.
+					The records of this study will be kept private.
+					We will delete your ID once we process your participation.
+					In any sort of report we make public we will not include any information that will make
+					it possible to identify you without your explicit consent.
+					Research records will be kept in a locked file; only the researchers will have access to the records.
+				</p>
+				<p>
+					PARTICIPATION AND WITHDRAWAL: Your participation in this study is voluntarily,
+					and you may withdraw and return the task to Amazon Mechanical Turk at any time.
+					You may withdraw at any time by closing the web page of the task.
+				</p>
+
+				<p>
+					CONTACT: This study is conducted by researchers at the Technion - Israel Institute of Technology.
+					If you have any questions or concerns about this study, please contact oamir@technion.ac.il.
+				</p>
+
+				<p>
+					CONSENT: I have read the above information and the nature and purpose of this research have been sufficiently explained. I consent to take part in the study.
+					I understand that I am free to withdraw at any time.
+				</p>
+				<p>
+					<input type="checkbox" id="consentagree" onclick="onCheckbox()">
+					I agree and will participate in this study.
+				</p>
+			</div>
+		</div>
+		<div id="demographics" class="page">
+			<div class="intro demographics">
+		
+			
+				<h2>First a Few Questions</h2>
+				
+				<table>
+					<tr>
+						<td><p>ID</p></td>
+						<td><input type="text" id="student_id" size="40" /></td>
+					</tr>
+					<tr>
+						<td><p>Age</p></td>
+						<td><input type="text" id="age" size="40" /></td>
+					</tr>
+					<tr>
+						<td><p>Gender</p></td>
+						<td> <select id="gender">
+							<option value=""></option>					
+							<option value="male">male</option>
+							<option value="female">female</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><p>Education</p> </td>
+						<td> <select id="education">
+							  <option value="">Select one...</option>
+							  <option value="0" >Less than High School</option>
+							  <option value="1" >High School/GED</option>
+							  <option value="2" >College</option>
+							  <option value="3" >Graduate Degree</option>				
+							</select>
+						</td>				
+					</tr>
+					<tr>
+					</tr>
+				</table>
+		
+			</div> 
+		</div> 
+		<div id="instructions" class="page">
+			<div class="intro">
+				<h1>
+					Instructions - Tic-tac-toe
+				</h1>
+				
+				<div class="question">
+					<p> In this task you will play a version of the game Tic-tac-toe, your goal will be to find the best move given a starting position.
+						You will solve two tic tac toe problems.
+					
+					</p>
+					
+					<p>
+						There will be a raffle of two 50 shekel prizes among the students who solve two problems correctly.
+					</p>
+									
+				</div>
+				
+				<div class="question">
+					<div class="6by6">
+
+					<img src="images/tut1.png" >
+
+					This version of the game Tic-tac-toe is played on a 6x6 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step.
+					</div>
+
+					<div class="10by10">
+
+						<img src="images/tut1_10.png" >
+
+						This version of the game Tic-tac-toe is played on a 10x10 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step.
+					</div>
+				</div>
+
+				<div class="question" id="monkey"> 
+
+					<img class="6by6" src="images/tut2.png">
+
+					<img class="10by10" src="images/tut2_10.png">
+
+					Two players, X and O, take turns marking the spaces on the board.
+				</div>
+
+				<div class="question"> 
+					<div class="6by6">
+					<img src="images/tut3.png" >
+
+					The player who succeeds in marking <strong> four </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game. 
+					
+					<br><br>In the image on the right, O won the game by marking four spaces vertically.
+					</div>
+					<div class="10by10">
+						<img src="images/tut3_10.png" >
+
+						The player who succeeds in marking <strong> five </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game.
+
+						<br><br>In the image on the right, X won the game by marking five spaces vertically.
+					</div>
+				</div>
+
+				<div class="question">
+					<div class="6by6">
+					<img src="images/tut4.png" >
+
+					In this image X won by marking four spaces diagonally.
+					</div>
+					<div class="10by10">
+						<img src="images/tut4_10.png" >
+
+						In this image X won by marking five spaces diagonally.
+					</div>
+				</div>
+	
+			</div>
+		</div> 
+		
+		<div id="quiz" class="page">
+			<div class="intro">
+				<div id="quizDiv">
+				<h1>Please answer the following questions:</h1>
+				
+					<div class="question">
+						<img class="6by6" src="images/q1.png" >
+						<img class="10by10" src="images/q1_10.png" >
+						<h3>Who won?</h3>
+						<select id="q1">
+							<option value="0">&nbsp;</option>
+							<option value="1">nobody</option>
+							<option value="2">X</option>
+							<option value="3">O</option>
+						</select>
+					</div>
+				
+					<div class="question">
+						<img class="6by6" src="images/q2.png" >
+						<img class="10by10" src="images/q2_10.png" >
+						<h3>Who won?</h3>
+						<select id="q2">
+							<option value="0"> &nbsp;</option>
+							<option value="1">nobody</option>
+							<option value="2">X</option>
+							<option value="3">O</option>
+						</select>
+					</div>
+
+					<div class="question">
+						<img class="6by6" src="images/q3.png">
+						<img class="10by10" src="images/q3_10.png">
+						<h3>Who won?</h3>
+						<select id="q3">
+							<option value="0"> &nbsp;</option>
+							<option value="1">nobody</option>
+							<option value="2">X</option>
+							<option value="3">O</option>
+						</select>
+					</div>
+
+					<div class="question">
+						<img class="6by6" src="images/q4.png">
+						<img class="10by10" src="images/q4_10.png">
+						<h3>X can win in one move. What is the move?</h3>
+						<input type="text" id="q4" maxlength="2" size="2" />
+						example: a1
+					</div>
+
+					<div class="question">
+						<img class="6by6" src="images/q5.png">
+						<img class="10by10" src="images/q5_10.png">
+						<h3>O can win in one move. What is the move?</h3>
+						<input type="text" id="q5" maxlength="2" size="2" />
+						example: a1
+					</div>
+
+					<div class="question">
+						<div>
+						<div>
+							<div id="exampleSolve">
+							<h3>Your task will be to find the winning move for X, such that
+								X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
+							</div>
+							<div id="exampleVerify">
+								<h3>Your task will be to determine whether a certain move that X makes will guarantee that
+									X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
+							</div>
+							<br>
+								When solving the problem, you will be able to use an interactive board (like the one below) to try different strategies.
+							<br><br>
+							When you click a square, an X or an O will appear
+								(depending on who's turn it is).
+							<br>You will need to make moves for both players when trying
+								out strategies. Both players should play as best as they can and try to win,
+								so you will need to try to make the
+								best moves you can for
+									both X and O.
+
+						</div>
+						<div id="widget-container-practice" style="float: right">
+							<div id="canvas-container-practice">
+							</div>
+							<div id="buttons-container-practice">
+								<button id="reset-practice" class="reset">Reset</button>
+								<button id="undo-practice" class="undo"> Undo</button>
+
+							</div>
+						</div>
+						<div style="float: right; width: 320px; margin-left: 5px; margin-top: 50px;">
+							<div class="6by6_solve">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as possible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3.
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
+
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
+
+							<div class="6by6_verify">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as possible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3 (square with thick boarder).
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
+
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
+
+							<div class="10by10_solve">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as psossible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3.
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays f3, X will play a3 and win, and if O plays a3, X will play f3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
+
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
+
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
+
+							<div class="10by10_verify">
+								It is X's turn to play. In this position, X can force a win in 2 turns.
+								This means that X can win the game by placing 2 more marks,
+								even when the O player plays as best as psossible to win as well.
+								<br><br>
+								In this example, X can guarantee a win by playing b3 (square with thick boarder).
+								After that, no matter what move O will make, X will still win. For example,
+								if O plays f3, X will play a3 and win, and if O plays a3, X will play f3 and win. Note that O
+								cannot threaten X in any other position, so O will surely lose this game.
+
+								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
+								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
+
+								<br> Each X move you play will show the move number so you can easily count how
+								many moves you've played.
+							</div>
+
+							<br><br>
+							<div class="practice_solve">
+							<b>First move to ensure a win for X is: </b>
+							<input type="text" id="q6" maxlength="2" size="2" />
+							</div>
+
+							<div class="practice_verify">
+								<b>Is b3 a winning move for X: </b>
+								<select id="q6v">
+									<option value="0"> &nbsp;</option>
+									<option value="yes">Yes</option>
+									<option value="no">No</option>
+								</select>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+		<div id="explain" class="page">
+			<div class="intro">
+			<div id='explanation'>
+				<br><br>
+				Please briefly explain the strategy you used to solve the problem:
+				<br><br>
+							<textarea id="exp" rows="4" cols="100"></textarea>
+			</div>
+			</div>
+		</div>
+
+
+		<div id="experiment" class="page">
+
+			<div class="intro">
+
+				<div id="generalInstructions">
+				<h2>Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>
+					wins no matter what <span class="otherPlayer">O</span> does.
+					<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
+					(row, column or diagonal).
+					<br> If you answer correctly, you will be asked to play the game against the computer, so try to
+					remember the moves you make.
+					<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
+				</div>
+
+				<div id="generalInstructionsVerify">
+					<h2>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span>? <br>
+						If so, what is the next move X will need to make to ensure the win?
+						<br>
+						If not, what move can O make
+						to block X?
+						<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
+						(row, column or diagonal).
+						<br> After you submit your answer, you will be asked to explain your strategy and play the game against the computer, so try to
+						remember the moves you make.
+						<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
+				</div>
+
+				<div id="playGameInstructions">
+					<h2>Good job, the first move you've chosen is correct!
+						To see if the rest of your solution is correct, play the game against <span class="otherPlayer">O</span>.</h2>
+					This time, when you use the board, the computer will be
+					making the moves for <span class="otherPlayer">O</span>.
+					Click continue once you think you've won the game. You'll have 3 minutes to complete this stage.
+					<br> You cannot undo a single move at this stage, but you can reset the game to start over.
+
+				</div>
+
+				<h3 id = "timer">Time left: </h3>
+				<h3 id = "timerFinal">Time left: </h3>
+			
+				<div id="widget-container" style="float: left">			
+					<div id="canvas-container">				
+					</div>
+					<div id="buttons-container">
+						<button id="reset" class="reset">Reset</button>
+						<button id="undo" class="undo"> Undo</button>
+						
+					</div>
+
+				</div>
+
+
+				<div  id='experimentInstSolve' style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
+					<div id='solve'>
+					In this position <span class="player">O</span>  can force a win in <span class="turns" style="font-weight:bold ">4</span> turns.
+					This means that <span class="player">O</span> can win the game by placing <span class="turns" style="font-weight:bold ">4</span> more marks,
+						even when <span class="otherPlayer">O</span> plays to win as well.
+						<br>
+					<br><br>
+					Find <span class="player">O</span>'s winning strategy.
+						<br><br><b>Use the board to try out different strategies.</b>
+						Each X move you play will show the move number so you can easily count how
+						many moves you've played.
+					</div>
+
+					<div id="verify">
+						<span class="player">X</span> can win the game in <b><span class="moves">5</span></b> moves no matter what
+						O does. Is the first move to win the game <span class="firstMove">d6</span>
+						(square shown with thick black border)?
+						Assume that both players try their best to win the game.
+						<br><br><b>Use the board to try out different strategies.</b>
+						Each X move you play will show the move number so you can easily count how
+						many moves you've played. <b>Note that it is now the turn of the O player (after X played the square shown with
+						the thick black border).</b>
+					</div>
+
+					<div id = "play">
+						The board as been reset to its starting position as now you will be playing against the computer.
+						<br>
+						For your convenience, this is a list of the moves you played on the board when solving the problem
+						(after the last time you reset the board):
+						<div id="moves">
+
+						</div>
+						<div id="verifyNote">
+
+						</div>
+					</div>
+
+						<!--<p>If your solution is correct you will get a bonus of $1. </p>-->
+						<p>You'll receive a bonus of $1 if you answer correctly and verify the solution on the board in the next screen</p>
+
+					<br><br>
+					<div id="answerSolution">
+							<b>First move to win for <span class="player">O</span></b>:
+							<input type="text" id="bestmove" maxlength="2" size="2" />
+					</div>
+
+					<div id="answerVerification">
+						<b>Is <span class="firstMove">d6</span> a winning move for <span class="player">O</span></b>?:
+						<select id="verification">
+							<option value="0"> &nbsp;</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+						<br><br>
+						<div id="nextMoveVerification">
+							<b>If you answered <i>"yes"</i>, what is the next move that X should play (after f3) to enforce the win? <br>
+							If you answered <i>"no"</i>, what is the first move O should play to block X from winning?
+								<br>
+								Your answer:
+							</b>:
+							<input type="text" id="nextmove" maxlength="2" size="2" />
+						</div>
+
+					</div>
+								<!--<br />-->
+								<!--<br />-->
+								<!--<b>Explain your winning strategy.</b> Be as detailed as possible, so that if someone else reads your solution they will be convinced:-->
+								<!--<br />-->
+
+								<!--<textarea id="solution" rows="16" cols="40"> </textarea>-->
+
+
+					<div id = 'confidenceQuestion'>
+						<br><br>
+						<b>How confident are you in your solution?</b>
+						<div>
+							<ul class="likert">
+								<li> Not at all confident </li>
+								<li><input type="radio" name="confidence" value="1" /></li>
+								<li><input type="radio" name="confidence" value="2" /></li>
+								<li><input type="radio" name="confidence" value="3" /></li>
+								<li><input type="radio" name="confidence" value="4" /></li>
+								<li><input type="radio" name="confidence" value="5" /></li>
+								<li> Very confident </li>
+							</ul>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<div id="group" class="page">
+			<div class="intro" >
+				
+				<div style="float:left;" id="suggest">
+					
+				</div>
+				
+				<div style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
+					<h3>Below are three solutions - your proposed solution, followed by two solutions proposed by other participants. </h3>
+					<p>Please examine all solutions (yours and the two proposed solutions) and vote for ALL solutions you think are correct</p>
+
+					<p>After the experiment you will be randomly matched with 3 other workers. If the majority of your group memebers
+						 vote on correct solutions, each of you will get an additional bonus of 10 cents.</p>
+					
+					<p><input type="checkbox" id='cbown' value='own'/> Yours: <span id="own">?</span> </p>
+					<p><input type="checkbox" id='cba' value='A'/> c6</p>
+					<p><input type="checkbox" id='cbb' value='B'/> f3</p>							
+				</div>
+			
+				<div>
+					Please explain your voting:
+					<textarea id="explanationVote" rows="16" cols="40" maxlength = "500" required = "required"></textarea>
+				</div>
+				
+			</div>
+		</div>		
+		
+
+		<div class="overlay" style="display: none;">
+			<div class="overlay-error">
+				<span class="orange">The browser window is too small. Please maximize the browser.</span>
+			</div>
+		</div>
+
+
+		<div id="real" class="page">
+			<div class="intro">
+			Final Words
+			</div>
+		</div>
+
+		<div id="boardTransition" class="page">
+			<div class="intro">
+				<div id='instructionsNextBoard'>
+					<br><br>
+					You will now be shown another tic tac toe board configuration. Please read the instruction carefully.
+					Click continue when you are ready to solve the next problem.
+				</div>
+			</div>
+		</div>
+
+		
+		<div id="final" class="page">
+			<div class="intro">
+				<p>You completed the task. Thank you!</p>
+			</div>
+		</div>
+
+
+
+		
+
+		
+		
+		
+		<div id="buttonContainer">
+			<button id="btnContinue" onclick="onContinue();">
+				Continue
+			</button>
+		</div>
+		
+		<div id="preload">
+			
+		</div>
+		
+		
+
+    </body>
+</html>
