@@ -565,8 +565,8 @@ function initialize_experiment() {
         tposition = getUrlVars()['board2'];
         E.board2 = getUrlVars()['board'];
     }
-    alert(tposition)
-    alert(E.board2)
+    // alert(tposition)
+    // alert(E.board2)
     E.configuration = E.board6_1;
     if (tposition == undefined)
     {
