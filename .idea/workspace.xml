@@ -38,8 +38,8 @@
       <file leaf-file-name="tictactoe_students.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe_students.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="568" column="30" selection-start-line="568" selection-start-column="30" selection-end-line="568" selection-end-column="30" />
+            <state relative-caret-position="378">
+              <caret line="836" column="30" selection-start-line="836" selection-start-column="30" selection-end-line="836" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -421,12 +421,12 @@
       <workItem from="1551883077325" duration="610000" />
       <workItem from="1552912373409" duration="603000" />
       <workItem from="1553182187405" duration="19491000" />
-      <workItem from="1554992166036" duration="2356000" />
+      <workItem from="1554992166036" duration="2686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319601000" />
+    <option name="totallyTimeSpent" value="319931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -818,8 +818,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public_html/tictactoe/tictactoe_students.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="568" column="30" selection-start-line="568" selection-start-column="30" selection-end-line="568" selection-end-column="30" />
+        <state relative-caret-position="378">
+          <caret line="836" column="30" selection-start-line="836" selection-start-column="30" selection-end-line="836" selection-end-column="30" />
           <folding />
         </state>
       </provider>

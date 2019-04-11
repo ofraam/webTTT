@@ -21,6 +21,7 @@ E.numClicksPractice = 0;
 E.interval = undefined;
 E.secondBoard = false;
 E.board2 = '1f';
+E.board1 = '1f';
 
 E.board6_practice = {
     canvasContainerDiv : "#canvas-container-practice",
@@ -560,13 +561,14 @@ function initialize_experiment() {
     }
 
     var tposition = getUrlVars()['board'];
+    E.board1 = getUrlVars()['board'];
     E.board2 = getUrlVars()['board2'];
     if (Math.random() < 0.5) {
         tposition = getUrlVars()['board2'];
+        E.board1 = getUrlVars()['board2'];
         E.board2 = getUrlVars()['board'];
     }
-    servlog('board1', tposition)
-    servlog('board2', E.board2)
+
     // alert(tposition)
     // alert(E.board2)
     E.configuration = E.board6_1;
@@ -832,7 +834,8 @@ function run_block() {
 
     // servlog('condition',E.condition)
     servlog('board', E.configuration);
-
+    servlog("board1", E.board1);
+    servlog("board2", E.board2);
     E.widget.reset();
 	 E.sim=false;
 	 E.widget = new TictactoeWidget(E.configuration)
