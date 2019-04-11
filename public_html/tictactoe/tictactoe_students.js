@@ -565,7 +565,8 @@ function initialize_experiment() {
         tposition = getUrlVars()['board2'];
         E.board2 = getUrlVars()['board'];
     }
-    // alert(tposition)
+    alert(tposition)
+    alert(E.board2)
     E.configuration = E.board6_1;
     if (tposition == undefined)
     {
@@ -899,7 +900,7 @@ function show_page_real()
 function show_page_final(){
 
     $("#final.page").show()
-
+    $('#instructionsNextBoard').hide()
 	$("#btnContinue").hide()
 	showCode();	
 }
@@ -1257,25 +1258,25 @@ function onContinue() {
             submit_strategy();
 			// submit_solution();
 
-            if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
-                if (E.condition=="full" | E.condition=="pruned") {
-                    messageText = "Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0];
-                    if (E.secondBoard == false) {
-                        messageText = messageText + + ". Thank you for participating in our study!."
-                    }
-                    else {
-                        messageText = messageText + + ". You will now continue to solve another board."
-                    }
-
-                    alert(messageText);
-                }
-                else {
-                    alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
-                            " receive a verification code to paste in your HIT submission.");
-                }
-                onContinue();
-                return;
-            }
+            // if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
+            //     if (E.condition=="full" | E.condition=="pruned") {
+            //         messageText = "Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0];
+            //         if (E.secondBoard == false) {
+            //             messageText = messageText + + ". Thank you for participating in our study!."
+            //         }
+            //         else {
+            //             messageText = messageText + + ". You will now continue to solve another board."
+            //         }
+            //
+            //         alert(messageText);
+            //     }
+            //     else {
+            //         alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
+            //                 " receive a verification code to paste in your HIT submission.");
+            //     }
+            //     onContinue();
+            //     return;
+            // }
 
             $("#experiment.page").show();
             $("#timer").hide();
@@ -1390,11 +1391,11 @@ function onContinue() {
                 E.actionsValidation = 0;
                 $('#bestmove').value = '';
                 $('input:text').val('');
+                $('textarea').val('');
                 $('input:checked').removeAttr('checked');
                 updateBoard();
-                E.widget.reset();
-                E.widget.sim = false;
-                $('#undo').hide();
+                run_block();
+                // $('#undo').hide();
                 onContinue()
             }
             else {
@@ -1410,13 +1411,14 @@ function onContinue() {
 
 
                 servlogFinal();
-                $('#boardTransition.page').hide();
+                $('#boardTransition').hide();
                 show_page_final();
             }
 
         case 9:
             E.startTime = msTime();
             $('#boardTransition.page').show();
+
             onContinue.curPage = 4;
 
 
