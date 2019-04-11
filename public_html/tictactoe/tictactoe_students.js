@@ -918,6 +918,7 @@ function submit_demographics() {
 	servlog("gender", gender);
 	servlog("education", education);
 	servlog("age", age);
+    servlog("student_id", student_id);
 }
 
 function submit_quiz() {
