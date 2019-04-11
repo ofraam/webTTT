@@ -565,6 +565,8 @@ function initialize_experiment() {
         tposition = getUrlVars()['board2'];
         E.board2 = getUrlVars()['board'];
     }
+    servlog('board1', tposition)
+    servlog('board2', E.board2)
     // alert(tposition)
     // alert(E.board2)
     E.configuration = E.board6_1;
