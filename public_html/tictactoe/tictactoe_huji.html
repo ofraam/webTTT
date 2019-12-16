@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 
 	<title>TicTacToe</title>
-        <link rel="stylesheet" href="tictactoe.css"> 
-   		<link rel="stylesheet" type="text/css" href="../experiment-style.css" />
+        <link rel="stylesheet" href="tictactoe-hebrew.css">
+   		<link rel="stylesheet" type="text/css" href="../experiment-style-hebrew.css" />
 
 
 	<script type='text/javascript' >
@@ -86,19 +86,19 @@
 			<div class="intro demographics">
 		
 			
-				<h2>First a Few Questions</h2>
+				<h2>ראשית, מספר שאלות:</h2>
 				
 				<table>
 					<tr>
-						<td><p>Subject ID</p></td>
+						<td><p>מזהה נבדק:</p></td>
 						<td><input type="text" id="subject_id" size="40" /></td>
 					</tr>
 					<tr>
-						<td><p>Age</p></td>
+						<td><p>גיל:</p></td>
 						<td><input type="text" id="age" size="40" /></td>
 					</tr>
 					<tr>
-						<td><p>Gender</p></td>
+						<td><p>מין:</p></td>
 						<td> <select id="gender">
 							<option value=""></option>					
 							<option value="male">male</option>
@@ -106,17 +106,17 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
-						<td><p>Education</p> </td>
-						<td> <select id="education">
-							  <option value="">Select one...</option>
-							  <option value="0" >Less than High School</option>
-							  <option value="1" >High School/GED</option>
-							  <option value="2" >College</option>
-							  <option value="3" >Graduate Degree</option>				
-							</select>
-						</td>				
-					</tr>
+					<!--<tr>-->
+						<!--<td><p>Education</p> </td>-->
+						<!--<td> <select id="education">-->
+							  <!--<option value="">Select one...</option>-->
+							  <!--<option value="0" >Less than High School</option>-->
+							  <!--<option value="1" >High School/GED</option>-->
+							  <!--<option value="2" >College</option>-->
+							  <!--<option value="3" >Graduate Degree</option>				-->
+							<!--</select>-->
+						<!--</td>				-->
+					<!--</tr>-->
 					<tr>
 					</tr>
 				</table>
@@ -126,7 +126,7 @@
 		<div id="instructions" class="page">
 			<div class="intro">
 				<h1>
-					Instructions - Tic-tac-toe
+					הוראות – איקס-עיגול
 				</h1>
 				
 				<div class="question">
@@ -139,7 +139,7 @@
 					</p>
 					
 					<p>
-						You will have the opportunity to get a bonus based on your performance. If your solution is correct you get a bonus of $1.
+						אם תפתרו נכונה תקבלו בונוס של 10 ש"ח.
 					</p>
 									
 				</div>
@@ -156,7 +156,9 @@
 
 						<img src="images/tut1_10.png" >
 
-						This version of the game Tic-tac-toe is played on a 10x10 board as displayed on the right.  Please read the instructions carefully; there will be a quiz on the next step.
+
+						הגרסה הזאת של איקס-עיגול משוחקת על לוח 10x10 כפי שמופיע משמאל.
+						אנא קראו את ההוראות בקפידה, בשלב הבא יהיה שאלון לווידוא ההבנה.
 					</div>
 				</div>
 
@@ -166,7 +168,7 @@
 
 					<img class="10by10" src="images/tut2_10.png">
 
-					Two players, X and O, take turns marking the spaces on the board.
+					שני שחקנים, X ו-O, משחקים בתורות ומתמקים במשבצות על הלוח.
 				</div>
 
 				<div class="question"> 
@@ -179,10 +181,14 @@
 					</div>
 					<div class="10by10">
 						<img src="images/tut3_10.png" >
+						השחקן שמצליח לסמן
+						<strong>
+						חמש
+						</strong>
+						משבצות שכנות במאוזן, מאונך או אלכסון, מנצח במשחק.
+						<!--The player who succeeds in marking <strong> five </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game.-->
 
-						The player who succeeds in marking <strong> five </strong> neighboring spaces in a horizontal, vertical, or diagonal row wins the game.
-
-						<br><br>In the image on the right, X won the game by marking five spaces vertically.
+						<br><br>בתמונה משמאל, X ניצח את המשחק על-ידי סימון חמש משבצות במאונך.
 					</div>
 				</div>
 
@@ -190,12 +196,12 @@
 					<div class="6by6">
 					<img src="images/tut4.png" >
 
-					In this image X won by marking four spaces diagonally.
+						בתמונה הזאת X ניצח על-ידי סימון ארבע משבצות באלכסון.
 					</div>
 					<div class="10by10">
 						<img src="images/tut4_10.png" >
 
-						In this image X won by marking five spaces diagonally.
+						בתמונה הזאת X ניצח על-ידי סימון חמש משבצות באלכסון.
 					</div>
 				</div>
 	
@@ -205,15 +211,15 @@
 		<div id="quiz" class="page">
 			<div class="intro">
 				<div id="quizDiv">
-				<h1>Please answer the following questions:</h1>
+				<h1>אנא ענו על השאלות הבאות:</h1>
 				
 					<div class="question">
 						<img class="6by6" src="images/q1.png" >
 						<img class="10by10" src="images/q1_10.png" >
-						<h3>Who won?</h3>
+						<h3>מי ניצח?</h3>
 						<select id="q1">
 							<option value="0">&nbsp;</option>
-							<option value="1">nobody</option>
+							<option value="1">אף שחקן</option>
 							<option value="2">X</option>
 							<option value="3">O</option>
 						</select>
@@ -222,10 +228,10 @@
 					<div class="question">
 						<img class="6by6" src="images/q2.png" >
 						<img class="10by10" src="images/q2_10.png" >
-						<h3>Who won?</h3>
+						<h3>מי ניצח?</h3>
 						<select id="q2">
 							<option value="0"> &nbsp;</option>
-							<option value="1">nobody</option>
+							<option value="1">אף שחקן</option>
 							<option value="2">X</option>
 							<option value="3">O</option>
 						</select>
@@ -234,10 +240,10 @@
 					<div class="question">
 						<img class="6by6" src="images/q3.png">
 						<img class="10by10" src="images/q3_10.png">
-						<h3>Who won?</h3>
+						<h3>מי ניצח?</h3>
 						<select id="q3">
 							<option value="0"> &nbsp;</option>
-							<option value="1">nobody</option>
+							<option value="1">אף שחקן</option>
 							<option value="2">X</option>
 							<option value="3">O</option>
 						</select>
@@ -246,66 +252,77 @@
 					<div class="question">
 						<img class="6by6" src="images/q4.png">
 						<img class="10by10" src="images/q4_10.png">
-						<h3>X can win in one move. What is the move?</h3>
+						<h3>X יכול לנצח במהלך אחד. מהו המהלך?</h3>
 						<input type="text" id="q4" maxlength="2" size="2" />
-						example: a1
+						דוגמה:
+						a1
 					</div>
 
 					<div class="question">
 						<img class="6by6" src="images/q5.png">
 						<img class="10by10" src="images/q5_10.png">
-						<h3>O can win in one move. What is the move?</h3>
+						<h3>O יכול לנצח במהלך אחד. מהו המהלך?</h3>
 						<input type="text" id="q5" maxlength="2" size="2" />
-						example: a1
+						דוגמה:
+						a1
 					</div>
 
 					<div class="question">
 						<div>
 						<div>
 							<div id="exampleSolve">
-							<h3>Your task will be to find the winning move for X, such that
-								X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
+							<h3>
+								משימתך תהיה למצוא את המהלך המנצח עבור X, כך ש-X ינצח ללא חשיבות למהלכיו של O.
+								כלומר, גם אם O יבצע את המהלכים הכי טובים שניתן, X ינצח.
+								<br>
+								להלן דוגמה, אנא קראו בקפידה.
+								<!--Your task will be to find the winning move for X, such that-->
+								<!--X wins no matter what the O player does. Below is an example, please read it carefully.-->
+							</h3>
 							</div>
 							<div id="exampleVerify">
 								<h3>Your task will be to determine whether a certain move that X makes will guarantee that
 									X wins no matter what the O player does. Below is an example, please read it carefully.</h3>
 							</div>
 							<br>
-								When solving the problem, you will be able to use an interactive board (like the one below) to try different strategies.
+							בעת פתרון הבעיה, תוכלו להשתמש בלוח אינטראקטיבי כמו זה שלהלן על-מנת לנסות אסטרטגיות שונות.
 							<br><br>
-							When you click a square, an X or an O will appear
-								(depending on who's turn it is).
-							<br>You will need to make moves for both players when trying
-								out strategies. Both players should play as best as they can and try to win,
-								so you will need to try to make the
-								best moves you can for
-									both X and O.
+							כשתלחצו על משבצת, X או O יופיעו בהתאם למי שתורו לשחק.
+							<br>
+							כשתנסו אסטרטגיות שונות, תצטרכו לבצע מהלכים עבור שני השחקנים.
+							על שני השחקנים לשחק כמיטב יכולתם ולנסות לנצח,
+							לכן תצטרכו לנסות לבצע את המהלכים הטובים ביותר שתוכלו גם עבור X וגם עבור O.
 
 						</div>
-						<div id="widget-container-practice" style="float: right">
+						<div id="widget-container-practice" style="float: left">
 							<div id="canvas-container-practice">
 							</div>
 							<div id="buttons-container-practice">
-								<button id="reset-practice" class="reset">Reset</button>
+								<button id="reset-practice" class="reset" style="float: left">אתחל</button>
 								<!--<button id="undo-practice" class="undo"> Undo</button>-->
 
 							</div>
 						</div>
 						<div style="float: right; width: 320px; margin-left: 5px; margin-top: 50px;">
 							<div class="6by6_solve">
-								It is X's turn to play. In this position, X can force a win in 2 turns.
-								This means that X can win the game by placing 2 more marks,
-								even when the O player plays as best as possible to win as well.
-								<br><br>
-								In this example, X can guarantee a win by playing b3.
-								After that, no matter what move O will make, X will still win. For example,
-								if O plays e3, X will play a3 and win, and if O plays a3, X will play e3 and win. Note that O
-								cannot threaten X in any other position, so O will surely lose this game.
+								כעת התור של X לשחק. במצב הזה, X יכול לכפות נצחון בשני תורות.
+								המשמעות היא ש-X יכול לנצח במשחק ע"י סימון שתי משבצות,
+								אפילו אם גם O יעשה כמיטב יכולתו כדי לנצח.
 
-								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
-								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
-								<br> Each X move you play will show the move number so you can easily count how
-								many moves you've played.
+								<br><br>
+								בדוגמה הזאת, X יכול להבטיח את נצחונו על ידי סימון המשבצת b3.
+								לאחר מכן, לא משנה מה O יעשה, X עדיין ינצח.
+								למשל, אם O ישחק f3, X ישחק a3 וינצח. אם O ישחק a3, X ישחק f3 וינצח.
+								תנו דעתכם על כך ש-O לא יכול לאיים על X באף מיקום אחר, ולכן O יפסיד במשחק הזה בוודאות.
+
+								<br><br>
+								השתמשו בלוח כדי לוודא ש-X אכן יבטיח את נצחונו בשני מהלכים ע"י סימון המשבצת b3.
+
+								<b>
+									גם במטלה האמיתית תוכלו להשתמש בלוח אינטראקטיבי כמו זה. אנא השתמשו בו ולא בדף ועט, כיוון שאנחנו רוצים לראות איך אנשים פותרים בעיות מסוג זה.
+								</b>
+								<br>
+								כל מהלך של X שתבצעו יציג את מספר המהלך, כך שתוכלו לספור בקלות את כמות המהלכים שביצעתם.
 							</div>
 
 							<div class="6by6_verify">
@@ -325,20 +342,26 @@
 							</div>
 
 							<div class="10by10_solve">
-								It is X's turn to play. In this position, X can force a win in 2 turns.
-								This means that X can win the game by placing 2 more marks,
-								even when the O player plays as best as psossible to win as well.
+								כעת התור של X לשחק. במצב הזה, X יכול לכפות נצחון בשני תורות.
+								המשמעות היא ש-X יכול לנצח במשחק ע"י סימון שתי משבצות,
+								אפילו אם גם O יעשה כמיטב יכולתו כדי לנצח.
+
 								<br><br>
-								In this example, X can guarantee a win by playing b3.
-								After that, no matter what move O will make, X will still win. For example,
-								if O plays f3, X will play a3 and win, and if O plays a3, X will play f3 and win. Note that O
-								cannot threaten X in any other position, so O will surely lose this game.
+								בדוגמה הזאת, X יכול להבטיח את נצחונו על ידי סימון המשבצת b3.
+								לאחר מכן, לא משנה מה O יעשה, X עדיין ינצח.
+								למשל, אם O ישחק f3, X ישחק a3 וינצח. אם O ישחק a3, X ישחק f3 וינצח.
+								תנו דעתכם על כך ש-O לא יכול לאיים על X באף מיקום אחר, ולכן O יפסיד במשחק הזה בוודאות.
 
-								<br><br>Use the board to verify that X will indeed ensure a win in two moves by playing b3.
-								<b>In the real task you will also be able to use an interactive board like this one. Please use it (and not pen and paper), because we want to see how people solve such problems.</b>
-
-								<br> Each X move you play will show the move number so you can easily count how
-								many moves you've played.
+								<br><br>
+								השתמשו בלוח כדי לוודא ש-X אכן יבטיח את נצחונו בשני מהלכים ע"י סימון המשבצת b3.
+								<br>
+								שימו לב שניתן להשיב את הלוח למצב ההתחלתי ולנסות מחדש על ידי לחיצה על כפתור "אתחל".
+								<br>
+								<b>
+									גם במטלה האמיתית תוכלו להשתמש בלוח אינטראקטיבי כמו זה. אנא השתמשו בו ולא בדף ועט, כיוון שאנחנו רוצים לראות איך אנשים פותרים בעיות מסוג זה.
+								</b>
+								<br>
+								כל מהלך של X שתבצעו יציג את מספר המהלך, כך שתוכלו לספור בקלות את כמות המהלכים שביצעתם.
 							</div>
 
 							<div class="10by10_verify">
@@ -360,7 +383,7 @@
 
 							<br><br>
 							<div class="practice_solve">
-							<b>First move to ensure a win for X is: </b>
+							<b>המהלך הראשון כדי להבטיח את נצחונו של X הוא: </b>
 							<input type="text" id="q6" maxlength="2" size="2" />
 							</div>
 
@@ -386,7 +409,7 @@
 			<div class="intro">
 			<div id='explanation'>
 				<br><br>
-				Please briefly explain the strategy you used to solve the problem:
+				אנא הסבירו בקצרה את האסטרטגיה ששימשה אתכם לפתרון הבעיה:
 				<br><br>
 							<textarea id="exp" rows="4" cols="100"></textarea>
 			</div>
@@ -399,13 +422,31 @@
 			<div class="intro">
 
 				<div id="generalInstructions">
-				<h2>Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>
-					wins no matter what <span class="otherPlayer">O</span> does.
-					<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks
-					(row, column or diagonal).
-					<br> If you answer correctly, you will be asked to play the game against the computer, so try to
-					remember the moves you make.
-					<br> You have 10 minutes to solve the problem. A timer is shown below. </h2><br>
+				<h2>
+					מצאו את המהלך המנצח עבור
+					<span class="player">O</span>
+					,
+					כך ש-
+					<span class="player">O</span>
+					ינצח ללא חשיבות למהלכיו של
+					<span class="otherPlayer">O</span>
+					.
+					<br>
+					שימו לב שכדי לנצח, שחקן צריך חמישה סימונים רצופים: שורה, טור או אלכסון.
+					<br>
+					אם תענו נכונה, תתבקשו לשחק את המשחק נגד המחשב, אז נסו לזכור את המהלכים שאתם עושים.
+					<br>
+					יש לכם 10 דקות לפתרון הבעיה. שעון עצר מוצג להלן.
+
+
+					<!--Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>-->
+					<!--wins no matter what <span class="otherPlayer">O</span> does.-->
+					<!--<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks-->
+					<!--(row, column or diagonal).-->
+					<!--<br> If you answer correctly, you will be asked to play the game against the computer, so try to-->
+					<!--remember the moves you make.-->
+					<!--<br> You have 10 minutes to solve the problem. A timer is shown below.-->
+				</h2><br>
 				</div>
 
 				<div id="generalInstructionsVerify">
@@ -422,17 +463,26 @@
 				</div>
 
 				<div id="playGameInstructions">
-					<h2>Good job, the first move you've chosen is correct!
-						To see if the rest of your solution is correct, play the game against <span class="otherPlayer">O</span>.</h2>
-					This time, when you use the board, the computer will be
-					making the moves for <span class="otherPlayer">O</span>.
-					Click continue once you think you've won the game. You'll have 3 minutes to complete this stage.
+					<h2>
+						עבודה טובה, המהלך הראשון שבחרתם הוא נכון! כדי לראות אם שאר הפתרון שלכם נכון, שחקו את המשחק נגד
+						<span class="otherPlayer">O</span>
+						.
+						<!--Good job, the first move you've chosen is correct!-->
+						<!--To see if the rest of your solution is correct, play the game against <span class="otherPlayer">O</span>.-->
+					</h2>
+					הפעם, כאשר תשתמשו בלוח המחשב יעשה את המהלכים עבור
+					<span class="otherPlayer">O</span>
+					.
+					לחצו המשך ברגע שאתם חושבים שניצחתם במשחק. יעמדו לרשותכם 3 דקות להשלמת השלב הזה.
+					<!--This time, when you use the board, the computer will be-->
+					<!--making the moves for <span class="otherPlayer">O</span>.-->
+					<!--Click continue once you think you've won the game. You'll have 3 minutes to complete this stage.-->
 					<!--<br> You cannot undo a single move at this stage, but you can reset the game to start over.-->
 
 				</div>
 
-				<h3 id = "timer">Time left: </h3>
-				<h3 id = "timerFinal">Time left: </h3>
+				<h3 id = "timer">הזמן שנותר: </h3>
+				<h3 id = "timerFinal">הזמן שנותר: </h3>
 			
 				<div id="widget-container" style="float: left">			
 					<div id="canvas-container">				
@@ -448,15 +498,31 @@
 
 				<div  style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
 					<div id='solve'>
-					In this position <span class="player">O</span>  can force a win in <span class="turns" style="font-weight:bold ">4</span> turns.
-					This means that <span class="player">O</span> can win the game by placing <span class="turns" style="font-weight:bold ">4</span> more marks,
-						even when <span class="otherPlayer">O</span> plays to win as well.
+						במצב הזה,
+						<span class="player">O</span>
+						יכול לכפות ניצחון ב-
+						<span class="turns" style="font-weight:bold ">4</span>
+						תורות.
+						הכוונה היא ש-
+						<span class="player">O</span>
+						יכול לנצח את המשחק ע"י סימון
+						<span class="turns" style="font-weight:bold ">4</span>
+						משבצות, אפילו כאשר גם
+						<span class="otherPlayer">O</span>
+						משחק כמיטב יכולתו על-מנת לנצח.
+
+					<!--In this position <span class="player">O</span>  can force a win in <span class="turns" style="font-weight:bold ">4</span> turns.-->
+					<!--This means that <span class="player">O</span> can win the game by placing <span class="turns" style="font-weight:bold ">4</span> more marks,-->
+						<!--even when <span class="otherPlayer">O</span> plays to win as well.-->
 						<br>
 					<br><br>
-					Find <span class="player">O</span>'s winning strategy.
-						<br><br><b>Use the board to try out different strategies.</b>
-						Each X move you play will show the move number so you can easily count how
-						many moves you've played.
+						מצאו את האסטרטגיה המנצחת של
+						<span class="player">O</span>
+						.
+					<!--Find <span class="player">O</span>'s winning strategy.-->
+						<br><br>
+						<b>השתמשו בלוח כדי לנסות אסטרטגיות שונות. </b>
+						כל מהלך של X שתשחקו יציג את מספר המהלך, כך שתוכלו לספור בקלות את כמות המהלכים שביצעתם.
 					</div>
 
 					<div id="verify">
@@ -471,10 +537,14 @@
 					</div>
 
 					<div id = "play">
-						The board as been reset to its starting position as now you will be playing against the computer.
+						הלוח אותחל למצב הפתיחה שלו, היות שכעת תשחקו נגד המחשב.
 						<br>
-						For your convenience, this is a list of the moves you played on the board when solving the problem
-						(after the last time you reset the board):
+						לנוחיותכם, זו רשימת המהלכים ששיחקתם על הלוח בעת פתרון הבעיה, החל מאתחול הלוח האחרון:
+
+						<!--The board has been reset to its starting position as now you will be playing against the computer.-->
+						<!--<br>-->
+						<!--For your convenience, this is a list of the moves you played on the board when solving the problem-->
+						<!--(after the last time you reset the board):-->
 						<div id="moves">
 
 						</div>
@@ -484,11 +554,15 @@
 					</div>
 
 						<!--<p>If your solution is correct you will get a bonus of $1. </p>-->
-						<p>You'll receive a bonus of $1 if you answer correctly and verify the solution on the board in the next screen</p>
+						<p>תקבלו בונוס של 10 ש"ח אם תפתרו נכונה ותאמתו את הפתרון על הלוח במסך הבא</p>
 
 					<br><br>
 					<div id="answerSolution">
-							<b>First move to win for <span class="player">O</span></b>:
+							<b>
+								המהלך הראשון כדי לנצח עבור
+								<span class="player">O</span>
+								:
+							</b>
 							<input type="text" id="bestmove" maxlength="2" size="2" />
 					</div>
 
@@ -520,16 +594,16 @@
 
 					<div id = 'confidenceQuestion'>
 						<br><br>
-						<b>How confident are you in your solution?</b>
+						<b>עד כמה אתם בטוחים בתשובתכם?</b>
 						<div>
 							<ul class="likert">
-								<li> Not at all confident </li>
+								<li> כלל לא </li>
 								<li><input type="radio" name="confidence" value="1" /></li>
 								<li><input type="radio" name="confidence" value="2" /></li>
 								<li><input type="radio" name="confidence" value="3" /></li>
 								<li><input type="radio" name="confidence" value="4" /></li>
 								<li><input type="radio" name="confidence" value="5" /></li>
-								<li> Very confident </li>
+								<li> בטוח/ה מאוד </li>
 							</ul>
 						</div>
 					</div>
@@ -587,7 +661,7 @@
 		
 		<div id="final" class="page">
 			<div class="intro">
-				<p>You completed this task. Thank you!</p>
+				<p>השלמת את המטלה. תודה על השתתפותך!</p>
 				<!--<p>Please paste your code back in the amazon turk HIT. You have to paste the code in order to get paid.</p>	-->
 				<!--<p>This is your code:</p>				-->
 				<!--<span class='code'>-->
@@ -605,7 +679,7 @@
 		
 		<div id="buttonContainer">
 			<button id="btnContinue" onclick="onContinue();">
-				Continue
+				המשך
 			</button>
 		</div>
 		

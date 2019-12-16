@@ -789,11 +789,11 @@ function show_page_final(){
 
 function submit_demographics() {
 	var gender=document.getElementById("gender").options[document.getElementById("gender").selectedIndex].value;
-	var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
+	// var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
 	var age=document.getElementById("age").value;
     var subject_id=document.getElementById("subject_id").value;
 	servlog("gender", gender);
-	servlog("education", education);
+	// servlog("education", education);
 	servlog("age", age);
     servlog("subject_id", subject_id);
 }
@@ -836,7 +836,10 @@ function submit_quiz() {
 	
 	if (passed == false & E.debugMode == false)
 	{
-		alert("Sorry, you did not pass the quiz. You will now be shown the tutorial again, when you're ready to re-take the quiz click continue.");
+		// alert("Sorry, you did not pass the quiz. You will now be shown the tutorial again, when you're ready to re-take the quiz click continue.");
+        alert("מתנצלים, לא ענית נכון על כל השאלות." +
+            "כעת נראה לך את ההוראות שוב, " +
+            "כאשר אתם מוכנים לענות שוב על הבוחן, לחצו על המשך.");
 		onContinue.curPage = 2;
 		onContinue();
 	}
@@ -962,7 +965,7 @@ function onContinue() {
 
 
 
-			$("#btnContinue").html('Continue to quiz')
+			$("#btnContinue").html('המשך לבוחן')
             $(window).scrollTop(0,0);
 			break;
 
@@ -972,7 +975,7 @@ function onContinue() {
 			// alert('should call servlog')
 			servlog("timeInstructions", timeInstructions);
 			
-			$("#btnContinue").html('Continue')
+			$("#btnContinue").html('המשך')
 			E.startTime=msTime();
             init_practice();
 
@@ -1030,7 +1033,8 @@ function onContinue() {
 			var timeQuiz = E.endTime-E.startTime
 			servlog("timeQuiz", timeQuiz);
             if (E.numClicksPractice==0) {
-                alert("please practice using the board (in the last question) before you submit your answer.")
+                // alert("please practice using the board (in the last question) before you submit your answer.")
+                alert("בבקשה התאמנו בשימוש בלוח (בשאלה האחרונה) לפני שאתם מסיימים את הבוחן.")
                 onContinue.curPage=3;
                 onContinue()
             }
@@ -1168,7 +1172,8 @@ function onContinue() {
             }
             if (moves.length == 0)
             {
-                moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
+                // moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
+                moveListText = 'לא ניסית אף מהלך על הלוח מאז הפעם האחרונה שלחצת על כפתור האתחול.'
             }
             $('#moves').html(moveListText);
             if (E.condition=='verify')
