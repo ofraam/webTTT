@@ -86,26 +86,26 @@
 			<div class="intro demographics">
 		
 			
-				<h2>ראשית, מספר שאלות:</h2>
+				<h2>אנא הזינו את מזהה הנבדק שקיבלתם:</h2>
 				
 				<table>
 					<tr>
 						<td><p>מזהה נבדק:</p></td>
 						<td><input type="text" id="subject_id" size="40" /></td>
 					</tr>
-					<tr>
-						<td><p>גיל:</p></td>
-						<td><input type="text" id="age" size="40" /></td>
-					</tr>
-					<tr>
-						<td><p>מין:</p></td>
-						<td> <select id="gender">
-							<option value=""></option>					
-							<option value="male">male</option>
-							<option value="female">female</option>
-							</select>
-						</td>
-					</tr>
+					<!--<tr>-->
+						<!--<td><p>גיל:</p></td>-->
+						<!--<td><input type="text" id="age" size="40" /></td>-->
+					<!--</tr>-->
+					<!--<tr>-->
+						<!--<td><p>מין:</p></td>-->
+						<!--<td> <select id="gender">-->
+							<!--<option value=""></option>					-->
+							<!--<option value="male">male</option>-->
+							<!--<option value="female">female</option>-->
+							<!--</select>-->
+						<!--</td>-->
+					<!--</tr>-->
 					<!--<tr>-->
 						<!--<td><p>Education</p> </td>-->
 						<!--<td> <select id="education">-->
@@ -134,7 +134,7 @@
 						your goal will be to find the best move given a starting position.
 
 					</p>-->
-					<p> תתבקשו לשחק בגרסה של משחק עיגול, בו מטרתכם תהיה למצוא את המהלך המנצח עבור איקס במצב לוח נתון
+					<p> תתבקשו לשחק בגרסה של משחק עיגול, בו מטרתכם תהיה למצוא את המהלך המנצח עבור איקס במצב לוח נתון.
 
 					</p>
 					
@@ -254,6 +254,7 @@
 						<img class="10by10" src="images/q4_10.png">
 						<h3>X יכול לנצח במהלך אחד. מהו המהלך?</h3>
 						<input type="text" id="q4" maxlength="2" size="2" />
+						<br>
 						דוגמה:
 						a1
 					</div>
@@ -263,6 +264,7 @@
 						<img class="10by10" src="images/q5_10.png">
 						<h3>O יכול לנצח במהלך אחד. מהו המהלך?</h3>
 						<input type="text" id="q5" maxlength="2" size="2" />
+						<br>
 						דוגמה:
 						a1
 					</div>
@@ -473,7 +475,10 @@
 					הפעם, כאשר תשתמשו בלוח המחשב יעשה את המהלכים עבור
 					<span class="otherPlayer">O</span>
 					.
-					לחצו המשך ברגע שאתם חושבים שניצחתם במשחק. יעמדו לרשותכם 3 דקות להשלמת השלב הזה.
+					<br>
+					לחצו המשך ברגע שאתם חושבים שניצחתם במשחק.
+					<br>
+					יעמדו לרשותכם 3 דקות להשלמת השלב הזה.
 					<!--This time, when you use the board, the computer will be-->
 					<!--making the moves for <span class="otherPlayer">O</span>.-->
 					<!--Click continue once you think you've won the game. You'll have 3 minutes to complete this stage.-->
@@ -488,7 +493,7 @@
 					<div id="canvas-container">				
 					</div>
 					<div id="buttons-container">
-						<button id="reset" class="reset">Reset</button>
+						<button id="reset" class="reset" style="float: left">אתחל</button>
 						<!--<button id="undo" class="undo"> Undo</button>-->
 						
 					</div>
@@ -554,7 +559,7 @@
 					</div>
 
 						<!--<p>If your solution is correct you will get a bonus of $1. </p>-->
-						<p>תקבלו בונוס של 10 ש"ח אם תפתרו נכונה ותאמתו את הפתרון על הלוח במסך הבא</p>
+						<p>תקבלו בונוס של 10 ש"ח אם תפתרו נכונה.</p>
 
 					<br><br>
 					<div id="answerSolution">

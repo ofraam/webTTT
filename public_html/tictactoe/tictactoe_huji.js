@@ -788,13 +788,13 @@ function show_page_final(){
 }
 
 function submit_demographics() {
-	var gender=document.getElementById("gender").options[document.getElementById("gender").selectedIndex].value;
+	// var gender=document.getElementById("gender").options[document.getElementById("gender").selectedIndex].value;
 	// var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
-	var age=document.getElementById("age").value;
+	// var age=document.getElementById("age").value;
     var subject_id=document.getElementById("subject_id").value;
-	servlog("gender", gender);
+	// servlog("gender", gender);
 	// servlog("education", education);
-	servlog("age", age);
+	// servlog("age", age);
     servlog("subject_id", subject_id);
 }
 
@@ -1095,7 +1095,7 @@ function onContinue() {
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     var totalSeconds = minutes*60+seconds
                     // Display the result in the element with id="demo"
-                    document.getElementById("timer").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                    document.getElementById("timer").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
                     if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
                         $("#timer").addClass("timeUp")
@@ -1104,7 +1104,8 @@ function onContinue() {
                     // If the count down is finished, write some text
                     if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
                         clearInterval(E.interval);
-                        alert('Time is up! You will be advanced to next stage of the experiment.')
+                        // alert('Time is up! You will be advanced to next stage of the experiment.')
+                        alert('הזמן תם! כעת תמשיכו לשלב הבא בניסוי.')
                         E.timerDone = true
                         onContinue()
                     }
@@ -1138,8 +1139,11 @@ function onContinue() {
 
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
                 if (E.condition=="full" | E.condition=="pruned") {
-                    alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
-                        " receive a verification code to paste in your HIT submission.");
+                    alert("מתנצלים, הפתרון שלך אינו נכון. הפתרון הנכון היה"
+                        + E.configuration.winMove[0] +
+                        ".");
+                    // alert("Sorry, your solution is incorrect. The correct solution was " + E.configuration.winMove[0] + ". In the next screen you will" +
+                    //     " receive a verification code to paste in your HIT submission.");
                 }
                 else {
                     alert("Sorry, your solution is incorrect. The move for X was indeed a winning move. In the next screen you will" +
@@ -1222,7 +1226,8 @@ function onContinue() {
                 // If the count down is finished, write some text
                 if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
                     clearInterval(E.interval);
-                    alert('Time is up! You will be advanced to the end of the experiment.')
+                    // alert('Time is up! You will be advanced to the end of the experiment.')
+                    alert('הזמן תם! כעת תמשיכו לשלב הבא בניסוי.')
                     E.timerDone = true
                     onContinue()
                 }
