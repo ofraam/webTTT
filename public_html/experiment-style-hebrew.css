@@ -4,7 +4,8 @@ body {
 	font-family: Verdana, Sans-Serif;
 	font-family: Verdana, Sans-Serif;
 	background-image: url('body-bg.png');
-	direction: rtl
+	direction: rtl;
+	font-size: large;
 } 
 
 .demographics p{
@@ -92,18 +93,18 @@ body {
 
 .intro {
 	width: 800px;
-	margin: auto; 
-	border: 2px solid #AAA; 
+	margin: auto;
+	border: 2px solid #AAA;
 	text-align: right;
 	padding: 16px;
 	background-color: #FFF;
-	font-size: 12px; 
+	font-size: 16px;
 	overflow: hidden;
-
 }
 
 .intro h2 {
 	text-align: right;
+	font-size: 18px;
 }
 
 .yellow {

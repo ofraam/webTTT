@@ -158,7 +158,7 @@ E.board6_1 = {
     turns: 4,
     winPath: [[[3,5],[1,5],[2,5],[4,5]],  [[1,5],[3,5],[2,5],[4,5]]],
     losePath: [[[0,2],[1,4],[0,5]],  [[1,4],[0,2],[0,5]]],
-    winMove: ['f3','F3','3F','3F','f5','F5','5F','5F']
+    winMove: ['f3','F3','3F','3F','f5','F5','5F','5f']
 }
 
 E.board6_1_pruned = {
@@ -179,7 +179,7 @@ E.board6_1_pruned = {
     turns: 3,
     winPath: [[[1,5],[2,5],[4,5]]],
     losePath: [[[1,4],[0,5]]],
-    winMove: ['f5','F5','5F','5F']
+    winMove: ['f5','F5','5F','5f']
 }
 
 E.board6_1_verify = {
@@ -1099,7 +1099,8 @@ function onContinue() {
                     // If the count down is finished, write some text
                     if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
                         $("#timer").addClass("timeUp")
-                        alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                        // alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                        alert('נשארה לכם דקה אחת לפתרון הבעיה. שימו לב להגיש את הפתרון בזמן.')
                     }
                     // If the count down is finished, write some text
                     if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
@@ -1174,12 +1175,12 @@ function onContinue() {
             for (i = 0;i<moves.length;i++) {
                 moveListText = moveListText + moves[i] + '<br>'
             }
-            if (moves.length == 0)
-            {
-                // moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
-                moveListText = 'לא ניסית אף מהלך על הלוח מאז הפעם האחרונה שלחצת על כפתור האתחול.'
-            }
-            $('#moves').html(moveListText);
+            // if (moves.length == 0)
+            // {
+            //     // moveListText = 'You did not try any moves on the board since the last time you clicked the reset button.'
+            //     moveListText = 'לא ניסית אף מהלך על הלוח מאז הפעם האחרונה שלחצת על כפתור האתחול.'
+            // }
+            // $('#moves').html(moveListText);
             if (E.condition=='verify')
             {
                 $('#verifyNote').html('<br>Note that the computer already played the first move for the O player and it is now your turn.<br>');
@@ -1217,11 +1218,14 @@ function onContinue() {
                 var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                 var totalSeconds = minutes*60+seconds
                 // Display the result in the element with id="demo"
-                document.getElementById("timerFinal").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                // document.getElementById("timerFinal").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
+                document.getElementById("timer").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
+
                 // If the count down is finished, write some text
                 if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
                     $("#timerFinal").addClass("timeUp")
-                    alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                    // alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                    alert('נשארה לכם דקה אחת לפתרון הבעיה. שימו לב להגיש את הפתרון בזמן.')
                 }
                 // If the count down is finished, write some text
                 if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
