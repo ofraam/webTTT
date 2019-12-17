@@ -63,7 +63,7 @@ class XKeyValueFinal(Entity):
 
 
 def elixirConnect(credentials,dbname):
-    metadata.bind = 'mysql://%s:%s@%s/%s' % (credentials.user, credentials.passwd, credentials.host, dbname)
+    metadata.bind = 'mysql://%s:%s@%s/%s?charset=utf8mb4' % (credentials.user, credentials.passwd, credentials.host, dbname)
     #metadata.bind.echo = True   #for debugging
     setup_all() #Elixir magic
     create_all()    #More magic
