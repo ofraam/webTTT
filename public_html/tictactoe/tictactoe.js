@@ -158,7 +158,7 @@ E.board6_1 = {
     turns: 4,
     winPath: [[[3,5],[1,5],[2,5],[4,5]],  [[1,5],[3,5],[2,5],[4,5]]],
     losePath: [[[0,2],[1,4],[0,5]],  [[1,4],[0,2],[0,5]]],
-    winMove: ['f3','F3','3F','3F','f5','F5','5F','5F']
+    winMove: ['f3','F3','3f','3F','f5','F5','5f','5F']
 }
 
 E.board6_1_pruned = {
@@ -179,7 +179,7 @@ E.board6_1_pruned = {
     turns: 3,
     winPath: [[[1,5],[2,5],[4,5]]],
     losePath: [[[1,4],[0,5]]],
-    winMove: ['f5','F5','5F','5F']
+    winMove: ['f5','F5','5f','5F']
 }
 
 E.board6_1_verify = {
@@ -202,8 +202,8 @@ E.board6_1_verify = {
     firstMovrCol: '5',
     winPath: [[[1,5],[2,5],[4,5]]],
     losePath: [[[0,2],[1,4],[0,5]]],
-    winMove: ['f3','F3','3F','3F'],
-    nextMove: ['f5','F5','5F','5F'],
+    winMove: ['f3','F3','3f','3F'],
+    nextMove: ['f5','F5','5f','5F'],
     firstMove: 'f3'
 }
 
