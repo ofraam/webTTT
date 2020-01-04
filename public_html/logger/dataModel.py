@@ -29,7 +29,7 @@ class XKeyValue(Entity):
 
 
 class XKeyValueNew(Entity):
-    using_options(tablename='keyvalue2')
+    using_options(tablename='keyvalue3')
 
     userid = Field(VARCHAR(32))
     clientTime = Field(VARCHAR(32))

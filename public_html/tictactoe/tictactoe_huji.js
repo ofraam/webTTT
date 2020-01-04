@@ -552,6 +552,7 @@ function initialize_experiment() {
 
 	E.userid = getUrlVars()['userid']
 
+
     var debug = getUrlVars()['debug']
     if (debug == '1') {
         E.debugMode = true
@@ -792,10 +793,13 @@ function submit_demographics() {
 	// var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
 	// var age=document.getElementById("age").value;
     var subject_id=document.getElementById("subject_id").value;
+    servlog("qualtrics_id", E.userid);
+    E.userid = subject_id;
 	// servlog("gender", gender);
 	// servlog("education", education);
 	// servlog("age", age);
     servlog("subject_id", subject_id);
+
 }
 
 function submit_quiz() {
