@@ -1131,10 +1131,17 @@ function onContinue() {
             E.solutionTime = timeSolution;
             servlog("timeSolution", timeSolution);
             submit_solution();
+            $("#explain.page").show();
+            $("#explanation").show();
+            E.startTime = msTime();
+            break;
 
-
+		case 7:
             E.timerDone = false;
-
+			E.endTime=msTime();
+			var timeStrategy = E.endTime-E.startTime;
+			servlog("timeStrategy", timeStrategy);
+            submit_strategy();
 			// submit_solution();
 
             if (E.solvedCorrect == false) { //if did not solve correct, no point in having them play the game
@@ -1242,7 +1249,7 @@ function onContinue() {
             E.startTime = msTime();
 			break;
 			
-		case 7:
+		case 8:
             clearInterval(E.interval);
             E.timerDone = true;
 			E.endTime = msTime();
