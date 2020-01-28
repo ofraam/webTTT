@@ -1051,7 +1051,7 @@ function onContinue() {
 			{
 
 				E.startTime=msTime();
-				run_block();
+				// run_block();
 				// if (E.configuration.nextPlayer == 1) {
                 $('.player').text('X');
                 $('.moves').text(E.configuration.turns);
@@ -1061,15 +1061,21 @@ function onContinue() {
 				// }
                 $('.turns').text(parseInt(E.configuration.turns));
                 $('.streak').text(parseInt(E.configuration.streak));
-				$("#experiment.page").show()
+                $("#experiment.page").show();
                 $('#playGameInstructions').hide();
 				$('#play').hide();
-                $("#explanation").hide()
-				$('#timerFinal').hide()
+                $("#explanation").hide();
+				$('#timerFinal').hide();
+                $("#solve").hide();
+                $("#answerSolution").hide();
+                $("#confidenceQuestion").hide();
+                $('#timer').hide();
+                $('#reset').hide();
+                $('#bonus_text').hide();
                 if (E.condition=="full" | E.condition=="pruned") {
-				    $("#verify").hide()
-                    $("#generalInstructionsVerify").hide()
-                    $("#answerVerification").hide()
+				    $("#verify").hide();
+                    $("#generalInstructionsVerify").hide();
+                    $("#answerVerification").hide();
 
                 }
                 else {
@@ -1081,51 +1087,105 @@ function onContinue() {
 
 
                 $(window).scrollTop(0,0);
-                // Update the count down every 1 second
-                var timerStart = new Date().getTime();
-                var diff = 10;
-
-                var countDownDate =  new Date(timerStart + diff*60000);
-                E.interval = setInterval(function() {
-
-                    // Get today's date and time
-                    var now = new Date().getTime();
-
-                    // Find the distance between now an the count down date
-                    var distance = countDownDate - now;
-
-                    // Time calculations for days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                    var totalSeconds = minutes*60+seconds
-                    // Display the result in the element with id="demo"
-                    document.getElementById("timer").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
-                    // If the count down is finished, write some text
-                    if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
-                        $("#timer").addClass("timeUp")
-                        // alert('You have one minute left. Make sure to submit your solution in the next minute.')
-                        alert('נשארה לכם דקה אחת לפתרון הבעיה. שימו לב להגיש את הפתרון בזמן.')
-                    }
-                    // If the count down is finished, write some text
-                    if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
-                        clearInterval(E.interval);
-                        // alert('Time is up! You will be advanced to next stage of the experiment.')
-                        alert('הזמן תם! כעת תמשיכו לשלב הבא בניסוי.')
-                        E.timerDone = true
-                        onContinue()
-                    }
-                }, 1000);
-
 
             }
 
 			break;
 
+
+
         case 6:
+            E.endTime=msTime();
+            var timeInstructionsTask = E.endTime-E.startTime
+            servlog("timeInstructionsTask", timeInstructionsTask);
+
+
+            E.startTime=msTime();
+            $("#experiment.page").show();
+            run_block();
+
+            // if (E.configuration.nextPlayer == 1) {
+            $('.player').text('X');
+            $('.moves').text(E.configuration.turns);
+            // }
+            // else {
+            //    $('.player').text('O');
+            // }
+            $('.turns').text(parseInt(E.configuration.turns));
+            $('.streak').text(parseInt(E.configuration.streak));
+            // $("#experiment.page").show();
+            $("#generalInstructions").hide();
+            $('#playGameInstructions').hide();
+            $('#play').hide();
+            $("#explanation").hide();
+            $('#timerFinal').hide();
+            $("#solve").show();
+            $("#answerSolution").show();
+            $("#confidenceQuestion").show();
+            $('#timer').show();
+            $('#reset').show();
+            $('#bonus_text').show();
+            // $("#answerSolution").hide();
+            if (E.condition=="full" | E.condition=="pruned") {
+                $("#verify").hide();
+                $("#generalInstructionsVerify").hide();
+                $("#answerVerification").hide();
+
+            }
+            else {
+                $("#generalInstructions").hide()
+                $("#solve").hide()
+                $("#answerSolution").hide()
+                $('.firstMove').text(E.configuration.winMove[0]);
+            }
+
+            $(window).scrollTop(0,0);
+            // Update the count down every 1 second
+            var timerStart = new Date().getTime();
+            var diff = 10;
+
+            var countDownDate =  new Date(timerStart + diff*60000);
+            E.interval = setInterval(function() {
+
+                // Get today's date and time
+                var now = new Date().getTime();
+
+                // Find the distance between now an the count down date
+                var distance = countDownDate - now;
+
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                var totalSeconds = minutes*60+seconds
+                // Display the result in the element with id="demo"
+                document.getElementById("timer").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
+                // If the count down is finished, write some text
+                if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
+                    $("#timer").addClass("timeUp")
+                    // alert('You have one minute left. Make sure to submit your solution in the next minute.')
+                    alert('נשארה לכם דקה אחת לפתרון הבעיה. שימו לב להגיש את הפתרון בזמן.')
+                }
+                // If the count down is finished, write some text
+                if (distance < 0 & E.timerDone == false  & E.debugMode==false) {
+                    clearInterval(E.interval);
+                    // alert('Time is up! You will be advanced to next stage of the experiment.')
+                    alert('הזמן תם! כעת תמשיכו לשלב הבא בניסוי.')
+                    E.timerDone = true
+                    onContinue()
+                }
+            }, 1000);
+
+
+
+
+            break;
+
+
+        case 7:
             E.timerDone = true;
-            clearInterval(E.interval)
+            clearInterval(E.interval);
             E.endTime=msTime();
             var timeSolution = E.endTime-E.startTime;
             E.solutionTime = timeSolution;
@@ -1218,7 +1278,7 @@ function onContinue() {
                 var totalSeconds = minutes*60+seconds
                 // Display the result in the element with id="demo"
                 // document.getElementById("timerFinal").innerHTML = "Time left: " + minutes + "m " + seconds + "s ";
-                document.getElementById("timer").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
+                document.getElementById("timerFinal").innerHTML = "הזמן שנותר:" + minutes + "m " + seconds + "s ";
 
                 // If the count down is finished, write some text
                 if (totalSeconds <= 60 & totalSeconds>59 & E.timerDone == false & E.debugMode==false) {
@@ -1242,7 +1302,7 @@ function onContinue() {
             E.startTime = msTime();
 			break;
 			
-		case 7:
+		case 8:
             clearInterval(E.interval);
             E.timerDone = true;
 			E.endTime = msTime();

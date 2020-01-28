@@ -318,7 +318,7 @@
 								f3
 								,
 								 אז X ישחק a3 וינצח.
-								תנו דעתכם על כך ש-O לא יכול לאיים על X באף מיקום אחר, ולכן O יפסיד במשחק הזה בוודאות.
+								שימו לב ש-O לא יכול לאיים על X באף מיקום אחר, ולכן O יפסיד במשחק הזה בוודאות.
 								<br><br>
 								השתמשו בלוח כדי לוודא ש-X אכן יבטיח את נצחונו בשני מהלכים ע"י סימון המשבצת b3.
 
@@ -428,33 +428,72 @@
 		<div id="experiment" class="page">
 
 			<div class="intro">
+				<!--
+                                <div id="generalInstructions">
+                                <h2>
+                                    מצאו את המהלך המנצח עבור
+                                    <span class="player">O</span>
+                                    ,
+                                    כך ש-
+                                    <span class="player">O</span>
+                                    ינצח ללא חשיבות למהלכיו של
+                                    <span class="otherPlayer">O</span>
+                                    .
+                                    <br>
+                                    שימו לב שכדי לנצח, שחקן צריך חמישה סימונים רצופים בשורה, בטור או באלכסון.
+                                    <br>
+                                    אם תענו נכונה, תתבקשו לשחק את המשחק נגד המחשב, אז נסו לזכור את המהלכים שאתם עושים.
+                                    <br>
+                                    יש לכם 10 דקות לפתרון הבעיה. שעון עצר מוצג להלן.
+
+
+                                    &lt;!&ndash;Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>&ndash;&gt;
+                                    &lt;!&ndash;wins no matter what <span class="otherPlayer">O</span> does.&ndash;&gt;
+                                    &lt;!&ndash;<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks&ndash;&gt;
+                                    &lt;!&ndash;(row, column or diagonal).&ndash;&gt;
+                                    &lt;!&ndash;<br> If you answer correctly, you will be asked to play the game against the computer, so try to&ndash;&gt;
+                                    &lt;!&ndash;remember the moves you make.&ndash;&gt;
+                                    &lt;!&ndash;<br> You have 10 minutes to solve the problem. A timer is shown below.&ndash;&gt;
+                                </h2><br>
+                                </div>-->
 
 				<div id="generalInstructions">
-				<h2>
-					מצאו את המהלך המנצח עבור
-					<span class="player">O</span>
-					,
-					כך ש-
-					<span class="player">O</span>
-					ינצח ללא חשיבות למהלכיו של
-					<span class="otherPlayer">O</span>
-					.
-					<br>
-					שימו לב שכדי לנצח, שחקן צריך חמישה סימונים רצופים בשורה, בטור או באלכסון.
-					<br>
-					אם תענו נכונה, תתבקשו לשחק את המשחק נגד המחשב, אז נסו לזכור את המהלכים שאתם עושים.
-					<br>
-					יש לכם 10 דקות לפתרון הבעיה. שעון עצר מוצג להלן.
+					<h2>
+						בלוח שיוצג לכם, השחקן
+						<span class="player">O</span>
+						יוכל לכפות הניצחון תוך
+						<span class="turns" style="font-weight:bold ">4</span>
+						מהלכים.
+						עליכם למצוא את המהלך המנצח עבור השחקן
+						<span class="player">O</span>,
+						כך ש-
+						<span class="player">O</span>
+						ינצח ללא חשיבות למהלכיו של
+						<span class="otherPlayer">O</span>.
+						כלומר, גם אם השחקן
+						<span class="otherPlayer">O</span>
+						ישחק באופן הכי טוב שניתן, השחקן
+						<span class="player">O</span>
+						ינצח במשחק.
+						<br>
+						שימו לב שכדי לנצח, שחקן צריך חמישה סימונים רצופים בשורה, בטור או באלכסון.
+						<br>
+						אם תענו נכונה, תתבקשו לשחק את המשחק נגד המחשב, אז נסו לזכור את המהלכים שאתם עושים.
+						<br>
+						יהיו  לכם 10 דקות לפתרון הבעיה. שעון עצר יוצג בצד ימין של המסך.
+						<br>
+						תקבלו בונוס של 10 ש"ח אם תפתרו נכונה.
+						<br>
+						כאשר אתם מוכנים להתחיל, לחצו על כפתור "המשך".
 
-
-					<!--Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>-->
-					<!--wins no matter what <span class="otherPlayer">O</span> does.-->
-					<!--<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks-->
-					<!--(row, column or diagonal).-->
-					<!--<br> If you answer correctly, you will be asked to play the game against the computer, so try to-->
-					<!--remember the moves you make.-->
-					<!--<br> You have 10 minutes to solve the problem. A timer is shown below.-->
-				</h2><br>
+						<!--Find the winning move for <span class="player">O</span>, such that <span class="player">O</span>-->
+						<!--wins no matter what <span class="otherPlayer">O</span> does.-->
+						<!--<br> Note that to win, a player needs to have <span class="streak">4</span> consecutive marks-->
+						<!--(row, column or diagonal).-->
+						<!--<br> If you answer correctly, you will be asked to play the game against the computer, so try to-->
+						<!--remember the moves you make.-->
+						<!--<br> You have 10 minutes to solve the problem. A timer is shown below.-->
+					</h2><br>
 				</div>
 
 				<div id="generalInstructionsVerify">
@@ -495,19 +534,10 @@
 				<h3 id = "timer">הזמן שנותר: </h3>
 				<h3 id = "timerFinal">הזמן שנותר: </h3>
 			
-				<div id="widget-container" style="float: left">			
-					<div id="canvas-container">				
-					</div>
-					<div id="buttons-container">
-						<button id="reset" class="reset" style="float: left">אתחל</button>
-						<!--<button id="undo" class="undo"> Undo</button>-->
-						
-					</div>
-
-				</div>
 
 
-				<div  style="float: left; width: 350px; margin-left: 50px; margin-top: 50px;">
+
+				<div  style="float: right; width: 350px; margin-left: 50px; margin-top: 50px;">
 					<div id='solve'>
 						במצב הזה,
 						<span class="player">O</span>
@@ -565,7 +595,10 @@
 					</div>
 
 						<!--<p>If your solution is correct you will get a bonus of $1. </p>-->
-						<p>תקבלו בונוס של 10 ש"ח אם תפתרו נכונה.</p>
+					<div id="bonus_text">
+							<p>תקבלו בונוס של 10 ש"ח אם תפתרו נכונה.</p>
+
+					</div>
 
 					<br><br>
 					<div id="answerSolution">
@@ -619,6 +652,17 @@
 						</div>
 					</div>
 
+
+				</div>
+
+				<div id="widget-container" style="float: right">
+					<div id="canvas-container">
+					</div>
+					<div id="buttons-container">
+						<button id="reset" class="reset" style="float: left">אתחל</button>
+						<!--<button id="undo" class="undo"> Undo</button>-->
+
+					</div>
 
 				</div>
 
