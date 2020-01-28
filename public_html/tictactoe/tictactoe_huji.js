@@ -1228,7 +1228,7 @@ function onContinue() {
             $('#confidenceQuestion').hide();
             $("#explanation").hide();
 
-
+            $(window).scrollTop(0,0);
             var moves = E.widget.generateMoveList();
             var moveListText = '';
             for (i = 0;i<moves.length;i++) {
