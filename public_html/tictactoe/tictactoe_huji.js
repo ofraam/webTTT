@@ -1124,7 +1124,7 @@ function onContinue() {
             $("#confidenceQuestion").show();
             $('#timer').show();
             $('#reset').show();
-            $('#bonus_text').show();
+            $('#bonus_text').hide();
             // $("#answerSolution").hide();
             if (E.condition=="full" | E.condition=="pruned") {
                 $("#verify").hide();
