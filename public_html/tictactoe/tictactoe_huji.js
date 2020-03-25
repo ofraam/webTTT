@@ -793,6 +793,10 @@ function submit_demographics() {
 	// var education=document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
 	// var age=document.getElementById("age").value;
     var subject_id=document.getElementById("subject_id").value;
+    if (subject_id.length < 1) {
+        alert('אנא הזן את מספר הנבדק')
+        return false;
+    }
     var qualtrics_id =  E.userid;
 
     E.userid = subject_id;
@@ -801,7 +805,7 @@ function submit_demographics() {
 	// servlog("age", age);
     servlog("subject_id", subject_id);
     servlog("qualtrics_id", qualtrics_id);
-
+    return true;
 }
 
 function submit_quiz() {
@@ -825,13 +829,13 @@ function submit_quiz() {
     servlog("quiz6v", q6v)
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && q4 == 'c1' && q5=='b4'){
+	if( q1 == '2' && q2 == '2' && q3 =='3' && (['c1','1c','C1','1C'].contains(q4)) && ['b4','4b','B4','4B'].contains(q4)){
         if(E.condition=="verify") {
                 if (q6v=="yes") {
                     passed = true;
                 }
             }
-        else if( q6=='b3')
+        else if( (q6=='b3') | (q6=='B3')  | (q6=='3b')  | (q6=='3B'))
         {
             passed = true;
         }
@@ -959,7 +963,13 @@ function onContinue() {
 			break;
 
 		case 3:
-			submit_demographics();
+		    var demo = submit_demographics();
+		    if (demo == false) {
+                onContinue.curPage--;
+                onContinue.curPage--;
+		        onContinue();
+		        return;
+            }
 			E.startTime=msTime();
 			$("#instructions.page").show()
             if (E.size == 6) {
@@ -971,7 +981,7 @@ function onContinue() {
 
 
 
-			$("#btnContinue").html('המשך לבוחן')
+			$("#btnContinue").html('המשך לתרגול')
             $(window).scrollTop(0,0);
 			break;
 
