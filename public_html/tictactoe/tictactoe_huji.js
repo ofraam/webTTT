@@ -782,10 +782,38 @@ function show_page_real()
 
 function show_page_final(){
 
-    $("#final.page").show()
+    if(E.validation) {
+        $("#final_correct.page").show()
+    }
 
-	$("#btnContinue").hide()
+    else {
+        $("#final.page").show()
+        $("#btnContinue").hide()
+    }
+
 	showCode();	
+}
+
+
+function submit_participant_info(){
+    var id_num=document.getElementById("id_num").value;
+    if (id_num.length < 1) {
+        alert('אנא הזן את מספר תעודת הזהות')
+        return false;
+    }
+    var phone =  document.getElementById("phone").value;
+    if (phone.length < 1) {
+        alert('אנא הזן את מספר הטלפון')
+        return false;
+    }
+    var email =  document.getElementById("email").value;
+    if (email.length < 1) {
+        alert('אנא הזן את כתובת הדואר האלקטרוני')
+        return false;
+    }
+    servlog("id_num", id_num);
+    servlog("phone", phone);
+    servlog("email", email);
 }
 
 function submit_demographics() {
@@ -1330,7 +1358,23 @@ function onContinue() {
 
             servlogFinal();
             show_page_final();
+            break;
 
+        // case 9:
+        //     alert('here')
+        //     // $("#final_correct.page").show()
+        case 9:
+            var info = submit_participant_info();
+            if (info == false) {
+                onContinue.curPage--;
+                onContinue.curPage--;
+                onContinue();
+                return;
+            }
+
+            $("#final.page").show()
+            $("#btnContinue").hide()
+            break;
 	}
 }
 
