@@ -857,17 +857,19 @@ function submit_quiz() {
     servlog("quiz6v", q6v)
 	
 	var passed = false;
-	if( q1 == '2' && q2 == '2' && q3 =='3' && (['c1','1c','C1','1C'].contains(q4)) && ['b4','4b','B4','4B'].contains(q4)){
-        if(E.condition=="verify") {
+	// if( q1 == '2' && q2 == '2' && q3 =='3' && (['c1','1c','C1','1C'].contains(q4)) && ['b4','4b','B4','4B'].contains(q4)){
+	if( q1 == '2' && q2 == '2' && q3 =='3' && ((q4=='c1') | (q4=='1c') | (q4=='C1') | (q4=='1C')) && ((q5=='b4') | (q5=='4b') | (q5=='B4') | (q5=='4B'))) {
+            if(E.condition=="verify") {
                 if (q6v=="yes") {
                     passed = true;
                 }
             }
-        else if( (q6=='b3') | (q6=='B3')  | (q6=='3b')  | (q6=='3B'))
-        {
-            passed = true;
-        }
-	}
+            else if( (q6=='b3') | (q6=='B3')  | (q6=='3b')  | (q6=='3B'))
+            {
+                passed = true;
+            }
+    }
+
 	
 
 	servlog("passedQuiz", passed);
@@ -1113,6 +1115,7 @@ function onContinue() {
                 if (E.condition=="full" | E.condition=="pruned") {
 				    $("#verify").hide();
                     $("#generalInstructionsVerify").hide();
+                    $("#generalInstructions").show();
                     $("#answerVerification").hide();
 
                 }
