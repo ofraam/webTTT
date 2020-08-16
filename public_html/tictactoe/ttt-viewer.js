@@ -258,24 +258,26 @@ function draw_chart() {
     };
 
 
-        var data = [trace1, trace2];
-        // var data_times = [trace2];
+        // var data = [trace1, trace2];
+        var data = [trace2];
 
        var layout = {
-           title: E.users[E.curr_user_index] + '_'+ E.curr_user_clicks[0].solved + '_'+ E.curr_user_clicks[0].heuristic + '_'+ E.curr_user_clicks[0].solution,
+           // title: E.users[E.curr_user_index] + '_'+ E.curr_user_clicks[0].solved + '_'+ E.curr_user_clicks[0].heuristic + '_'+ E.curr_user_clicks[0].solution,
+           title: E.users[E.curr_user_index] + '_'+ E.curr_user_clicks[0].solved + '_'+ E.curr_user_clicks[0].solution,
+           // title: E.users[E.curr_user_index],
            // yaxis: {
            //     type: 'log',
            //     autorange: true
            // }
            'shapes':   shapes,
-           yaxis: {domain: [0, 0.65]},
-           yaxis2:{domain: [0.75, 1]}
+           // yaxis: {domain: [0, 0.65]},
+           // yaxis2:{domain: [0.75, 1]}
 };
         E.curr_point = E.curr_user_clicks[0].time_rel_sec;
         E.curr_point_index = 0;
 
         E.myPlot = document.getElementById('myDiv');
-        // E.myPlot_times = document.getElementById('myDivTimes');
+        E.myPlot_times = document.getElementById('myDivTimes');
 
         Plotly.newPlot('myDiv', data, layout);
 
@@ -297,7 +299,7 @@ function draw_chart() {
 }
 
 $(document).ready(function(){
-    Plotly.d3.csv("moves_heuristic_scores_190718.csv", function (err, rows) {
+    Plotly.d3.csv("move_huji.csv", function (err, rows) {
         E.data = rows;
         E.users = unpack(E.data,'userid');
         E.users = E.users.unique();
