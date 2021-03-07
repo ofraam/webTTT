@@ -1292,7 +1292,7 @@ function onContinue() {
             E.widget.reset();
             E.widget.simulate();
 
-            // $('#undo').hide();
+            $('#undo').hide();
 
 
             E.startTime = msTime();
