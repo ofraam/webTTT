@@ -784,6 +784,7 @@ function show_page_final(){
 
     if(E.validation) {
         $("#final_correct.page").show()
+        $("#btnContinue").hide()
     }
 
     else {
