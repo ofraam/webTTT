@@ -1112,6 +1112,7 @@ function onContinue() {
                 $("#confidenceQuestion").hide();
                 $('#timer').hide();
                 $('#reset').hide();
+                $('#undo').hide();
                 $('#bonus_text').hide();
                 if (E.condition=="full" | E.condition=="pruned") {
 				    $("#verify").hide();
@@ -1166,6 +1167,7 @@ function onContinue() {
             $("#confidenceQuestion").show();
             $('#timer').show();
             $('#reset').show();
+            $('#undo').show();
             $('#bonus_text').hide();
             // $("#answerSolution").hide();
             if (E.condition=="full" | E.condition=="pruned") {
@@ -1290,7 +1292,7 @@ function onContinue() {
             E.widget.reset();
             E.widget.simulate();
 
-            $('#undo').hide();
+            // $('#undo').hide();
 
 
             E.startTime = msTime();
